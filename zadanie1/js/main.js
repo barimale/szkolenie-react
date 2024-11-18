@@ -1,7 +1,9 @@
-const people = [
-    { name: "Jan", age: 25, city: "Warszawa" },
-    { name: "Anna", age: 30, city: "Kraków" },
-    { name: "Marek", age: 22, city: "Gdańsk" },
-  ];
+const user = {
+  name: "Alice",
+  age: 25,
+  email: "alice@example.com" 
+};
 
-  console.log(people)
+const extendedUser = { ...user, isAdmin: true}
+
+  console.log(extendedUser)
