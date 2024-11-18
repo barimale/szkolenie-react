@@ -20,7 +20,7 @@ const filtered = people
 
 function myClick(event) {
   const paragraphElement = document.querySelector('ul');
-  //WIP
+  //WIP error is below
   paragraphElement.value = filtered.map((item)=>{
     return <li>${item}</li>;
   });
