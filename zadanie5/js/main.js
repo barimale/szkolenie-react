@@ -4,11 +4,8 @@
 
   var counter = 3;
   function myClick(event) {
-    // to be removed
-    console.log(getRandomInt());
-    const paragraphElement = document.querySelector('p');
-    // error is below
-    paragraphElement.value = getRandomInt();
+    let paragraphElement = document.querySelector('p');
+    paragraphElement.textContent = getRandomInt();
     
     counter = counter-1;
     if(counter === 0)
