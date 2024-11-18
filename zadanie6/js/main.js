@@ -24,3 +24,12 @@ const filtered = people
     return <li>${item}</li>;
   })}
 </ul>
+
+function myClick(event) {
+  const paragraphElement = document.querySelector('ul');
+  paragraphElement.value = filtered.map((item)=>{
+    return <li>${item}</li>;
+  });
+}
+
+document.querySelector("button").addEventListener("click", myClick);

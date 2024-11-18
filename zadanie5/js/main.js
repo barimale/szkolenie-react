@@ -5,7 +5,10 @@
   var counter = 3;
   function myClick(event) {
     // WIP
-    document.querySelector("p").nodeValue = getRandomInt();
+    console.log(getRandomInt());
+    const paragraphElement = document.querySelector('p');
+    paragraphElement.value = getRandomInt();
+    
     counter = counter-1;
     if(counter === 0)
     {
