@@ -19,11 +19,11 @@ const filtered = people
   });
 
 // Wykorzystać zdarzenie, aby wyświetlić tę listę imion w liście HTML (`<ul>`) po kliknięciu w przycisk.
-<ul>
+{/* <ul>
   {filtered.map((item)=>{
     return <li>${item}</li>;
   })}
-</ul>
+</ul> */}
 
 function myClick(event) {
   const paragraphElement = document.querySelector('ul');
