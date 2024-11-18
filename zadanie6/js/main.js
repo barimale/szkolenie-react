@@ -18,7 +18,7 @@ const filtered = people
     return person.name;
   });
 
-  // Wykorzysta zdarzenie, aby wyświetlić tę listę imion w liście HTML (`<ul>`) po kliknięciu w przycisk.
+// Wykorzystać zdarzenie, aby wyświetlić tę listę imion w liście HTML (`<ul>`) po kliknięciu w przycisk.
 <ul>
   {filtered.map((item)=>{
     return <li>${item}</li>;
