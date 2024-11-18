@@ -10,6 +10,6 @@
     {
       document.querySelector("button").removeEventListener("click", myClick);
     }
-    }
+  }
 
   document.querySelector("button").addEventListener("click", myClick);
