@@ -20,10 +20,12 @@ const filtered = people
 
 function myClick(event) {
   const ulElement = document.querySelector('ul');
-  //WIP error is below
-  ulElement.value = filtered.map((item)=>{
-    return <li>${item}</li>;
-  });
+  filtered.forEach((item)=>{
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(item));
+    ulElement.appendChild(li);
+  })
+  document.querySelector("button").removeEventListener("click", myClick);
 }
 
 document.querySelector("button").addEventListener("click", myClick);
