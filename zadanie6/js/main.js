@@ -19,9 +19,9 @@ const filtered = people
   });
 
 function myClick(event) {
-  const paragraphElement = document.querySelector('ul');
+  const ulElement = document.querySelector('ul');
   //WIP error is below
-  paragraphElement.value = filtered.map((item)=>{
+  ulElement.value = filtered.map((item)=>{
     return <li>${item}</li>;
   });
 }
