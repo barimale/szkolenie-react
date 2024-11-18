@@ -5,7 +5,7 @@
   var counter = 3;
   function myClick(event) {
     document.querySelector("p").nodeValue = getRandomInt();
-    counter = counter -1;
+    counter = counter-1;
     if(counter === 0)
     {
       document.querySelector("button").removeEventListener("click", myClick);
