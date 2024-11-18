@@ -7,6 +7,7 @@
     // WIP
     console.log(getRandomInt());
     const paragraphElement = document.querySelector('p');
+    document.querySelector("p").style.backgroundColor = "red";
     paragraphElement.value = getRandomInt();
     
     counter = counter-1;
