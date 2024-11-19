@@ -18,10 +18,10 @@ const filtered = people
     return person.name;
   });
 
-function myClick(event) {
+function myClick() {
   const ulElement = document.querySelector('ul');
   filtered.forEach((item) => {
-    var li = document.createElement("li");
+    let li = document.createElement("li");
     li.appendChild(document.createTextNode(item));
     ulElement.appendChild(li);
   })
