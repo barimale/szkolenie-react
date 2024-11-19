@@ -3,9 +3,13 @@
 # Tips
 Install:
 ```
-npm install -g http-server
+npm install -g live-server
 ```
 then execute:
 ```
-http-server index.html
+live-server index.html
+```
+or
+```
+live-server
 ```
