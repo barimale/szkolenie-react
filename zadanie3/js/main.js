@@ -4,7 +4,7 @@ const products = [
   { name: "Tablet", price: 1000 }
 ];
 
-const names = products.map((product)=>{
+const names = products.map((product) => {
   return product.name.toUpperCase();
 });
 

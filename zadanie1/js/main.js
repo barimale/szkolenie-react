@@ -1,9 +1,9 @@
 const user = {
   name: "Alice",
   age: 25,
-  email: "alice@example.com" 
+  email: "alice@example.com"
 };
 
-const extendedUser = { ...user, isAdmin: true}
+const extendedUser = { ...user, isAdmin: true }
 
-  console.log(extendedUser)
+console.log(extendedUser)

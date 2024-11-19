@@ -1,17 +1,16 @@
-    function getRandomInt() {
-    return Math.min(Math.floor(Math.random() * 100) + 1, 100);
-  }
+function getRandomInt() {
+  return Math.min(Math.floor(Math.random() * 100) + 1, 100);
+}
 
-  var counter = 3;
-  function myClick(event) {
-    let paragraphElement = document.querySelector('p');
-    paragraphElement.textContent = getRandomInt();
-    
-    counter = counter-1;
-    if(counter === 0)
-    {
-      document.querySelector("button").removeEventListener("click", myClick);
-    }
-  }
+let counter = 3;
+function myClick() {
+  let paragraphElement = document.querySelector('p');
+  paragraphElement.textContent = getRandomInt();
 
-  document.querySelector("button").addEventListener("click", myClick);
+  counter -= 1;
+  if (!counter) {
+    document.querySelector("button").removeEventListener("click", myClick);
+  }
+}
+
+document.querySelector("button").addEventListener("click", myClick);

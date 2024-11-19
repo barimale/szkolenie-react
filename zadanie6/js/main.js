@@ -11,16 +11,16 @@ const { nameAnna, ageAnna } = anna;
 const { nameMike, ageMike } = john;
 
 const filtered = people
-  .filter((person)=>{
+  .filter((person) => {
     return person.age > 21;
   })
-  .map((person)=>{
+  .map((person) => {
     return person.name;
   });
 
 function myClick(event) {
   const ulElement = document.querySelector('ul');
-  filtered.forEach((item)=>{
+  filtered.forEach((item) => {
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(item));
     ulElement.appendChild(li);
