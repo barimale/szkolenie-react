@@ -8,7 +8,7 @@ const [john, anna, mike] = people;
 
 const { nameJohn, ageJohn } = john;
 const { nameAnna, ageAnna } = anna;
-const { nameMike, ageMike } = john;
+const { nameMike, ageMike } = mike;
 
 const filtered = people
   .filter((person) => {
