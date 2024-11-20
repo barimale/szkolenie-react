@@ -20,14 +20,14 @@
         age: 16
       };
 
-      function CzyPelnoletni(person) {
+      function czyPelnoletni(osoba) {
         return person.age >= 18 ? 'pelnoletni' : 'niepelnoletni';
       }
 
       const { name } = person;
 
       return (
-        <h2>Jestem {name} i jestem {CzyPelnoletni(person)}</h2>
+        <h2>Jestem {name} i jestem {czyPelnoletni(person)}</h2>
       );
     }
 
