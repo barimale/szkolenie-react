@@ -1,5 +1,5 @@
 # szkolenie-react
-
+[...Array(3)].forEach(( _, index) =>
 # Tips
 Install:
 ```
