@@ -10,7 +10,6 @@ function App() {
     { id: 2, name: "Smartfon", price: 2000 },
     { id: 3, name: "Smartfon2", price: 12000 },
     { id: 4, name: "Smartfon3", price: 1000 }
-
   ];
 
   return (
