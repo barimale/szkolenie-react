@@ -9,8 +9,8 @@ const ProductList = (props) => {
                 (
                     <table>
                         <tr>
-                            <th>C1</th>
-                            <th>C2</th>
+                            <th>Nazwa produktu</th>
+                            <th>Cena</th>
                         </tr>
                         {props.products.map((item) => {
                             return (
