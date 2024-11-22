@@ -5,7 +5,7 @@ const Section = (props) => {
     return (
         <section>
             <Title title={props.title} />
-            <img alt={props.alt} src={props.src} />
+            <img alt={props.imgProps.alt} src={props.imgProps.src} />
             <Description description={props.description} />
         </section>
     );
