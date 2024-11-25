@@ -39,7 +39,6 @@ const Example = () => {
             <button onClick={weightNormal}>Odchudź</button>
             <button onClick={styleItalic}>Kursywa</button>
             <button onClick={styleNormal}>Normalny</button>
-
             <p style={{
                 fontSize: textStyle.fontSize,
                 fontWeight: textStyle.fontWeight,
