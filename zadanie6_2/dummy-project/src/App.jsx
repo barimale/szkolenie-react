@@ -1,15 +1,14 @@
 import './App.css'
-import Message from './components/Message';
 import { useState } from 'react';
 
 function App() {
-  const [className, setClassName] = useState('dark')
+  const [className, setClassName] = useState('light')
 
   const toggle = () => {
     setClassName((prevClassName => {
-      if(className === 'dark')
+      if(prevClassName === 'dark')
         return 'light';
-      if(className === 'light')
+      if(prevClassName === 'light')
         return 'dark';
     }));
   }
@@ -22,6 +21,7 @@ function App() {
         height: '200px',
         width: '400px'
       }}>
+        <p style={{margin: 'auto'}}>Demo data</p>
       </main>
       <footer  className={className}>
       </footer>
