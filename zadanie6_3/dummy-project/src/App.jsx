@@ -1,5 +1,5 @@
 import './App.css'
-import Message from './components/Message';
+import Example from './components/Example';
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
     <>
       <header>
       </header>
-      <Message />
+      <Example />
       <footer>
       </footer>
     </>

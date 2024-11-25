@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Message = () => {
+const Example = () => {
     const [textStyle, setTextStyle] = useState({
         fontSize: 16, // w pikselach
         fontWeight: 'normal', // normalne lub pogrubione
@@ -50,4 +50,4 @@ const Message = () => {
     );
 }
 
-export default Message;
+export default Example;
