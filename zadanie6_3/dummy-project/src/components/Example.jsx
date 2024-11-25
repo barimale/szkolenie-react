@@ -9,7 +9,6 @@ const Example = () => {
 
     const sizeUp = () => {
         setTextStyle({ ...textStyle, fontSize: textStyle.fontSize + 2 });
-
     }
 
     const sizeDown = () => {
