@@ -9,7 +9,6 @@ const Example = () => {
 
     const sizeUp = () => {
         setTextStyle({ ...textStyle, fontSize: textStyle.fontSize + 2 });
-
     }
 
     const sizeDown = () => {
@@ -40,7 +39,6 @@ const Example = () => {
             <button onClick={weightNormal}>Odchudź</button>
             <button onClick={styleItalic}>Kursywa</button>
             <button onClick={styleNormal}>Normalny</button>
-
             <p style={{
                 fontSize: textStyle.fontSize,
                 fontWeight: textStyle.fontWeight,
