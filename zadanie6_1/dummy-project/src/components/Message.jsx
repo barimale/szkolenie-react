@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const Message = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const show = () =>{
+    const show = () => {
         setIsVisible(true);
     };
 
@@ -14,11 +14,11 @@ const Message = () => {
         <>
             <button onClick={show}>Pokaż wiadomość</button>
             <button onClick={hide}>Ukryj wiadomość</button>
-            {isVisible &&
+            {isVisible ?
                 (
                     <p>"Witaj w React!"</p>
-                )}
-            {!isVisible &&
+                )
+                :
                 (
                     <p></p>
                 )}
