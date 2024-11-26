@@ -1,6 +1,6 @@
 import './App.css'
 import ControlPanel from './components/ControlPanel';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [visibility, setVisibility] = useState(false);
@@ -13,14 +13,25 @@ function App() {
     setVisibility(false);
   };
 
+  useEffect(()=>{
+    if(visibility)
+    {
+      document.body.style.color = 'black';
+      document.body.style.backgroundColor = 'white';
+    }else{
+      document.body.style.color = 'white';
+      document.body.style.backgroundColor = 'black';
+    }
+  }, [visibility]);
+
   return (
     <>
       <header>
       </header>
       <>
-        <div className={visibility ? 'light' : 'dark'}>
+        {/* <div className={visibility ? 'light' : 'dark'}> */}
           <p>{visibility ? 'światło' : 'brak światła'}</p>
-        </div>
+        {/* </div> */}
         <ControlPanel OnEnabled={show} OnDisabled={hide} />
       </>
       <footer>
