@@ -13,12 +13,11 @@ function App() {
     setVisibility(false);
   };
 
-  useEffect(()=>{
-    if(visibility)
-    {
+  useEffect(() => {
+    if (visibility) {
       document.body.style.color = 'black';
       document.body.style.backgroundColor = 'white';
-    }else{
+    } else {
       document.body.style.color = 'white';
       document.body.style.backgroundColor = 'black';
     }
@@ -29,9 +28,7 @@ function App() {
       <header>
       </header>
       <>
-        {/* <div className={visibility ? 'light' : 'dark'}> */}
-          <p>{visibility ? 'światło' : 'brak światła'}</p>
-        {/* </div> */}
+        <p>{visibility ? 'światło' : 'brak światła'}</p>
         <ControlPanel OnEnabled={show} OnDisabled={hide} />
       </>
       <footer>
