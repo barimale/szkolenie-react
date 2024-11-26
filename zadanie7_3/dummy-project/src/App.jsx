@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 function App() {
   const [visibility, setVisibility] = useState(false);
 
-  const show = () => {
+  const turnOn = () => {
     setVisibility(true);
   };
 
-  const hide = () => {
+  const turnOff = () => {
     setVisibility(false);
   };
 
@@ -29,7 +29,7 @@ function App() {
       </header>
       <>
         <p>{visibility ? 'światło' : 'brak światła'}</p>
-        <ControlPanel OnEnabled={show} OnDisabled={hide} />
+        <ControlPanel OnEnabled={turnOn} OnDisabled={turnOff} />
       </>
       <footer>
       </footer>
