@@ -7,38 +7,18 @@ const Example = () => {
         fontStyle: 'normal', // normalne lub kursywa
     });
 
-    const sizeUp = () => {
-        setTextStyle({ ...textStyle, fontSize: textStyle.fontSize + 2 });
-    }
-
-    const sizeDown = () => {
-        setTextStyle({ ...textStyle, fontSize: textStyle.fontSize - 2 });
-    }
-
-    const weightNormal = () => {
-        setTextStyle({ ...textStyle, fontWeight: 'normal' });
-    }
-
-    const weightBold = () => {
-        setTextStyle({ ...textStyle, fontWeight: 'bold' });
-    }
-
-    const styleItalic = () => {
-        setTextStyle({ ...textStyle, fontStyle: 'italic' });
-    }
-
-    const styleNormal = () => {
-        setTextStyle({ ...textStyle, fontStyle: 'normal' });
+    const updateStyles = (styleKey, value) => {
+        setTextStyle({ ...textStyle, [styleKey]: value });
     }
 
     return (
         <>
-            <button onClick={sizeUp}>Powiększ tekst</button>
-            <button onClick={sizeDown}>Pomniejsz tekst</button>
-            <button onClick={weightBold}>Pogrub</button>
-            <button onClick={weightNormal}>Odchudź</button>
-            <button onClick={styleItalic}>Kursywa</button>
-            <button onClick={styleNormal}>Normalny</button>
+            <button onClick={() => updateStyles('fontSize', textStyle.fontSize + 2)}>Powiększ tekst</button>
+            <button onClick={() => updateStyles('fontSize', textStyle.fontSize - 2)}>Pomniejsz tekst</button>
+            <button onClick={() => updateStyles('fontWeight', 'bold')}>Pogrub</button>
+            <button onClick={() => updateStyles('fontWeight', 'normal')}>Odchudź</button>
+            <button onClick={() => updateStyles('fontStyle', 'italic')}>Kursywa</button>
+            <button onClick={() => updateStyles('fontStyle', 'normal')}>Normalny</button>
             <p style={{
                 fontSize: textStyle.fontSize,
                 fontWeight: textStyle.fontWeight,
