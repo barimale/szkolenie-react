@@ -18,7 +18,7 @@ function App() {
       <header>
       </header>
       <div>
-        <div className={visibility? 'light' : 'dark'}>
+        <div className={visibility ? 'light' : 'dark'}>
           <p>{visibility ? 'światło' : 'brak światła'}</p>
         </div>
         <ControlPanel OnEnabled={() => show()} OnDisabled={() => hide()} />
