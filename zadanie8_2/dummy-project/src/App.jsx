@@ -1,5 +1,5 @@
 import './App.css'
-import Sizer from './components/Sizer';
+import Titler from './components/Titler';
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
     <>
       <header>
       </header>
-      <Sizer />
+      <Titler InitialTitle={'initial title value'}/>
       <footer>
       </footer>
     </>
