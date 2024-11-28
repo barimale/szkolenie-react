@@ -2,15 +2,21 @@ import { useState } from "react";
 import "./SignIn.css";
 
 const SignIn = () => {
-  const [error, setError] = useState('');
+  const [error, setError] = useState(undefined);
+  const [emailError, setEmailError] = useState(undefined);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
+  const isValidEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(error === '')
+    if(error === '' && emailError === '')
     {
       console.log('Zalogowano pomyślnie.')
     }
@@ -24,6 +30,12 @@ const SignIn = () => {
     }
     else if (name === 'password' && target.value.length >= 8) {
       setError('');
+    }
+    else if (name === 'email' && !isValidEmail(target.value)) {
+      setEmailError('Niepoprawny format email');
+    }
+    else if (name === 'email' && isValidEmail(target.value)) {
+      setEmailError('');
     }
     setFormData((prevDataForm) => {
       return { ...prevDataForm, [name]: target.value };
@@ -52,6 +64,7 @@ const SignIn = () => {
           value={formData.password}
         />
         <p>{error}</p>
+        <p>{emailError}</p>
         <button type="submit">Save</button>
       </form>
     </div>
