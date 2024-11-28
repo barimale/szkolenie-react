@@ -10,13 +10,9 @@ const SignIn = () => {
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
-    email: "",
+    wiek: "",
     password: "",
   });
-
-  const isValidEmail = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,10 +30,10 @@ const SignIn = () => {
     else if (name === 'password' && target.value.length >= 8) {
       setError('');
     }
-    else if (name === 'email' && !isValidEmail(target.value)) {
-      setEmailError('Niepoprawny format email');
+    else if (name === 'wiek' && target.value < 18) {
+      setEmailError('Niepoprawny wiek');
     }
-    else if (name === 'email' && isValidEmail(target.value)) {
+    else if (name === 'wiek' && target.value >= 18) {
       setEmailError('');
     }
     else if (name === 'name' && target.value === '') {
@@ -78,12 +74,12 @@ const SignIn = () => {
           onChange={handleInputChange}
           value={formData.surname}
         />
-        <label htmlFor="email">User email</label>
+        <label htmlFor="number">Wiek</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="User email"
+          type="number"
+          id="wiek"
+          name="wiek"
+          placeholder="wiek"
           onChange={handleInputChange}
           value={formData.email}
         />
