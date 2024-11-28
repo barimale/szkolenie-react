@@ -25,7 +25,7 @@ const SignIn = () => {
     const target = e.target;
     const name = target.name;
 
-    setError(name === 'agreement'  && target.checked === false ? 'Zgoda musi byc wyrazona' : '');
+    setError(name === 'agreement'  && target.checked === false ? 'Zgoda musi byc wyrażona' : '');
     setAgeError(name === 'age' && target.value < 18 ? 'Niepoprawny wiek' : '');
     setNameError(name === 'name' && target.value === '' ? 'Niepoprawne imię' : '');
     setSurnameError(name === 'surname' && target.value === '' ? 'Niepoprawne nazwisko' : '');
@@ -63,7 +63,7 @@ const SignIn = () => {
           type="number"
           id="age"
           name="age"
-          placeholder="wiek"
+          placeholder="age"
           onChange={handleInputChange}
           value={formData.age}
         />
@@ -73,7 +73,7 @@ const SignIn = () => {
           type="checkbox"
           id="agreement"
           name="agreement"
-          placeholder="zgoda"
+          placeholder="agreement"
           value={Boolean(formData.agreement)}
           onChange={handleInputChange}
         />
