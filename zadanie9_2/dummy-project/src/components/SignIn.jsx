@@ -10,8 +10,8 @@ const SignIn = () => {
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
-    wiek: "",
-    zgoda: false,
+    age: "",
+    agreement: false,
   });
 
   const handleSubmit = (event) => {
@@ -25,30 +25,11 @@ const SignIn = () => {
     const target = e.target;
     const name = target.name;
 
-    if (name === 'zgoda'  && target.checked === false) {
-      setError('Zgoda musi byc wyrazona');
-    }
-    else if (name === 'zgoda' && target.checked === true) {
-      setError('');
-    }
-    else if (name === 'wiek' && target.value < 18) {
-      setAgeError('Niepoprawny wiek');
-    }
-    else if (name === 'wiek' && target.value >= 18) {
-      setAgeError('');
-    }
-    else if (name === 'name' && target.value === '') {
-      setNameError('Niepoprawne imię');
-    }
-    else if (name === 'name' && target.value !== '') {
-      setNameError('');
-    }
-    else if (name === 'surname' && target.value === '') {
-      setSurnameError('Niepoprawne nazwisko');
-    }
-    else if (name === 'surname' && target.value !== '') {
-      setSurnameError('');
-    }
+    setError(name === 'agreement'  && target.checked === false ? 'Zgoda musi byc wyrazona' : '');
+    setAgeError(name === 'age' && target.value < 18 ? 'Niepoprawny wiek' : '');
+    setNameError(name === 'name' && target.value === '' ? 'Niepoprawne imię' : '');
+    setSurnameError(name === 'surname' && target.value === '' ? 'Niepoprawne nazwisko' : '');
+
     setFormData((prevDataForm) => {
       return { ...prevDataForm, [name]: target.value };
     });
@@ -80,20 +61,20 @@ const SignIn = () => {
         <label htmlFor="number">Wiek</label>
         <input
           type="number"
-          id="wiek"
-          name="wiek"
+          id="age"
+          name="age"
           placeholder="wiek"
           onChange={handleInputChange}
-          value={formData.email}
+          value={formData.age}
         />
         <p>{ageError}</p>
         <label htmlFor="checkbox">Wyrażenie zgody</label>
         <input
           type="checkbox"
-          id="zgoda"
-          name="zgoda"
+          id="agreement"
+          name="agreement"
           placeholder="zgoda"
-          value={Boolean(formData.zgoda)}
+          value={Boolean(formData.agreement)}
           onChange={handleInputChange}
         />
         <p>{error}</p>
