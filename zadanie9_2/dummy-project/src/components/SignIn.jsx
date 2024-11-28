@@ -11,23 +11,24 @@ const SignIn = () => {
     name: "",
     surname: "",
     wiek: "",
-    password: "",
+    zgoda: false,
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (error === '' && emailError === '') {
-      console.log('Zalogowano pomyślnie.')
+    if (error === '' && emailError === '' && nameError === '' && surnameError === '' && formData.zgoda === true) {
+      console.log(JSON.stringify(formData));
     }
   };
 
   const handleInputChange = (e) => {
     const target = e.target;
     const name = target.name;
-    if (name === 'password' && target.value.length < 8) {
-      setError('Hasło musi mieć 8 lub więcej znaków');
+
+    if (name === 'zgoda' && target.value === false) {
+      setError('Zgoda musi byc wyrazona');
     }
-    else if (name === 'password' && target.value.length >= 8) {
+    else if (name === 'zgoda' && target.value === true) {
       setError('');
     }
     else if (name === 'wiek' && target.value < 18) {
@@ -83,20 +84,20 @@ const SignIn = () => {
           onChange={handleInputChange}
           value={formData.email}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="checkbox">zgoda</label>
         <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
+          type="checkbox"
+          id="zgoda"
+          name="zgoda"
+          placeholder="zgoda"
           onChange={handleInputChange}
-          value={formData.password}
+          value={formData.zgoda}
         />
         <p>{error}</p>
         <p>{emailError}</p>
         <p>{nameError}</p>
         <p>{surnameError}</p>
-        <button type="submit">Save</button>
+        <button type="submit">Zarejestruj</button>
       </form>
     </div>
   );
