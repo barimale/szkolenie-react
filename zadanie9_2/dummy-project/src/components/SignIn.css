@@ -1,0 +1,24 @@
+.usersList form {
+  max-width: 600px;
+  border: 1px solid black;
+  padding: 30px;
+  margin: auto;
+}
+
+.usersList form input, 
+.usersList form select {
+  width: 100%;
+}
+
+.usersList form button {
+  background-color: lightskyblue;
+  padding: 5px 15px;
+  margin-top: 15px;
+  border: 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.usersList form button:hover {
+  opacity: 0.8;
+}
