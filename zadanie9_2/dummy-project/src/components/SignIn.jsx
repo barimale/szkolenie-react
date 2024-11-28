@@ -16,7 +16,7 @@ const SignIn = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (error === '' && ageError === '' && nameError === '' && surnameError === '' && formData.zgoda === true) {
+    if (error === '' && ageError === '' && nameError === '' && surnameError === '' && error === '') {
       console.log(JSON.stringify(formData));
     }
   };
@@ -25,11 +25,10 @@ const SignIn = () => {
     const target = e.target;
     const name = target.name;
 
-    // zgoad nie zapisuje sie do formData
-    if (name === 'zgoda' && target.value === false) {
+    if (name === 'zgoda'  && target.checked === false) {
       setError('Zgoda musi byc wyrazona');
     }
-    else if (name === 'zgoda' && target.value === true) {
+    else if (name === 'zgoda' && target.checked === true) {
       setError('');
     }
     else if (name === 'wiek' && target.value < 18) {
@@ -94,8 +93,8 @@ const SignIn = () => {
           id="zgoda"
           name="zgoda"
           placeholder="zgoda"
+          value={Boolean(formData.zgoda)}
           onChange={handleInputChange}
-          value={formData.zgoda}
         />
         <p>{error}</p>
         <button type="submit">Zarejestruj</button>
