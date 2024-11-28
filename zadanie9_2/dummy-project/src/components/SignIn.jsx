@@ -3,7 +3,7 @@ import "./SignIn.css";
 
 const SignIn = () => {
   const [error, setError] = useState(undefined);
-  const [emailError, setEmailError] = useState(undefined);
+  const [ageError, setAgeError] = useState(undefined);
   const [nameError, setNameError] = useState(undefined);
   const [surnameError, setSurnameError] = useState(undefined);
 
@@ -16,7 +16,7 @@ const SignIn = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (error === '' && emailError === '' && nameError === '' && surnameError === '' && formData.zgoda === true) {
+    if (error === '' && ageError === '' && nameError === '' && surnameError === '' && formData.zgoda === true) {
       console.log(JSON.stringify(formData));
     }
   };
@@ -25,6 +25,7 @@ const SignIn = () => {
     const target = e.target;
     const name = target.name;
 
+    // zgoad nie zapisuje sie do formData
     if (name === 'zgoda' && target.value === false) {
       setError('Zgoda musi byc wyrazona');
     }
@@ -32,10 +33,10 @@ const SignIn = () => {
       setError('');
     }
     else if (name === 'wiek' && target.value < 18) {
-      setEmailError('Niepoprawny wiek');
+      setAgeError('Niepoprawny wiek');
     }
     else if (name === 'wiek' && target.value >= 18) {
-      setEmailError('');
+      setAgeError('');
     }
     else if (name === 'name' && target.value === '') {
       setNameError('Niepoprawne imię');
@@ -66,6 +67,7 @@ const SignIn = () => {
           onChange={handleInputChange}
           value={formData.name}
         />
+        <p>{nameError}</p>
         <label htmlFor="surname">Nazwisko</label>
         <input
           type="text"
@@ -75,6 +77,7 @@ const SignIn = () => {
           onChange={handleInputChange}
           value={formData.surname}
         />
+        <p>{surnameError}</p>
         <label htmlFor="number">Wiek</label>
         <input
           type="number"
@@ -84,7 +87,8 @@ const SignIn = () => {
           onChange={handleInputChange}
           value={formData.email}
         />
-        <label htmlFor="checkbox">zgoda</label>
+        <p>{ageError}</p>
+        <label htmlFor="checkbox">Wyrażenie zgody</label>
         <input
           type="checkbox"
           id="zgoda"
@@ -94,9 +98,6 @@ const SignIn = () => {
           value={formData.zgoda}
         />
         <p>{error}</p>
-        <p>{emailError}</p>
-        <p>{nameError}</p>
-        <p>{surnameError}</p>
         <button type="submit">Zarejestruj</button>
       </form>
     </div>
