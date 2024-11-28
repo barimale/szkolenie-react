@@ -74,7 +74,7 @@ const SignIn = () => {
           id="agreement"
           name="agreement"
           placeholder="agreement"
-          value={formData.agreement}
+          value={Boolean(formData.agreement)}
           onChange={handleInputChange}
         />
         <p>{error}</p>
