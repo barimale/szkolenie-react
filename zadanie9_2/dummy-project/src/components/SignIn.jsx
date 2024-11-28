@@ -31,7 +31,7 @@ const SignIn = () => {
     setSurnameError(name === 'surname' && target.value === '' ? 'Niepoprawne nazwisko' : '');
 
     setFormData((prevDataForm) => {
-      return { ...prevDataForm, [name]: target.value };
+      return { ...prevDataForm, [name]: name === 'agreement' ? target.checked : target.value };
     });
   };
 
