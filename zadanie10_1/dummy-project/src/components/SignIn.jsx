@@ -24,6 +24,12 @@ const SignIn = () => {
     setMovies(filteredMovies);
   }
 
+  const editMovie = (id) => {
+    const chosenMovie = movies.filter(movie=>movie.id === id)
+    console.log(JSON.stringify(chosenMovie))
+    setFormData(chosenMovie);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '') {
@@ -48,6 +54,7 @@ const SignIn = () => {
 
   return (
     <div className="usersList">
+      <p>{JSON.stringify(formData)}</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Tytuł</label>
         <input
@@ -105,8 +112,15 @@ const SignIn = () => {
       <div className="list">
         {movies.map((user) => {
           return (
-            <div className="userItem" key={user.id} onClick={()=>removeUser(user.id)}>
+            <div className="userItem" key={user.id} >
               <p>Title: {user.title}</p>
+              <p>Genre: {user.genre}</p>
+              <p>yearOfRelease: {user.yearOfRelease}</p>
+              <p>score: {user.score}</p>
+              <p>type: {user.type}</p>
+              <p>id: {user.id}</p>
+              <button onClick={()=>removeUser(user.id)}> Usuń</button>
+              <button onClick={()=>editMovie(user.id)}> Edytuj</button>
             </div>
           );
         })}
