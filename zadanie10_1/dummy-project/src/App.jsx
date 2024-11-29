@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import CreateMovie from './components/CreateMovie';
 import MovieList from './components/MovieList';
 import EditMovie from './components/EditMovie';
+import Filters from './components/Filters';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -37,6 +38,7 @@ function App() {
       <MovieList movies={movies} OnEditMovie={(item) => setEditMovie(item)} />
       <section>
         <p>Filtry:</p>
+        <Filters />
       </section>
       <footer>
       </footer>

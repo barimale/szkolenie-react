@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Movie.css";
 
 const EditMovie = (props) => {
@@ -9,6 +9,10 @@ const EditMovie = (props) => {
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
   const [formData, setFormData] = useState(props.selectedMovie);
+
+  useEffect(()=>{
+    setFormData(props.selectedMovie);
+  }, [props.selectedMovie]); // does not work 
 
   const handleSubmit = (event) => {
     event.preventDefault();
