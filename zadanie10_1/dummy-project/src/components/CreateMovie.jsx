@@ -38,7 +38,7 @@ const CreateMovie = (props) => {
     setTypeError(name === 'type' && target.value.length === 0 ? 'Niepoprawny typ' : '');
     setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
     setGenreError(name === 'genre' && target.value === undefined ? 'Niepoprawny wybór gatunku' : '')
-    setYearOfReleaseError(name === 'yearOfRelease' && target.value < 1900 ? 'Niepoprawny rok wydania' : '');
+    setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
 
     setFormData((prevDataForm) => {
       return { ...prevDataForm, [name]: target.value };
