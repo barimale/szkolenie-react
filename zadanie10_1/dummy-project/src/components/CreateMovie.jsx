@@ -1,7 +1,7 @@
-import { useState } from "react";
-import "./SignIn.css";
+import { useState, useEffect } from "react";
+import "./CreateMovie.css";
 
-const SignIn = () => {
+const CreateMovie = (props) => {
   const [scoreError, setScoreError] = useState(undefined);
   const [typeError, setTypeError] = useState(undefined);
   const [genreError, setGenreError] = useState(undefined);
@@ -19,16 +19,9 @@ const SignIn = () => {
     id: ''
   });
 
-  const removeUser = (id) => {
-    const filteredMovies = movies.filter(movie=>movie.id !== id)
-    setMovies(filteredMovies);
-  }
-
-  const editMovie = (id) => {
-    const chosenMovie = movies.filter(movie=>movie.id === id)
-    console.log(JSON.stringify(chosenMovie))
-    setFormData(chosenMovie);
-  }
+  useEffect(()=>{
+    props.OnMoviesChanged(movies);
+  }, [movies])
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -108,26 +101,8 @@ const SignIn = () => {
         <p>{typeError}</p>
         <button type="submit">Save</button>
       </form>
-      <p>Lista filmów lub seriali:</p>
-      <div className="list">
-        {movies.map((user) => {
-          return (
-            <div className="userItem" key={user.id} >
-              <p>Title: {user.title}</p>
-              <p>Genre: {user.genre}</p>
-              <p>yearOfRelease: {user.yearOfRelease}</p>
-              <p>score: {user.score}</p>
-              <p>type: {user.type}</p>
-              <p>id: {user.id}</p>
-              <button onClick={()=>removeUser(user.id)}> Usuń</button>
-              <button onClick={()=>editMovie(user.id)}> Edytuj</button>
-            </div>
-          );
-        })}
-      </div>
-      <p>Panel filtrów:</p>
     </div>
   );
 };
 
-export default SignIn;
+export default CreateMovie;
