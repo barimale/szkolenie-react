@@ -21,19 +21,19 @@ function App() {
     <>
       <header>
       </header>
-      {editMovie === undefined && (
+      {editMovie === undefined ? (
         <section>
           <p>Formularz dodawania</p>
           <CreateMovie OnMoviesChanged={(items) => setMovies(items)} />
         </section>
-      )}
-      {editMovie !== undefined && (
-        <section>
-          <p>Formularz edycji</p>
-          <EditMovie selectedMovie={editMovie} OnMoviesChanged={(items) => setMovies(items)}/>
-        </section>
-      )}
-      <p>Lista filmów lub seriali:</p>
+      ) :
+        (
+          <section>
+            <p>Formularz edycji</p>
+            <EditMovie selectedMovie={editMovie} OnMoviesChanged={(items) => setMovies(items)} />
+          </section>
+        )}
+      <p>Lista filmów i seriali:</p>
       <MovieList movies={movies} OnEditMovie={(item) => setEditMovie(item)} />
       <section>
         <p>Filtry:</p>

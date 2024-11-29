@@ -68,6 +68,7 @@ const CreateMovie = (props) => {
           onChange={handleInputChange}
           value={formData.genre}
         >
+          <option value="">Wybierz</option>
           <option value="Komedia">Komedia</option>
           <option value="Dramat">Dramat</option>
           <option value="Akcja">Akcja</option>
