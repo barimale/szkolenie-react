@@ -1,14 +1,11 @@
-const Filters = () =>{
-    // const [formData, setFormData] = useState({
-    //     title: '',
-    //     genre: '',
-    //     yearOfRelease: '',
-    //     score: '',
-    //     type: '',
-    //     id: ''
-    //   });
-    return(
-        <></>
+const Filters = () => {
+    
+    return (
+        <div>
+            <p>genre</p>
+            <p>type</p>
+            <p>score</p>
+        </div>
     )
 }
 

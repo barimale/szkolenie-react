@@ -33,7 +33,6 @@ function App() {
           <EditMovie selectedMovie={editMovie} OnMoviesChanged={(items) => setMovies(items)}/>
         </section>
       )}
-
       <p>Lista filmów lub seriali:</p>
       <MovieList movies={movies} OnEditMovie={(item) => setEditMovie(item)} />
       <section>
