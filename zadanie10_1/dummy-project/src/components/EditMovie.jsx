@@ -11,6 +11,8 @@ const EditMovie = (props) => {
   const [formData, setFormData] = useState(props.selectedMovie);
 
   useEffect(()=>{
+    console.log('movie edited, props changed');
+    console.log(JSON.stringify(props.selectedMovie))
     setFormData(props.selectedMovie);
   }, [props.selectedMovie]); // does not work 
 
