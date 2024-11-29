@@ -96,7 +96,9 @@ const CreateMovie = (props) => {
           placeholder="Typ"
           onChange={handleInputChange}
           value={formData.type}
-        > <option value="movie">Film</option>
+        >
+          <option value=""></option>
+          <option value="movie">Film</option>
           <option value="series">Serial</option>
         </select>
         <p>{typeError}</p>
