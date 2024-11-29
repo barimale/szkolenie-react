@@ -22,3 +22,19 @@
 .usersList form button:hover {
   opacity: 0.8;
 }
+
+.usersList .list {
+  max-width: 600px;
+  border: 1px solid black;
+  padding: 30px;
+  margin: auto;
+}
+
+.usersList .list .userItem {
+  border: 1px solid green;
+  cursor: pointer;
+}
+
+.usersList .list .userItem:hover {
+  background-color: red;
+}

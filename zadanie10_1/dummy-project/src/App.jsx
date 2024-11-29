@@ -12,10 +12,6 @@ function App() {
         <SignIn />
       </section>
       <section>
-        <p>Lista filmów lub seriali</p>
-      </section>
-      <section>
-        <p>Panel filtrów</p>
       </section>
       <footer>
       </footer>

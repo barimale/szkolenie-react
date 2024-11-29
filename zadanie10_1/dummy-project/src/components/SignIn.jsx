@@ -2,20 +2,32 @@ import { useState } from "react";
 import "./SignIn.css";
 
 const SignIn = () => {
+  const [scoreError, setScoreError] = useState(undefined);
+  const [typeError, setTypeError] = useState(undefined);
   const [genreError, setGenreError] = useState(undefined);
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
+  const [movies, setMovies] = useState([]);
+
   const [formData, setFormData] = useState({
-    title: "",
-    genre: "",
+    title: '',
+    genre: '',
     yearOfRelease: '',
+    score: '',
+    type: '',
+    id: ''
   });
+
+  const removeUser = (id) => {
+    const filteredMovies = movies.filter(movie=>movie.id !== id)
+    setMovies(filteredMovies);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '') {
-      console.log('Dodano do listy pomyślnie.')
+      setMovies(movies.concat({ ...formData, id: Date.now() }));
     }
   };
 
@@ -23,6 +35,8 @@ const SignIn = () => {
     const target = e.target;
     const name = target.name;
 
+    setScoreError(name === 'score' && target.value >= 0 && target.value <= 10 ? '' : 'Niepoprawna ocena');
+    setTypeError(name === 'type' && target.value.length === 0 ? 'Niepoprawny typ' : '');
     setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
     setGenreError(name === 'genre' && target.value === undefined ? 'Niepoprawny wybór gatunku' : '')
     setYearOfReleaseError(name === 'yearOfRelease' && target.value < 1900 ? 'Niepoprawny rok wydania' : '');
@@ -65,8 +79,39 @@ const SignIn = () => {
           value={formData.yearOfRelease}
         />
         <p>{yearOfReleaseError}</p>
+        <label htmlFor="score">Ocena</label>
+        <input
+          type="number"
+          id="score"
+          name="score"
+          placeholder="Ocena"
+          onChange={handleInputChange}
+          value={formData.score}
+        />
+        <p>{scoreError}</p>
+        <label htmlFor="type">Typ</label>
+        <input
+          type="radiobutton"
+          id="type"
+          name="type"
+          placeholder="Typ"
+          onChange={handleInputChange}
+          value={formData.type}
+        />
+        <p>{typeError}</p>
         <button type="submit">Save</button>
       </form>
+      <p>Lista filmów lub seriali:</p>
+      <div className="list">
+        {movies.map((user) => {
+          return (
+            <div className="userItem" key={user.id} onClick={()=>removeUser(user.id)}>
+              <p>Title: {user.title}</p>
+            </div>
+          );
+        })}
+      </div>
+      <p>Panel filtrów:</p>
     </div>
   );
 };
