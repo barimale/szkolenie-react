@@ -20,6 +20,7 @@ const EditMovie = (props) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '') {
       // setMovies(movies.concat({ ...formData, id: Date.now() }));
+      props.OnMoviesChanged(formData);
     }
   };
 
@@ -40,7 +41,7 @@ const EditMovie = (props) => {
 
   return (
     <div className="usersList">
-      <p>{JSON.stringify(formData)}</p>
+      <p>{JSON.stringify(props.selectedMovie)}</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Tytuł</label>
         <input

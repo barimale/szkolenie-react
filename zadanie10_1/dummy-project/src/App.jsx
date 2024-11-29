@@ -30,7 +30,7 @@ function App() {
       {editMovie !== undefined && (
         <section>
           <p>Formularz edycji</p>
-          <EditMovie selectedMovie={editMovie} />
+          <EditMovie selectedMovie={editMovie} OnMoviesChanged={(items) => setMovies(items)}/>
         </section>
       )}
 
