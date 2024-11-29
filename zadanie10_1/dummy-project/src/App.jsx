@@ -6,16 +6,9 @@ import EditMovie from './components/EditMovie';
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [editMovie, setEditMovie] = useState({ //to be changed
-    title: '',
-    genre: '',
-    yearOfRelease: '',
-    score: '',
-    type: '',
-    id: ''
-  });
+  const [editMovie, setEditMovie] = useState(undefined);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log('movie added');
   }, [movies]);
 
@@ -23,16 +16,21 @@ function App() {
     <>
       <header>
       </header>
-      <section>
-        <p>Formularz dodawania</p>
-        <CreateMovie OnMoviesChanged={(items) => setMovies(items)} />
-      </section>
-      <section>
-        <p>Formularz edycji</p>
-        <EditMovie selectedMovie={editMovie} />
-      </section>
-        <p>Lista filmów lub seriali:</p>
-        <MovieList movies={movies} />
+      {editMovie === undefined && (
+        <section>
+          <p>Formularz dodawania</p>
+          <CreateMovie OnMoviesChanged={(items) => setMovies(items)} />
+        </section>
+      )}
+      {editMovie !== undefined && (
+        <section>
+          <p>Formularz edycji</p>
+          <EditMovie selectedMovie={editMovie} />
+        </section>
+      )}
+
+      <p>Lista filmów lub seriali:</p>
+      <MovieList movies={movies} OnEditMovie={(item) => setEditMovie(item)} />
       <section>
       </section>
       <footer>

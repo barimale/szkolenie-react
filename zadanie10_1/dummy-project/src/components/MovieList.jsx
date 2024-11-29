@@ -13,6 +13,7 @@ const MovieList = (props) => {
     const chosenMovie = movies.filter(movie=>movie.id === id)
     console.log(JSON.stringify(chosenMovie))
     setFormData(chosenMovie);
+    props.OnEditMovie(chosenMovie);
   }
 
   return (
