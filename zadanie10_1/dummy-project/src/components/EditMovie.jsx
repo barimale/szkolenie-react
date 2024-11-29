@@ -18,7 +18,7 @@ const EditMovie = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (genreError === '' && titleError === '' && yearOfReleaseError === '') {
+    if (genreError === '' && titleError === '' && yearOfReleaseError === '' && scoreError === '' && typeError === '') {
       // setMovies(movies.concat({ ...formData, id: Date.now() }));
       props.OnMoviesChanged(formData);
     }
