@@ -60,14 +60,18 @@ const CreateMovie = (props) => {
         />
         <p>{titleError}</p>
         <label htmlFor="genre">Gatunek</label>
-        <input
+        <select
           type="select"
           id="genre"
           name="genre"
           placeholder="Gatunek"
           onChange={handleInputChange}
           value={formData.genre}
-        />
+        >
+          <option value="Komedia">Komedia</option>
+          <option value="Dramat">Dramat</option>
+          <option value="Akcja">Akcja</option>
+        </select>
         <p>{genreError}</p>
         <label htmlFor="yearOfRelease">Rok wydania</label>
         <input
