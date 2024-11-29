@@ -12,14 +12,13 @@ const MovieList = (props) => {
   const editMovie = (id) => {
     const chosenMovie = movies.filter(movie=>movie.id === id)
     console.log(JSON.stringify(chosenMovie))
-    setFormData(chosenMovie);
     props.OnEditMovie(chosenMovie);
   }
 
   return (
     <div className="usersList">
       <div className="list">
-        {movies.map((user) => {
+        {props.movies.map((user) => {
           return (
             <div className="userItem" key={user.id} >
               <p>Title: {user.title}</p>

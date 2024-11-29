@@ -12,6 +12,10 @@ function App() {
     console.log('movie added');
   }, [movies]);
 
+  useEffect(() => {
+    console.log('movie edited');
+  }, [editMovie]);
+
   return (
     <>
       <header>
@@ -32,6 +36,7 @@ function App() {
       <p>Lista filmów lub seriali:</p>
       <MovieList movies={movies} OnEditMovie={(item) => setEditMovie(item)} />
       <section>
+        <p>Filtry:</p>
       </section>
       <footer>
       </footer>
