@@ -94,7 +94,10 @@ const EditMovie = (props) => {
           <option value="series">Serial</option>
         </select>
         <p>{typeError}</p>
-        <button type="submit">Save</button>
+        <button type="submit">Zapisz</button>
+        <button onCLick={()=>{
+          setFormData(undefined);
+        }}>Anuluj</button>
       </form>
     </div>
   );
