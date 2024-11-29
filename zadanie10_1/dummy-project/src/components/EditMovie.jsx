@@ -1,32 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Movie.css";
 
-const CreateMovie = (props) => {
+const EditMovie = (props) => {
   const [scoreError, setScoreError] = useState(undefined);
   const [typeError, setTypeError] = useState(undefined);
   const [genreError, setGenreError] = useState(undefined);
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
-  const [movies, setMovies] = useState([]);
-
-  const [formData, setFormData] = useState({
-    title: '',
-    genre: '',
-    yearOfRelease: '',
-    score: '',
-    type: '',
-    id: ''
-  });
-
-  useEffect(()=>{
-    props.OnMoviesChanged(movies);
-  }, [movies])
+  const [formData, setFormData] = useState(props.selectedMovie);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '') {
-      setMovies(movies.concat({ ...formData, id: Date.now() }));
+      // setMovies(movies.concat({ ...formData, id: Date.now() }));
     }
   };
 
@@ -105,4 +92,4 @@ const CreateMovie = (props) => {
   );
 };
 
-export default CreateMovie;
+export default EditMovie;

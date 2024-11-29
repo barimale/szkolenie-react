@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./CreateMovie.css";
+import "./Movie.css";
 
 const MovieList = (props) => {
   const [movies, setMovies] = useState(props.movies); // localstorage ? 
