@@ -49,8 +49,11 @@ function App() {
             <EditMovie
               selectedMovie={editMovie}
               OnMoviesChanged={(item) => {
-                // const moviedEdited = movies.slice()
-                setMovies([...movies, item]); // replace by id
+                const moviedEdited = movies;
+                const index = moviedEdited.findIndex(p => p.id === item.id);
+                console.log(index)
+                moviedEdited[index] = item;
+                setMovies(moviedEdited);
                 setEditMovie(undefined);
               }}
               onCancel={() => { setEditMovie(undefined) }} />
