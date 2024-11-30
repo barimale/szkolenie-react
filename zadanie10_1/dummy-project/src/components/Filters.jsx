@@ -1,21 +1,16 @@
 import { useState, useEffect } from 'react';
 
-const Filters = () => {
+const Filters = (props) => {
     const [filteredGenre, setFilteredGenre] = useState(undefined);
     const [filteredType, setFilteredType] = useState(undefined);
     const [filteredScore, setFilteredScore] = useState(undefined);
 
     useEffect(() => {
         console.log(filteredGenre);
-    }, [filteredGenre]);
-
-    useEffect(() => {
-        console.log(filteredType);
-    }, [filteredType]);
-
-    useEffect(() => {
-        console.log(filteredScore);
-    }, [filteredScore]);
+        props.onFiltersChanged(() => {
+            return {genre: filteredGenre, type: filteredType, score: filteredScore }
+        });
+    }, [filteredGenre, filteredType, filteredScore]);
 
     const handleInputChange = (e) => {
         const target = e.target;
@@ -33,8 +28,7 @@ const Filters = () => {
 
     return (
         <div>
-            <p>genre</p>
-            <label htmlFor="genre">Gatunek</label>
+            <label htmlFor="genre">Gatunek: </label>
             <select
                 type="select"
                 id="genre"
@@ -48,8 +42,8 @@ const Filters = () => {
                 <option value="Dramat">Dramat</option>
                 <option value="Akcja">Akcja</option>
             </select>
-            <p>type</p>
-            <label htmlFor="type">Typ</label>
+            <br />
+            <label htmlFor="type">Typ: </label>
             <select
                 type="select"
                 id="type"
@@ -62,8 +56,8 @@ const Filters = () => {
                 <option value="movie">Film</option>
                 <option value="series">Serial</option>
             </select>
-            <p>score</p>
-            <label htmlFor="score">Ocena</label>
+            <br />
+            <label htmlFor="score">Ocena: </label>
             <input
                 type="number"
                 id="score"

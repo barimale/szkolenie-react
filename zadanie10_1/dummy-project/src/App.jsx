@@ -8,6 +8,12 @@ import Filters from './components/Filters';
 function App() {
   const [movies, setMovies] = useState([]);
   const [editMovie, setEditMovie] = useState(undefined);
+  const [filters, setFilters] = useState(undefined);
+
+  useEffect(() => {
+    console.log('Do filtering here');
+    console.log(JSON.stringify(filters));
+  }, [filters]);
 
   useEffect(() => {
     console.log('movie added');
@@ -39,7 +45,7 @@ function App() {
       <MovieList movies={movies} OnEditMovie={(item) => setEditMovie(item)} />
       <section>
         <p>Filtry:</p>
-        <Filters />
+        <Filters onFiltersChanged={(items)=> setFilters(items)}/>
       </section>
       <footer>
       </footer>
