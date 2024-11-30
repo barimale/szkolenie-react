@@ -11,10 +11,12 @@ function App() {
 
   useEffect(() => {
     console.log('movie added');
+    console.log(JSON.stringify(movies));
   }, [movies]);
 
   useEffect(() => {
     console.log('movie edited');
+    console.log(JSON.stringify(editMovie));
   }, [editMovie]);
 
   return (

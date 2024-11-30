@@ -37,7 +37,7 @@ const CreateMovie = (props) => {
     setScoreError(name === 'score' && target.value >= 0 && target.value <= 10 ? '' : 'Niepoprawna ocena');
     setTypeError(name === 'type' && target.value === '' ? 'Niepoprawny typ' : '');
     setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
-    setGenreError(name === 'genre' && target.value === undefined ? 'Niepoprawny wybór gatunku' : '')
+    setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
     setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
 
     setFormData((prevDataForm) => {

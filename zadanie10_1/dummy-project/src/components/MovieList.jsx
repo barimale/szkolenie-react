@@ -6,7 +6,6 @@ const MovieList = (props) => {
 
   const removeMovie = (id) => {
     const filteredMovies = props.movies.filter(movie=>movie.id !== id)
-    props.movies = filteredMovies;
     setMovies(filteredMovies);
   }
 
@@ -19,7 +18,7 @@ const MovieList = (props) => {
   return (
     <div className="usersList">
       <div className="list">
-        {props.movies.map((user) => {
+        {props.movies.map((user) => { // props movies ?
           return (
             <div className="userItem" key={user.id} >
               <p>Title: {user.title}</p>
