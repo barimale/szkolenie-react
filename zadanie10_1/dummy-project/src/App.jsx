@@ -17,8 +17,8 @@ function App() {
       .filter(p => p.genre === (filters === undefined || filters.genre === undefined || filters.genre === '' ? p.genre : filters.genre))
       .filter(p => p.score === (filters === undefined || filters.score === undefined || filters.score === '' ? p.score : filters.score))
       .filter(p => p.type === (filters === undefined || filters.type === undefined || filters.type === '' ? p.type : filters.type))
-    
-      setFilteredMovies(filteredItems);
+
+    setFilteredMovies(filteredItems);
   }, [filters, movies]);
 
   return (
@@ -34,11 +34,17 @@ function App() {
         (
           <section>
             <p>Formularz edycji</p>
-            <EditMovie selectedMovie={editMovie} OnMoviesChanged={(items) => setMovies(items)} onCancel={()=> {setEditMovie(undefined)}}/>
+            <EditMovie
+              selectedMovie={editMovie}
+              OnMoviesChanged={(items) => setMovies(items)}
+              onCancel={() => { setEditMovie(undefined) }} />
           </section>
         )}
       <p>Lista filmów i seriali:</p>
-      <MovieList movies={filteredMovies} OnEditMovie={(item) => setEditMovie(item)} OnMoviesChanged={(items) => setMovies(items)} />
+      <MovieList
+        movies={filteredMovies}
+        OnEditMovie={(item) => setEditMovie(item)}
+        OnMoviesChanged={(items) => setMovies(items)} />
       <section>
         <p>Filtry:</p>
         <p>{JSON.stringify(filters)}</p>
