@@ -14,9 +14,9 @@ function App() {
     console.log('Do filtering here:');
     console.log(JSON.stringify(filters));
     const filteredMovies = movies
-      .filter(p => p.genre === (filters.genre === undefined ? p.genre : filters.genre))
-      .filter(p => p.score === (filters.score === undefined ? p.score : filters.score))
-      .filter(p => p.type === (filters.type === undefined ? p.type : filters.type))
+      .filter(p => p.genre === (filters === undefined || filters.genre === undefined || filters.genre === '' ? p.genre : filters.genre))
+      .filter(p => p.score === (filters === undefined || filters.score === undefined || filters.score === '' ? p.score : filters.score))
+      .filter(p => p.type === (filters === undefined || filters.type === undefined || filters.type === '' ? p.type : filters.type))
       setMovies(filteredMovies);
       console.log('Filtered movie here:');
       console.log(JSON.stringify(filteredMovies))
