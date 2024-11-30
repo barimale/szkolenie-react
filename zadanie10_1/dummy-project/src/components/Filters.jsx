@@ -8,7 +8,7 @@ const Filters = (props) => {
     useEffect(() => {
         console.log(filteredGenre);
         props.onFiltersChanged(() => {
-            return {genre: filteredGenre, type: filteredType, score: filteredScore }
+            return { genre: filteredGenre, type: filteredType, score: filteredScore }
         });
     }, [filteredGenre, filteredType, filteredScore]);
 
@@ -42,6 +42,9 @@ const Filters = (props) => {
                 <option value="Dramat">Dramat</option>
                 <option value="Akcja">Akcja</option>
             </select>
+            <button onClick={() => {
+                setFilteredGenre('')
+            }}>Clear genre</button>
             <br />
             <label htmlFor="type">Typ: </label>
             <select
@@ -56,6 +59,9 @@ const Filters = (props) => {
                 <option value="movie">Film</option>
                 <option value="series">Serial</option>
             </select>
+            <button onClick={() => {
+                setFilteredType('')
+            }}>Clear type</button>
             <br />
             <label htmlFor="score">Ocena: </label>
             <input
@@ -66,7 +72,9 @@ const Filters = (props) => {
                 onChange={handleInputChange}
                 value={filteredScore}
             />
-            <button onClick={()=>{setFilteredScore(undefined)}}>Clear score</button>
+            <button onClick={() => {
+                setFilteredScore('')
+            }}>Clear score</button>
         </div>
     )
 }
