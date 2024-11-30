@@ -8,7 +8,14 @@ const EditMovie = (props) => {
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
-  const [formData, setFormData] = useState(props.selectedMovie);
+  const [formData, setFormData] = useState({
+    title: props.selectedMovie.title,
+    genre: props.selectedMovie.genre,
+    yearOfRelease: props.selectedMovie.yearOfRelease,
+    score: props.selectedMovie.score,
+    type: props.selectedMovie.type, // movie series
+    id: props.selectedMovie.id
+  });
 
   useEffect(() => {
     console.log(JSON.stringify(formData));
@@ -38,7 +45,7 @@ const EditMovie = (props) => {
 
   return (
     <div className="usersList">
-      <p>{JSON.stringify(props.selectedMovie)}</p>
+      <p>{JSON.stringify(formData)}</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Tytuł</label>
         <input
