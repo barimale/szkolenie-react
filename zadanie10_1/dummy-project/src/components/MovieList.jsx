@@ -19,7 +19,7 @@ const MovieList = (props) => {
             <div className="userItem" key={user.id} >
               <p>Tytuł: {user.title}</p>
               <p>Gatunek: {user.genre}</p>
-              <p>Rok publikacji: {user.yearOfRelease}</p>
+              <p>Rok wydania: {user.yearOfRelease}</p>
               <p>Ocena: {user.score}</p>
               <p>Typ: {user.type}</p>
               <p>ID: {user.id}</p>
