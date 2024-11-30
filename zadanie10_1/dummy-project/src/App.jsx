@@ -22,17 +22,7 @@ function App() {
     setFilteredMovies(filteredItems);
     console.log('Filtered movie here:');
     console.log(JSON.stringify(filteredMovies))
-  }, [filters]);
-
-  useEffect(() => {
-    console.log('movie added');
-    console.log(JSON.stringify(movies));
-  }, [movies]);
-
-  useEffect(() => {
-    console.log('movie edited');
-    console.log(JSON.stringify(editMovie));
-  }, [editMovie]);
+  }, [filters, movies]);
 
   return (
     <>
