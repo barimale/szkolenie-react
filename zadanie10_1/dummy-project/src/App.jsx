@@ -15,8 +15,6 @@ function App() {
   useEffect(() => {
     const storedValue = localStorage.getItem('movies');
     if (storedValue) {
-      console.log('parsed stored value');
-      console.log(JSON.parse(storedValue));
       setMovies(JSON.parse(storedValue));
     }
   }, []);
