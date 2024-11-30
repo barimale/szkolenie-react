@@ -59,7 +59,6 @@ function App() {
         OnMoviesChanged={(items) => setMovies(items)} />
       <section>
         <p>Filtry:</p>
-        <p>{JSON.stringify(filters)}</p>
         <Filters onFiltersChanged={(items) => setFilters(items)} />
       </section>
       <footer>
