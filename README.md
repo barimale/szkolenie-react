@@ -1,5 +1,4 @@
 # szkolenie-react
-https://react.tips/radio-buttons-in-react-16/
 ## Tips
 Install:
 ```
