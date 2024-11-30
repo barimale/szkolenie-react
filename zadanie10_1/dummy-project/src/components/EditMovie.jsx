@@ -13,7 +13,7 @@ const EditMovie = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '' && scoreError === '' && typeError === '') {
-      props.OnMoviesChanged(props.selectedMovie);
+      props.OnMoviesChanged(formData);
     }
   };
 
@@ -30,7 +30,6 @@ const EditMovie = (props) => {
     setFormData((prevDataForm) => {
       return { ...prevDataForm, [name]: target.value };
     });
-    props.selectedMovie = formData;
   };
 
   return (
