@@ -38,7 +38,7 @@ function App() {
           </section>
         )}
       <p>Lista filmów i seriali:</p>
-      <MovieList movies={filteredMovies} OnEditMovie={(item) => setEditMovie(item)} />
+      <MovieList movies={filteredMovies} OnEditMovie={(item) => setEditMovie(item)} OnMoviesChanged={(items) => setMovies(items)} />
       <section>
         <p>Filtry:</p>
         <p>{JSON.stringify(filters)}</p>

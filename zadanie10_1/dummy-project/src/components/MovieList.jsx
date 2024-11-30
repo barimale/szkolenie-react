@@ -2,23 +2,20 @@ import { useState } from "react";
 import "./Movie.css";
 
 const MovieList = (props) => {
-  const [movies, setMovies] = useState(props.movies); // localstorage ? 
-
   const removeMovie = (id) => {
-    const filteredMovies = movies.filter(movie=>movie.id !== id)
-    setMovies(filteredMovies);
+    const filteredMovies = props.movies.filter(movie=>movie.id !== id)
+    props.OnMoviesChanged(filteredMovies);
   }
 
   const editMovie = (id) => {
-    const chosenMovie = movies.filter(movie=>movie.id === id)
-    console.log(JSON.stringify(chosenMovie))
+    const chosenMovie = props.movies.filter(movie=>movie.id === id)
     props.OnEditMovie(chosenMovie);
   }
 
   return (
     <div className="usersList">
       <div className="list">
-        {props.movies.map((user) => { // props movies ?
+        {props.movies.map((user) => {
           return (
             <div className="userItem" key={user.id} >
               <p>Title: {user.title}</p>
