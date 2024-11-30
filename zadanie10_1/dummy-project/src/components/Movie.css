@@ -35,6 +35,12 @@
   cursor: pointer;
 }
 
+.filterlist {
+  border: 1px solid black;
+  padding: 30px;
+  margin: auto;
+}
+
 /* .usersList .list .userItem:hover {
   background-color: red;
 } */

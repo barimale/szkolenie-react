@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import "./Movie.css";
 
 const Filters = (props) => {
     const [filteredGenre, setFilteredGenre] = useState(undefined);
@@ -26,7 +27,7 @@ const Filters = (props) => {
     };
 
     return (
-        <div>
+        <div className="filterlist">
             <label htmlFor="genre">Gatunek: </label>
             <select
                 type="select"
@@ -41,7 +42,7 @@ const Filters = (props) => {
                 <option value="Dramat">Dramat</option>
                 <option value="Akcja">Akcja</option>
             </select>
-            <button onClick={() => {
+            <button style={{margin: '5px 20px'}} onClick={() => {
                 setFilteredGenre('')
             }}>Wyczyść gatunek</button>
             <br />
@@ -58,7 +59,7 @@ const Filters = (props) => {
                 <option value="movie">Film</option>
                 <option value="series">Serial</option>
             </select>
-            <button onClick={() => {
+            <button style={{margin: '5px 20px'}} onClick={() => {
                 setFilteredType('')
             }}>Wyczyść typ</button>
             <br />
@@ -71,7 +72,7 @@ const Filters = (props) => {
                 onChange={handleInputChange}
                 value={filteredScore}
             />
-            <button onClick={() => {
+            <button style={{margin: '5px 20px'}} onClick={() => {
                 setFilteredScore('')
             }}>Wyczyść ocenę</button>
         </div>
