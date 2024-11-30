@@ -5,7 +5,7 @@ const MovieList = (props) => {
   const [movies, setMovies] = useState(props.movies); // localstorage ? 
 
   const removeMovie = (id) => {
-    const filteredMovies = props.movies.filter(movie=>movie.id !== id)
+    const filteredMovies = movies.filter(movie=>movie.id !== id)
     setMovies(filteredMovies);
   }
 
