@@ -50,7 +50,7 @@ function App() {
               selectedMovie={editMovie}
               OnMoviesChanged={(item) => {
                 const moviedEdited = movies;
-                const index = moviedEdited.indexOf(item); // WIP
+                const index = moviedEdited.findIndex(p => p.id === item.id); // WIP
                 console.log(index)
                 moviedEdited[index] = item;
                 setMovies(moviedEdited);
