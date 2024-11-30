@@ -105,6 +105,22 @@ const CreateMovie = (props) => {
           <option value="movie">Film</option>
           <option value="series">Serial</option>
         </select>
+        <label>
+            <input
+              type="radio"
+              name="type-movies"
+              value="movies"
+            />
+            Movies
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="type-series"
+              value="series"
+            />
+            Series
+          </label>
         <p>{typeError}</p>
         <button type="submit">Zapisz</button>
       </form>
