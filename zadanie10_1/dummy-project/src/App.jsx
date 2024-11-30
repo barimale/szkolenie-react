@@ -13,15 +13,12 @@ function App() {
   const [filters, setFilters] = useState(undefined);
 
   useEffect(() => {
-    console.log('Do filtering here:');
-    console.log(JSON.stringify(filters));
     const filteredItems = movies
       .filter(p => p.genre === (filters === undefined || filters.genre === undefined || filters.genre === '' ? p.genre : filters.genre))
       .filter(p => p.score === (filters === undefined || filters.score === undefined || filters.score === '' ? p.score : filters.score))
       .filter(p => p.type === (filters === undefined || filters.type === undefined || filters.type === '' ? p.type : filters.type))
-    setFilteredMovies(filteredItems);
-    console.log('Filtered movie here:');
-    console.log(JSON.stringify(filteredMovies))
+    
+      setFilteredMovies(filteredItems);
   }, [filters, movies]);
 
   return (
