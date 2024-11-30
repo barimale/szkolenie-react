@@ -41,13 +41,13 @@ function App() {
       </header>
       {editMovie === undefined ? (
         <section>
-          <p>Formularz dodawania</p>
+          <p>Formularz dodawania:</p>
           <CreateMovie OnMoviesChanged={(items) => setMovies(items)} />
         </section>
       ) :
         (
           <section>
-            <p>Formularz edycji</p>
+            <p>Formularz edycji:</p>
             <EditMovie
               selectedMovie={editMovie}
               OnMoviesChanged={(items) => setMovies(items)}
