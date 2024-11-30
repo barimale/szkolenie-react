@@ -10,7 +10,7 @@ const EditMovie = (props) => {
 
   const [formData, setFormData] = useState(props.selectedMovie);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(JSON.stringify(formData));
   }, [formData])
 
@@ -59,6 +59,7 @@ const EditMovie = (props) => {
           onChange={handleInputChange}
           value={formData.genre}
         >
+          <option value="">Wybierz...</option>
           <option value="Komedia">Komedia</option>
           <option value="Dramat">Dramat</option>
           <option value="Akcja">Akcja</option>
@@ -91,12 +92,15 @@ const EditMovie = (props) => {
           placeholder="Typ"
           onChange={handleInputChange}
           value={formData.type}
-        > <option value="movie">Film</option>
+
+        >
+          <option value="">Wybierz...</option>
+          <option value="movie">Film</option>
           <option value="series">Serial</option>
         </select>
         <p>{typeError}</p>
         <button type="submit">Zapisz</button>
-        <button onClick={()=>{
+        <button onClick={() => {
           props.onCancel();
         }}>Anuluj</button>
       </form>
