@@ -48,10 +48,10 @@ function App() {
             <p>Formularz edycji:</p>
             <EditMovie
               selectedMovie={editMovie}
-              OnMoviesChanged={(items) => {
+              OnMoviesChanged={(item) => {
                 const moviedEdited = movies;
-                const index = moviedEdited.findIndex(p => p.id === items[0].id);
-                moviedEdited[index] = items[0];
+                const index = moviedEdited.findIndex(p => p.id === item.id);
+                moviedEdited[index] = item;
                 setMovies(moviedEdited);
                 setEditMovie(undefined);
               }}
