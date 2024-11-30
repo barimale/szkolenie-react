@@ -43,6 +43,7 @@ const CreateMovie = (props) => {
       if (radioMoviesRef.current) {
         radioMoviesRef.current.checked = false;
       }
+      setTypeError(radioSeriesRef.current.checked === false && radioMoviesRef.current.checked === false ? 'Niepoprawny typ' : '');
       setFormData((prevDataForm) => {
         return { ...prevDataForm, ['type']: target.value };
       });
@@ -52,12 +53,12 @@ const CreateMovie = (props) => {
       if (radioSeriesRef.current) {
         radioSeriesRef.current.checked = false;
       }
+      setTypeError(radioSeriesRef.current.checked === false && radioMoviesRef.current.checked === false ? 'Niepoprawny typ' : '');
       setFormData((prevDataForm) => {
         return { ...prevDataForm, ['type']: target.value };
       });
     } else {
       setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
-      setTypeError(radioSeriesRef.current.checked === false && radioMoviesRef.current.checked === false ? 'Niepoprawny typ' : '');
       setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
       setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
       setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
