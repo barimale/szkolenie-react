@@ -39,8 +39,6 @@ const EditMovie = (props) => {
     const name = target.name;
 
     if (name === "type-series") {
-      console.log('typeseries: ' + target.value);
-      // uncheck second radio
       if (radioMoviesRef.current) {
         radioMoviesRef.current.checked = false;
       }
@@ -49,8 +47,6 @@ const EditMovie = (props) => {
         return { ...prevDataForm, ['type']: target.value };
       });
     } else if (name === "type-movies") {
-      console.log('typemovies: ' + target.value);
-      // uncheck first radio
       if (radioSeriesRef.current) {
         radioSeriesRef.current.checked = false;
       }

@@ -7,7 +7,6 @@ const Filters = (props) => {
     const [filteredScore, setFilteredScore] = useState(undefined);
 
     useEffect(() => {
-        console.log(filteredGenre);
         props.onFiltersChanged(() => {
             return { genre: filteredGenre, type: filteredType, score: filteredScore }
         });
