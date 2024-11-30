@@ -43,7 +43,7 @@ const Filters = (props) => {
             </select>
             <button onClick={() => {
                 setFilteredGenre('')
-            }}>Clear genre</button>
+            }}>Wyczyść gatunek</button>
             <br />
             <label htmlFor="type">Typ: </label>
             <select
@@ -60,7 +60,7 @@ const Filters = (props) => {
             </select>
             <button onClick={() => {
                 setFilteredType('')
-            }}>Clear type</button>
+            }}>Wyczyść typ</button>
             <br />
             <label htmlFor="score">Ocena: </label>
             <input
@@ -73,7 +73,7 @@ const Filters = (props) => {
             />
             <button onClick={() => {
                 setFilteredScore('')
-            }}>Clear score</button>
+            }}>Wyczyść ocenę</button>
         </div>
     )
 }
