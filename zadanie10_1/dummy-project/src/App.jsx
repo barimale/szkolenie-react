@@ -48,7 +48,11 @@ function App() {
             <p>Formularz edycji:</p>
             <EditMovie
               selectedMovie={editMovie}
-              OnMoviesChanged={(items) => setMovies(items)}
+              OnMoviesChanged={(item) => {
+                // const moviedEdited = movies.slice()
+                setMovies([...movies, item]); // replace by id
+                setEditMovie(undefined);
+              }}
               onCancel={() => { setEditMovie(undefined) }} />
           </section>
         )}

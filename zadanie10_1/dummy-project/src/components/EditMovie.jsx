@@ -14,13 +14,23 @@ const EditMovie = (props) => {
   const radioSeriesRef = useRef(null);
 
   useEffect(() => {
-    console.log(JSON.stringify(formData));
-  }, [formData])
+    if (formData.type === 'series') {
+      radioMoviesRef.current.checked = false;
+      radioSeriesRef.current.checked = true;
+    } else if (formData.type === 'movies') {
+      radioMoviesRef.current.checked = true;
+      radioSeriesRef.current.checked = false;
+    }
+  }, [formData]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (genreError === '' && titleError === '' && yearOfReleaseError === '' && scoreError === '' && typeError === '') {
-      props.OnMoviesChanged(formData);
+    if ((genreError === '' || genreError === undefined)
+      && (titleError === '' || titleError === undefined)
+      && (yearOfReleaseError === '' || yearOfReleaseError === undefined)
+      && (scoreError === '' || scoreError === undefined)
+      && (typeError === '' || typeError === undefined)) {
+      props.OnMoviesChanged([formData]);
     }
   };
 
