@@ -66,6 +66,7 @@ const Filters = (props) => {
                 onChange={handleInputChange}
                 value={filteredScore}
             />
+            <button onClick={()=>{setFilteredScore(undefined)}}>Clear score</button>
         </div>
     )
 }

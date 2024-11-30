@@ -11,8 +11,15 @@ function App() {
   const [filters, setFilters] = useState(undefined);
 
   useEffect(() => {
-    console.log('Do filtering here');
+    console.log('Do filtering here:');
     console.log(JSON.stringify(filters));
+    const filteredMovies = movies
+      .filter(p => p.genre === (filters.genre === undefined ? p.genre : filters.genre))
+      .filter(p => p.score === (filters.score === undefined ? p.score : filters.score))
+      .filter(p => p.type === (filters.type === undefined ? p.type : filters.type))
+      setMovies(filteredMovies);
+      console.log('Filtered movie here:');
+      console.log(JSON.stringify(filteredMovies))
   }, [filters]);
 
   useEffect(() => {
