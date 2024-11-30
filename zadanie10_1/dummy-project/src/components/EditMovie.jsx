@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Movie.css";
 
 const EditMovie = (props) => {
@@ -8,7 +8,10 @@ const EditMovie = (props) => {
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
-  const [formData, setFormData] = useState({...props.selectedMovie});
+  const [formData, setFormData] = useState({ ...props.selectedMovie });
+
+  const radioMoviesRef = useRef(null);
+  const radioSeriesRef = useRef(null);
 
   useEffect(() => {
     console.log(JSON.stringify(formData));
@@ -25,15 +28,35 @@ const EditMovie = (props) => {
     const target = e.target;
     const name = target.name;
 
-    setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
-    setTypeError(name === 'type' && target.value === '' ? 'Niepoprawny typ' : '');
-    setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
-    setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
-    setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
+    if (name === "type-series") {
+      console.log('typeseries: ' + target.value);
+      // uncheck second radio
+      if (radioMoviesRef.current) {
+        radioMoviesRef.current.checked = false;
+      }
+      setFormData((prevDataForm) => {
+        return { ...prevDataForm, ['type']: target.value };
+      });
+    } else if (name === "type-movies") {
+      console.log('typemovies: ' + target.value);
+      // uncheck first radio
+      if (radioSeriesRef.current) {
+        radioSeriesRef.current.checked = false;
+      }
+      setFormData((prevDataForm) => {
+        return { ...prevDataForm, ['type']: target.value };
+      });
+    } else {
+      setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
+      setTypeError(name === 'type' && target.value === '' ? 'Niepoprawny typ' : '');
+      setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
+      setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
+      setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
 
-    setFormData((prevDataForm) => {
-      return { ...prevDataForm, [name]: target.value };
-    });
+      setFormData((prevDataForm) => {
+        return { ...prevDataForm, [name]: target.value };
+      });
+    }
   };
 
   return (
@@ -85,19 +108,27 @@ const EditMovie = (props) => {
           value={formData.score}
         />
         <p>{scoreError}</p>
-        <label htmlFor="type">Typ</label>
-        <select
-          id="type"
-          name="type"
-          placeholder="Typ"
-          onChange={handleInputChange}
-          value={formData.type}
-
-        >
-          <option value="">Wybierz...</option>
-          <option value="movie">Film</option>
-          <option value="series">Serial</option>
-        </select>
+        <p>Typ</p>
+        <label>
+          <input
+            type="radio"
+            name="type-movies"
+            value="movies"
+            onChange={handleInputChange}
+            ref={radioMoviesRef}
+          />
+          Film
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="type-series"
+            value="series"
+            onChange={handleInputChange}
+            ref={radioSeriesRef}
+          />
+          Serial
+        </label>
         <p>{typeError}</p>
         <button type="submit">Zapisz</button>
         <button onClick={() => {
