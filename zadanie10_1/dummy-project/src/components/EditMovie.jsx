@@ -8,7 +8,7 @@ const EditMovie = (props) => {
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
-  const [formData, setFormData] = useState({ ...props.selectedMovie });
+  const [formData, setFormData] = useState(props.selectedMovie);
 
   const radioMoviesRef = useRef(null);
   const radioSeriesRef = useRef(null);
@@ -109,26 +109,22 @@ const EditMovie = (props) => {
         />
         <p>{scoreError}</p>
         <p>Typ</p>
-        <label>
-          <input
-            type="radio"
-            name="type-movies"
-            value="movies"
-            onChange={handleInputChange}
-            ref={radioMoviesRef}
-          />
-          Film
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="type-series"
-            value="series"
-            onChange={handleInputChange}
-            ref={radioSeriesRef}
-          />
-          Serial
-        </label>
+        <label htmlFor="type-movies">Film</label>
+        <input
+          type="radio"
+          name="type-movies"
+          value="movies"
+          onChange={handleInputChange}
+          ref={radioMoviesRef}
+        />
+        <label htmlFor="type-series">Serial</label>
+        <input
+          type="radio"
+          name="type-series"
+          value="series"
+          onChange={handleInputChange}
+          ref={radioSeriesRef}
+        />
         <p>{typeError}</p>
         <button type="submit">Zapisz</button>
         <button onClick={() => {
