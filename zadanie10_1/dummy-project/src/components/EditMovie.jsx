@@ -68,7 +68,6 @@ const EditMovie = (props) => {
 
   return (
     <div className="usersList">
-      <p>{JSON.stringify(formData)}</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Tytuł</label>
         <input

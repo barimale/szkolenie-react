@@ -55,7 +55,7 @@ const Filters = (props) => {
                 value={filteredType}
             >
                 <option value="">Wybierz</option>
-                <option value="movie">Film</option>
+                <option value="movies">Film</option>
                 <option value="series">Serial</option>
             </select>
             <button style={{margin: '5px 20px'}} onClick={() => {
