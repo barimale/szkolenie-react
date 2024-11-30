@@ -13,6 +13,19 @@ function App() {
   const [filters, setFilters] = useState(undefined);
 
   useEffect(() => {
+    const storedValue = localStorage.getItem('movies');
+    if (storedValue) {
+      console.log(storedValue);
+      setMovies([...storedValue]);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('movies', JSON. stringify(movies));
+  }, [movies]);
+
+
+  useEffect(() => {
     const filteredItems = movies
       .filter(p => p.genre === (filters === undefined || filters.genre === undefined || filters.genre === '' ? p.genre : filters.genre))
       .filter(p => p.score === (filters === undefined || filters.score === undefined || filters.score === '' ? p.score : filters.score))
