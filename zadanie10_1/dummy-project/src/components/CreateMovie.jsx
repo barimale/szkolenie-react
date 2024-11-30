@@ -110,6 +110,7 @@ const CreateMovie = (props) => {
               type="radio"
               name="type-movies"
               value="movies"
+              onChange={handleInputChange}
             />
             Movies
           </label>
@@ -118,6 +119,7 @@ const CreateMovie = (props) => {
               type="radio"
               name="type-series"
               value="series"
+              onChange={handleInputChange}
             />
             Series
           </label>
