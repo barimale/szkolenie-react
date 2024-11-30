@@ -17,9 +17,9 @@ function App() {
       .filter(p => p.genre === (filters === undefined || filters.genre === undefined || filters.genre === '' ? p.genre : filters.genre))
       .filter(p => p.score === (filters === undefined || filters.score === undefined || filters.score === '' ? p.score : filters.score))
       .filter(p => p.type === (filters === undefined || filters.type === undefined || filters.type === '' ? p.type : filters.type))
-      setMovies(filteredMovies);
-      console.log('Filtered movie here:');
-      console.log(JSON.stringify(filteredMovies))
+    setMovies(filteredMovies);
+    console.log('Filtered movie here:');
+    console.log(JSON.stringify(filteredMovies))
   }, [filters]);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function App() {
       <section>
         <p>Filtry:</p>
         <p>{JSON.stringify(filters)}</p>
-        <Filters onFiltersChanged={(items)=> setFilters(items)}/>
+        <Filters onFiltersChanged={(items) => setFilters(items)} />
       </section>
       <footer>
       </footer>

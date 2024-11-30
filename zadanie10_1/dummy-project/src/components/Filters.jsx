@@ -25,7 +25,6 @@ const Filters = (props) => {
         }
     };
 
-
     return (
         <div>
             <label htmlFor="genre">Gatunek: </label>
