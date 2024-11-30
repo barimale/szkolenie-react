@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('movies', JSON. stringify(movies));
+    localStorage.setItem('movies', JSON.stringify(movies));
   }, [movies]);
 
 
