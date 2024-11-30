@@ -7,17 +7,19 @@ import Filters from './components/Filters';
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState(movies);
+
   const [editMovie, setEditMovie] = useState(undefined);
   const [filters, setFilters] = useState(undefined);
 
   useEffect(() => {
     console.log('Do filtering here:');
     console.log(JSON.stringify(filters));
-    const filteredMovies = movies
+    const filteredItems = movies
       .filter(p => p.genre === (filters === undefined || filters.genre === undefined || filters.genre === '' ? p.genre : filters.genre))
       .filter(p => p.score === (filters === undefined || filters.score === undefined || filters.score === '' ? p.score : filters.score))
       .filter(p => p.type === (filters === undefined || filters.type === undefined || filters.type === '' ? p.type : filters.type))
-    setMovies(filteredMovies);
+    setFilteredMovies(filteredItems);
     console.log('Filtered movie here:');
     console.log(JSON.stringify(filteredMovies))
   }, [filters]);
@@ -49,7 +51,7 @@ function App() {
           </section>
         )}
       <p>Lista filmów i seriali:</p>
-      <MovieList movies={movies} OnEditMovie={(item) => setEditMovie(item)} />
+      <MovieList movies={filteredMovies} OnEditMovie={(item) => setEditMovie(item)} />
       <section>
         <p>Filtry:</p>
         <p>{JSON.stringify(filters)}</p>
