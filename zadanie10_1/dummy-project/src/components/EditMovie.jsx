@@ -10,6 +10,10 @@ const EditMovie = (props) => {
 
   const [formData, setFormData] = useState(props.selectedMovie);
 
+  useEffect(()=>{
+    console.log(JSON.stringify(formData));
+  }, [formData])
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '' && scoreError === '' && typeError === '') {
@@ -93,7 +97,7 @@ const EditMovie = (props) => {
         <p>{typeError}</p>
         <button type="submit">Zapisz</button>
         <button onClick={()=>{
-          setFormData(undefined);
+          props.onCancel();
         }}>Anuluj</button>
       </form>
     </div>

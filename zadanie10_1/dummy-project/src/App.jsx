@@ -34,7 +34,7 @@ function App() {
         (
           <section>
             <p>Formularz edycji</p>
-            <EditMovie selectedMovie={editMovie} OnMoviesChanged={(items) => setMovies(items)} />
+            <EditMovie selectedMovie={editMovie} OnMoviesChanged={(items) => setMovies(items)} onCancel={()=> {setEditMovie(undefined)}}/>
           </section>
         )}
       <p>Lista filmów i seriali:</p>
