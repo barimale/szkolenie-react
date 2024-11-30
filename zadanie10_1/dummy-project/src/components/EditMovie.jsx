@@ -10,17 +10,10 @@ const EditMovie = (props) => {
 
   const [formData, setFormData] = useState(props.selectedMovie);
 
-  useEffect(()=>{
-    console.log('movie edited, props changed');
-    console.log(JSON.stringify(formData))
-    setFormData(props.selectedMovie);
-  }, [props.selectedMovie]); // does not work 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '' && scoreError === '' && typeError === '') {
-      // setMovies(movies.concat({ ...formData, id: Date.now() }));
-      props.OnMoviesChanged(formData);
+      props.OnMoviesChanged(props.selectedMovie);
     }
   };
 
@@ -37,6 +30,7 @@ const EditMovie = (props) => {
     setFormData((prevDataForm) => {
       return { ...prevDataForm, [name]: target.value };
     });
+    props.selectedMovie = formData;
   };
 
   return (
