@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Movie.css";
 
 const MovieList = (props) => {
@@ -18,12 +17,12 @@ const MovieList = (props) => {
         {props.movies.map((user) => {
           return (
             <div className="userItem" key={user.id} >
-              <p>Title: {user.title}</p>
-              <p>Genre: {user.genre}</p>
-              <p>yearOfRelease: {user.yearOfRelease}</p>
-              <p>score: {user.score}</p>
-              <p>type: {user.type}</p>
-              <p>id: {user.id}</p>
+              <p>Tytuł: {user.title}</p>
+              <p>Gatunek: {user.genre}</p>
+              <p>Rok publikacji: {user.yearOfRelease}</p>
+              <p>Ocena: {user.score}</p>
+              <p>Typ: {user.type}</p>
+              <p>ID: {user.id}</p>
               <button onClick={()=>removeMovie(user.id)}> Usuń</button>
               <button onClick={()=>editMovie(user.id)}> Edytuj</button>
             </div>
