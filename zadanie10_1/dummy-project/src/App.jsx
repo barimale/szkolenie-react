@@ -38,6 +38,7 @@ function App() {
     moviedEdited[index] = item;
     setMovies(moviedEdited);
   }
+  
   return (
     <>
       <header>
