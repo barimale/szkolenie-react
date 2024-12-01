@@ -32,7 +32,7 @@ function App() {
     setFilteredMovies(filteredItems);
   }, [filters, movies]);
 
-  const onUpdate = (item) => {
+  const Update = (item) => {
     let moviedEdited = movies;
     const index = moviedEdited.findIndex(p => p.id === item.id);
     moviedEdited[index] = item;
@@ -57,7 +57,7 @@ function App() {
             <EditMovie
               selectedMovie={editMovie}
               onChanged={(item) => {
-                onUpdate(item);
+                Update(item);
                 setEditMovie(undefined);
               }}
               onCancel={() => {
