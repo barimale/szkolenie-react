@@ -33,10 +33,11 @@ function App() {
   }, [filters, movies]);
 
   const Update = (item) => {
-    let moviedEdited = movies;
-    const index = moviedEdited.findIndex(p => p.id === item.id);
-    moviedEdited[index] = item;
-    setMovies(moviedEdited);
+    let items = movies;
+    const index = items.findIndex(p => p.id === item.id);
+    items[index] = item;
+    console.log(items)
+    setMovies(() => [...items]);
   }
 
   return (
