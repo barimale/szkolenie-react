@@ -60,8 +60,8 @@ function App() {
                 const index = moviedEdited.findIndex(p => p.id === item.id);
                 moviedEdited[index] = item;
                 setMovies(() => moviedEdited);
-                localStorage.setItem('movies', JSON.stringify(movies));
-                setEditMovie(undefined); // to kasuje liste i nizej cancel tez
+                localStorage.setItem('movies', JSON.stringify(movies)); // fix
+                setEditMovie(undefined);
               }}
               onCancel={() => { setEditMovie(undefined) }} />
           </section>
