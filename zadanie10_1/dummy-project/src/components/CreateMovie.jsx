@@ -8,8 +8,6 @@ const CreateMovie = (props) => {
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
-  const [movies, setMovies] = useState(props.movies);
-
   const [formData, setFormData] = useState({
     title: '',
     genre: '',
@@ -22,14 +20,10 @@ const CreateMovie = (props) => {
   const radioMoviesRef = useRef(null);
   const radioSeriesRef = useRef(null);
 
-  useEffect(() => {
-    props.onMoviesChanged(movies);
-  }, [movies])
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '' && scoreError === '' && typeError === '') {
-      setMovies(movies.concat({ ...formData, id: Date.now() }));
+      props.onMoviesChanged({ ...formData, id: Date.now() });
     }
   };
 

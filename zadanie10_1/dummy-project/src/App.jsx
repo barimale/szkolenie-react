@@ -39,7 +39,9 @@ function App() {
       {editMovie === undefined ? (
         <section>
           <p>Formularz dodawania:</p>
-          <CreateMovie movies={movies} onMoviesChanged={(items) => setMovies(items)} />
+          <CreateMovie onMoviesChanged={(item) => {
+            setMovies(movies.concat(item))
+          }} />
         </section>
       ) :
         (
@@ -51,7 +53,7 @@ function App() {
                 const moviedEdited = movies;
                 const index = moviedEdited.findIndex(p => p.id === item.id);
                 moviedEdited[index] = item;
-                setMovies(() => moviedEdited);
+                setMovies(moviedEdited);
                 setEditMovie(undefined);
               }}
               onCancel={() => { setEditMovie(undefined) }} />
