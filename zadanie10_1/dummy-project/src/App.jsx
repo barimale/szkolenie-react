@@ -52,7 +52,7 @@ function App() {
                 const moviedEdited = movies;
                 const index = moviedEdited.findIndex(p => p.id === item.id);
                 moviedEdited[index] = item;
-                setMovies(() => moviedEdited);
+                setMovies(moviedEdited);
                 setEditMovie(undefined);
               }}
               onCancel={() => { setEditMovie(undefined) }} />
