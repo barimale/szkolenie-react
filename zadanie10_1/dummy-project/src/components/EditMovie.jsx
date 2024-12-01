@@ -115,25 +115,27 @@ const EditMovie = (props) => {
         />
         <p>{scoreError}</p>
         <p>Typ</p>
-        <label htmlFor="type-movies">Film</label>
-        <input
-          type="radio"
-          name="type-movies"
-          value="movies"
-          onChange={handleInputChange}
-          ref={radioMoviesRef}
-        />
-        <label htmlFor="type-series">Serial</label>
-        <input
-          type="radio"
-          name="type-series"
-          value="series"
-          onChange={handleInputChange}
-          ref={radioSeriesRef}
-        />
+        <div style={{ display: 'flex' }}>
+          <label htmlFor="type-movies">Film</label>
+          <input
+            type="radio"
+            name="type-movies"
+            value="movies"
+            onChange={handleInputChange}
+            ref={radioMoviesRef}
+          />
+          <label htmlFor="type-series">Serial</label>
+          <input
+            type="radio"
+            name="type-series"
+            value="series"
+            onChange={handleInputChange}
+            ref={radioSeriesRef}
+          />
+        </div>
         <p>{typeError}</p>
-        <button type="submit">Zapisz</button>
-        <button onClick={() => {
+        <button style={{margin: '5px 20px'}} type="submit">Zapisz</button>
+        <button style={{margin: '5px 20px'}} onClick={() => {
           props.onCancel();
         }}>Anuluj</button>
       </form>

@@ -31,8 +31,8 @@
 }
 
 .usersList .list .userItem {
-  border: 1px solid green;
-  cursor: pointer;
+  border: 1px solid gray;
+  margin: 5px 20px;
 }
 
 .filterlist {

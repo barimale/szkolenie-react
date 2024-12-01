@@ -23,8 +23,8 @@ const MovieList = (props) => {
               <p>Ocena: {user.score}</p>
               <p>Typ: {user.type}</p>
               <p>ID: {user.id}</p>
-              <button onClick={()=>removeMovie(user.id)}> Usuń</button>
-              <button onClick={()=>editMovie(user.id)}> Edytuj</button>
+              <button style={{margin: '5px 20px'}} onClick={()=>removeMovie(user.id)}> Usuń</button>
+              <button style={{margin: '5px 20px'}} onClick={()=>editMovie(user.id)}> Edytuj</button>
             </div>
           );
         })}

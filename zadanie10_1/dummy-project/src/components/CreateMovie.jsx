@@ -114,22 +114,24 @@ const CreateMovie = (props) => {
         />
         <p>{scoreError}</p>
         <p>Typ</p>
-        <label htmlFor="type-movies">Film</label>
-        <input
-          type="radio"
-          name="type-movies"
-          value="movies"
-          onChange={handleInputChange}
-          ref={radioMoviesRef}
-        />
-        <label htmlFor="type-series">Serial</label>
-        <input
-          type="radio"
-          name="type-series"
-          value="series"
-          onChange={handleInputChange}
-          ref={radioSeriesRef}
-        />
+        <div style={{display: 'flex'}}>
+          <label htmlFor="type-movies">Film</label>
+          <input
+            type="radio"
+            name="type-movies"
+            value="movies"
+            onChange={handleInputChange}
+            ref={radioMoviesRef}
+          />
+          <label htmlFor="type-series">Serial</label>
+          <input
+            type="radio"
+            name="type-series"
+            value="series"
+            onChange={handleInputChange}
+            ref={radioSeriesRef}
+          />
+        </div>
         <p>{typeError}</p>
         <button type="submit">Zapisz</button>
       </form>
