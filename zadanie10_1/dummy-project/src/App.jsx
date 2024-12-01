@@ -19,13 +19,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const storedValue = localStorage.getItem('movies');
-    if (storedValue) {
-      setMovies(JSON.parse(storedValue));
-    }
-  }, [editMovie]); //fix
-
-  useEffect(() => {
     localStorage.setItem('movies', JSON.stringify(movies));
   }, [movies]);
 
@@ -46,7 +39,7 @@ function App() {
       {editMovie === undefined ? (
         <section>
           <p>Formularz dodawania:</p>
-          <CreateMovie onMoviesChanged={(items) => setMovies(items)} />
+          <CreateMovie movies={movies} onMoviesChanged={(items) => setMovies(items)} />
         </section>
       ) :
         (
@@ -59,7 +52,6 @@ function App() {
                 const index = moviedEdited.findIndex(p => p.id === item.id);
                 moviedEdited[index] = item;
                 setMovies(() => moviedEdited);
-                localStorage.setItem('movies', JSON.stringify(movies)); // fix
                 setEditMovie(undefined);
               }}
               onCancel={() => { setEditMovie(undefined) }} />

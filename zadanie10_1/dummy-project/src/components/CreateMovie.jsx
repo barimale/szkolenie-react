@@ -8,7 +8,7 @@ const CreateMovie = (props) => {
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(props.movies);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -37,7 +37,7 @@ const CreateMovie = (props) => {
     const target = e.target;
     const name = target.name;
 
-    if (name === "type-series") {
+    if (name === "type-series") { // radio button series
       if (radioMoviesRef.current) {
         radioMoviesRef.current.checked = false;
       }
@@ -45,7 +45,7 @@ const CreateMovie = (props) => {
       setFormData((prevDataForm) => {
         return { ...prevDataForm, ['type']: target.value };
       });
-    } else if (name === "type-movies") {
+    } else if (name === "type-movies") { // radio button movies
       if (radioSeriesRef.current) {
         radioSeriesRef.current.checked = false;
       }
@@ -53,7 +53,7 @@ const CreateMovie = (props) => {
       setFormData((prevDataForm) => {
         return { ...prevDataForm, ['type']: target.value };
       });
-    } else {
+    } else { // rest of them
       setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
       setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
       setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')

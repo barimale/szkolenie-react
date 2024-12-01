@@ -21,7 +21,7 @@ const MovieList = (props) => {
               <p>Gatunek: {user.genre}</p>
               <p>Rok wydania: {user.yearOfRelease}</p>
               <p>Ocena: {user.score}</p>
-              <p>Typ: {user.type}</p>
+              <p>Typ: {user.type === 'movies' ? 'Film' : 'Serial'}</p>
               <p>ID: {user.id}</p>
               <button style={{ margin: '5px 20px' }} onClick={() => removeMovie(user.id)}> Usuń</button>
               <button style={{ margin: '5px 20px' }} onClick={() => editMovie(user.id)}> Edytuj</button>
