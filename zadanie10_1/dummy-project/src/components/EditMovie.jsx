@@ -30,7 +30,7 @@ const EditMovie = (props) => {
       && (yearOfReleaseError === '' || yearOfReleaseError === undefined)
       && (scoreError === '' || scoreError === undefined)
       && (typeError === '' || typeError === undefined)) {
-      props.onMoviesChanged(formData);
+      props.onChanged(formData);
     }
   };
 

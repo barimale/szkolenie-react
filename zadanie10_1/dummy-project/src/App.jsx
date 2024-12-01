@@ -40,7 +40,7 @@ function App() {
         <section>
           <p>Formularz dodawania:</p>
           <CreateMovie onMoviesChanged={(item) => {
-            setMovies(movies.concat(item))
+            setMovies([...movies, item])
           }} />
         </section>
       ) :
@@ -49,11 +49,11 @@ function App() {
             <p>Formularz edycji:</p>
             <EditMovie
               selectedMovie={editMovie}
-              onMoviesChanged={(item) => {
-                const moviedEdited = movies;
+              onChanged={(item) => {
+                let moviedEdited = movies;
                 const index = moviedEdited.findIndex(p => p.id === item.id);
                 moviedEdited[index] = item;
-                setMovies(moviedEdited);
+                setMovies(() => moviedEdited);
                 setEditMovie(undefined);
               }}
               onCancel={() => { setEditMovie(undefined) }} />
