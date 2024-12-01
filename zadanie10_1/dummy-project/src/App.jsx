@@ -20,6 +20,13 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const storedValue = localStorage.getItem('movies');
+    if (storedValue) {
+      setMovies(JSON.parse(storedValue));
+    }
+  }, [editMovie]);
+
+  useEffect(() => {
     localStorage.setItem('movies', JSON.stringify(movies));
   }, [movies]);
 
@@ -52,8 +59,9 @@ function App() {
                 const moviedEdited = movies;
                 const index = moviedEdited.findIndex(p => p.id === item.id);
                 moviedEdited[index] = item;
-                setMovies(moviedEdited);
-                setEditMovie(undefined);
+                setMovies(() => moviedEdited);
+                console.log(movies)
+                setEditMovie(undefined); // to kasuje liste i nizej cancel tez
               }}
               onCancel={() => { setEditMovie(undefined) }} />
           </section>
