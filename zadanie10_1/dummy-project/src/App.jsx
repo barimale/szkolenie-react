@@ -37,7 +37,6 @@ function App() {
     const index = moviedEdited.findIndex(p => p.id === item.id);
     moviedEdited[index] = item;
     setMovies(moviedEdited);
-    setEditMovie(undefined);
   }
   return (
     <>
@@ -58,6 +57,7 @@ function App() {
               selectedMovie={editMovie}
               onChanged={(item) => {
                 onUpdate(item);
+                setEditMovie(undefined);
               }}
               onCancel={() => {
                 setEditMovie(undefined);
