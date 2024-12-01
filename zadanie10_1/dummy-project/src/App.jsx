@@ -58,11 +58,13 @@ function App() {
               onCancel={() => { setEditMovie(undefined) }} />
           </section>
         )}
-      <p>Lista filmów i seriali:</p>
-      <MovieList
-        movies={filteredMovies}
-        OnEditMovie={(item) => setEditMovie(item)}
-        OnMoviesChanged={(items) => setMovies(items)} />
+      <section>
+        <p>Lista filmów i seriali:</p>
+        <MovieList
+          movies={filteredMovies}
+          OnEditMovie={(item) => setEditMovie(item)}
+          OnMoviesChanged={(items) => setMovies(items)} />
+      </section>
       <section>
         <p>Filtry:</p>
         <Filters onFiltersChanged={(items) => setFilters(items)} />
