@@ -8,7 +8,7 @@ const MovieList = (props) => {
 
   const editMovie = (id) => {
     const chosenMovie = props.movies.filter(movie => movie.id === id)[0];
-    props.onEditMovie(chosenMovie);
+    props.onEditMovieChosen(chosenMovie);
   }
 
   return (

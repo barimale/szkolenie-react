@@ -38,7 +38,7 @@ function App() {
     moviedEdited[index] = item;
     setMovies(moviedEdited);
   }
-  
+
   return (
     <>
       <header>
@@ -69,7 +69,7 @@ function App() {
         <p>Lista filmów i seriali:</p>
         <MovieList
           movies={filteredMovies}
-          onEditMovie={(item) => setEditMovie(item)}
+          onEditMovieChosen={(item) => setEditMovie(item)}
           onMoviesChanged={(items) => setMovies(items)} />
       </section>
       <section>
