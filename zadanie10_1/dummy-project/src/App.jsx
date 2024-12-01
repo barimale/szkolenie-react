@@ -32,6 +32,13 @@ function App() {
     setFilteredMovies(filteredItems);
   }, [filters, movies]);
 
+  const onUpdate = (item) => {
+    let moviedEdited = movies;
+    const index = moviedEdited.findIndex(p => p.id === item.id);
+    moviedEdited[index] = item;
+    setMovies(moviedEdited);
+    setEditMovie(undefined);
+  }
   return (
     <>
       <header>
@@ -39,7 +46,7 @@ function App() {
       {editMovie === undefined ? (
         <section>
           <p>Formularz dodawania:</p>
-          <CreateMovie onMoviesChanged={(item) => {
+          <CreateMovie onMovieCreated={(item) => {
             setMovies([...movies, item])
           }} />
         </section>
@@ -50,13 +57,11 @@ function App() {
             <EditMovie
               selectedMovie={editMovie}
               onChanged={(item) => {
-                let moviedEdited = movies;
-                const index = moviedEdited.findIndex(p => p.id === item.id);
-                moviedEdited[index] = item;
-                setMovies(() => moviedEdited);
-                setEditMovie(undefined);
+                onUpdate(item);
               }}
-              onCancel={() => { setEditMovie(undefined) }} />
+              onCancel={() => {
+                setEditMovie(undefined);
+              }} />
           </section>
         )}
       <section>

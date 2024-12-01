@@ -23,7 +23,7 @@ const CreateMovie = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (genreError === '' && titleError === '' && yearOfReleaseError === '' && scoreError === '' && typeError === '') {
-      props.onMoviesChanged({ ...formData, id: Date.now() });
+      props.onMovieCreated({ ...formData, id: Date.now() });
     }
   };
 
