@@ -23,7 +23,7 @@ const CreateMovie = (props) => {
   const radioSeriesRef = useRef(null);
 
   useEffect(() => {
-    props.OnMoviesChanged(movies);
+    props.onMoviesChanged(movies);
   }, [movies])
 
   const handleSubmit = (event) => {

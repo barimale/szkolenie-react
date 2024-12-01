@@ -8,9 +8,8 @@ import Filters from './components/Filters';
 function App() {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState(movies);
-
-  const [editMovie, setEditMovie] = useState(undefined);
   const [filters, setFilters] = useState(undefined);
+  const [editMovie, setEditMovie] = useState(undefined);
 
   useEffect(() => {
     const storedValue = localStorage.getItem('movies');
@@ -24,7 +23,7 @@ function App() {
     if (storedValue) {
       setMovies(JSON.parse(storedValue));
     }
-  }, [editMovie]);
+  }, [editMovie]); //fix
 
   useEffect(() => {
     localStorage.setItem('movies', JSON.stringify(movies));
@@ -47,7 +46,7 @@ function App() {
       {editMovie === undefined ? (
         <section>
           <p>Formularz dodawania:</p>
-          <CreateMovie OnMoviesChanged={(items) => setMovies(items)} />
+          <CreateMovie onMoviesChanged={(items) => setMovies(items)} />
         </section>
       ) :
         (
@@ -55,7 +54,7 @@ function App() {
             <p>Formularz edycji:</p>
             <EditMovie
               selectedMovie={editMovie}
-              OnMoviesChanged={(item) => {
+              onMoviesChanged={(item) => {
                 const moviedEdited = movies;
                 const index = moviedEdited.findIndex(p => p.id === item.id);
                 moviedEdited[index] = item;
@@ -70,8 +69,8 @@ function App() {
         <p>Lista filmów i seriali:</p>
         <MovieList
           movies={filteredMovies}
-          OnEditMovie={(item) => setEditMovie(item)}
-          OnMoviesChanged={(items) => setMovies(items)} />
+          onEditMovie={(item) => setEditMovie(item)}
+          onMoviesChanged={(items) => setMovies(items)} />
       </section>
       <section>
         <p>Filtry:</p>

@@ -3,12 +3,12 @@ import "./Movie.css";
 const MovieList = (props) => {
   const removeMovie = (id) => {
     const filteredMovies = props.movies.filter(movie => movie.id !== id);
-    props.OnMoviesChanged(filteredMovies);
+    props.onMoviesChanged(filteredMovies);
   }
 
   const editMovie = (id) => {
     const chosenMovie = props.movies.filter(movie => movie.id === id)[0];
-    props.OnEditMovie(chosenMovie);
+    props.onEditMovie(chosenMovie);
   }
 
   return (
