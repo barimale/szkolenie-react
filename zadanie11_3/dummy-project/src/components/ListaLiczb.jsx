@@ -5,12 +5,12 @@ const ListaLiczb = () => {
     const [newNumber, setNewNumber] = useState(undefined);
     const [suma, setSuma] = useState(undefined);
 
-    const Sum = (items) => {
+    const sum = (items) => {
         const result = items.reduce((total, currentValue) => total = total + currentValue, 0);
-        console.log(result);
+        return result;
     }
 
-    const cachedValue = useMemo(() => Sum(liczby), liczby)
+    const cachedValue = useMemo(() => sum(liczby), [liczby]);
 
     useEffect(() => {
         setSuma(cachedValue);
