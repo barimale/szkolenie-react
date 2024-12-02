@@ -5,20 +5,23 @@ const ListaLiczb = () => {
     const [newNumber, setNewNumber] = useState(undefined);
     const [suma, setSuma] = useState(undefined);
 
-    const Sum = () =>{
-        const result = liczby.reduce((total, currentValue) => total = total + currentValue,0);
+    const Sum = (items) => {
+        const result = items.reduce((total, currentValue) => total = total + currentValue, 0);
         console.log(result);
     }
 
-    const cachedValue = useMemo(() => Sum(), liczby)
+    const cachedValue = useMemo(() => Sum(liczby), liczby)
 
-    useEffect(()=>{
+    useEffect(() => {
         setSuma(cachedValue);
     }, [cachedValue]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setLiczby(()=> [...liczby, Number(newNumber)]);
+        const asNumber = Number(newNumber);
+        if (Number.isInteger(asNumber)) {
+            setLiczby(() => [...liczby, asNumber]);
+        }
     };
 
     const handleInputChange = (e) => {
