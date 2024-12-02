@@ -3,33 +3,18 @@ import "./Movie.css";
 
 const EditMovie = (props) => {
   const [scoreError, setScoreError] = useState(undefined);
-  const [typeError, setTypeError] = useState(undefined);
   const [genreError, setGenreError] = useState(undefined);
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
 
   const [formData, setFormData] = useState(props.selectedMovie);
 
-  const radioMoviesRef = useRef(null);
-  const radioSeriesRef = useRef(null);
-
-  useEffect(() => {
-    if (formData.type === 'series') {
-      radioMoviesRef.current.checked = false;
-      radioSeriesRef.current.checked = true;
-    } else if (formData.type === 'movies') {
-      radioMoviesRef.current.checked = true;
-      radioSeriesRef.current.checked = false;
-    }
-  }, [formData]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if ((genreError === '' || genreError === undefined)
       && (titleError === '' || titleError === undefined)
       && (yearOfReleaseError === '' || yearOfReleaseError === undefined)
-      && (scoreError === '' || scoreError === undefined)
-      && (typeError === '' || typeError === undefined)) {
+      && (scoreError === '' || scoreError === undefined)) {
       props.onChanged(formData);
     }
   };
@@ -38,32 +23,15 @@ const EditMovie = (props) => {
     const target = e.target;
     const name = target.name;
 
-    if (name === "type-series") {
-      if (radioMoviesRef.current) {
-        radioMoviesRef.current.checked = false;
-      }
-      setTypeError(radioSeriesRef.current.checked === false && radioMoviesRef.current.checked === false ? 'Niepoprawny typ' : '');
-      setFormData((prevDataForm) => {
-        return { ...prevDataForm, ['type']: target.value };
-      });
-    } else if (name === "type-movies") {
-      if (radioSeriesRef.current) {
-        radioSeriesRef.current.checked = false;
-      }
-      setTypeError(radioSeriesRef.current.checked === false && radioMoviesRef.current.checked === false ? 'Niepoprawny typ' : '');
-      setFormData((prevDataForm) => {
-        return { ...prevDataForm, ['type']: target.value };
-      });
-    } else {
-      setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
-      setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
-      setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
-      setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
+    setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
+    setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
+    setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
+    setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
 
-      setFormData((prevDataForm) => {
-        return { ...prevDataForm, [name]: target.value };
-      });
-    }
+    setFormData((prevDataForm) => {
+      return { ...prevDataForm, [name]: target.value };
+    });
+
   };
 
   return (
@@ -102,6 +70,8 @@ const EditMovie = (props) => {
           placeholder="Rok wydania"
           onChange={handleInputChange}
           value={formData.yearOfRelease}
+          min={1900}
+          max={2024}
         />
         <p>{yearOfReleaseError}</p>
         <label htmlFor="score">Ocena</label>
@@ -112,6 +82,8 @@ const EditMovie = (props) => {
           placeholder="Ocena"
           onChange={handleInputChange}
           value={formData.score}
+          min={1}
+          max={10}
         />
         <p>{scoreError}</p>
         <p>Typ</p>
@@ -119,23 +91,22 @@ const EditMovie = (props) => {
           <label htmlFor="type-movies">Film</label>
           <input
             type="radio"
-            name="type-movies"
+            name="type"
             value="movies"
             onChange={handleInputChange}
-            ref={radioMoviesRef}
+            checked={formData.type === 'movies'}
           />
           <label htmlFor="type-series">Serial</label>
           <input
             type="radio"
-            name="type-series"
+            name="type"
             value="series"
             onChange={handleInputChange}
-            ref={radioSeriesRef}
+            checked={formData.type === 'series'}
           />
         </div>
-        <p>{typeError}</p>
-        <button style={{margin: '5px 20px'}} type="submit">Zapisz</button>
-        <button style={{margin: '5px 20px'}} onClick={() => {
+        <button style={{ margin: '5px 20px' }} type="submit">Zapisz</button>
+        <button style={{ margin: '5px 20px' }} onClick={() => {
           props.onCancel();
         }}>Anuluj</button>
       </form>

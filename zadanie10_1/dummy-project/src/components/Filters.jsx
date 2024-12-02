@@ -16,13 +16,9 @@ const Filters = (props) => {
         const target = e.target;
         const name = target.name;
 
-        if (name === 'genre') {
-            setFilteredGenre(target.value);
-        } else if (name === 'type') {
-            setFilteredType(target.value);
-        } else if (name === 'score') {
-            setFilteredScore(target.value);
-        }
+        setFilteredGenre(name === 'genre' ? target.value : undefined);
+        setFilteredType(name === 'type' ? target.value : undefined);
+        setFilteredScore(name === 'score' ? target.value : undefined);
     };
 
     return (
@@ -41,7 +37,7 @@ const Filters = (props) => {
                 <option value="Dramat">Dramat</option>
                 <option value="Akcja">Akcja</option>
             </select>
-            <button style={{margin: '5px 20px'}} onClick={() => {
+            <button style={{ margin: '5px 20px' }} onClick={() => {
                 setFilteredGenre('')
             }}>Wyczyść gatunek</button>
             <br />
@@ -58,7 +54,7 @@ const Filters = (props) => {
                 <option value="movies">Film</option>
                 <option value="series">Serial</option>
             </select>
-            <button style={{margin: '5px 20px'}} onClick={() => {
+            <button style={{ margin: '5px 20px' }} onClick={() => {
                 setFilteredType('')
             }}>Wyczyść typ</button>
             <br />
@@ -71,7 +67,7 @@ const Filters = (props) => {
                 onChange={handleInputChange}
                 value={filteredScore}
             />
-            <button style={{margin: '5px 20px'}} onClick={() => {
+            <button style={{ margin: '5px 20px' }} onClick={() => {
                 setFilteredScore('')
             }}>Wyczyść ocenę</button>
         </div>

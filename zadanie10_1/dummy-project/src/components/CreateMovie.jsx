@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import "./Movie.css";
 
 const CreateMovie = (props) => {
   const [scoreError, setScoreError] = useState(undefined);
-  const [typeError, setTypeError] = useState(undefined);
   const [genreError, setGenreError] = useState(undefined);
   const [titleError, setTitleError] = useState(undefined);
   const [yearOfReleaseError, setYearOfReleaseError] = useState(undefined);
@@ -13,20 +12,16 @@ const CreateMovie = (props) => {
     genre: '',
     yearOfRelease: '',
     score: '',
-    type: '',
+    type: 'movies',
     id: ''
   });
 
-  const radioMoviesRef = useRef(null);
-  const radioSeriesRef = useRef(null);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (genreError === '' 
-      && titleError === '' 
-      && yearOfReleaseError === '' 
-      && scoreError === '' 
-      && typeError === '') {
+    if (genreError === ''
+      && titleError === ''
+      && yearOfReleaseError === ''
+      && scoreError === '') {
       props.onMovieCreated({ ...formData, id: Date.now() });
     }
   };
@@ -35,32 +30,15 @@ const CreateMovie = (props) => {
     const target = e.target;
     const name = target.name;
 
-    if (name === "type-series") { // radio button series
-      if (radioMoviesRef.current) {
-        radioMoviesRef.current.checked = false;
-      }
-      setTypeError(radioSeriesRef.current.checked === false && radioMoviesRef.current.checked === false ? 'Niepoprawny typ' : '');
-      setFormData((prevDataForm) => {
-        return { ...prevDataForm, ['type']: target.value };
-      });
-    } else if (name === "type-movies") { // radio button movies
-      if (radioSeriesRef.current) {
-        radioSeriesRef.current.checked = false;
-      }
-      setTypeError(radioSeriesRef.current.checked === false && radioMoviesRef.current.checked === false ? 'Niepoprawny typ' : '');
-      setFormData((prevDataForm) => {
-        return { ...prevDataForm, ['type']: target.value };
-      });
-    } else { // rest of them
-      setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
-      setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
-      setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
-      setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
+    setScoreError(name === 'score' && (target.value < 0 || target.value > 10) ? 'Niepoprawna ocena' : '');
+    setTitleError(name === 'title' && target.value.length === 0 ? 'Niepoprawny format email' : '');
+    setGenreError(name === 'genre' && target.value === '' ? 'Niepoprawny wybór gatunku' : '')
+    setYearOfReleaseError(name === 'yearOfRelease' && (target.value < 1900 || target.value > new Date().getFullYear()) ? 'Niepoprawny rok wydania' : '');
 
-      setFormData((prevDataForm) => {
-        return { ...prevDataForm, [name]: target.value };
-      });
-    }
+    setFormData((prevDataForm) => {
+      return { ...prevDataForm, [name]: target.value };
+    });
+
   };
 
   return (
@@ -99,6 +77,8 @@ const CreateMovie = (props) => {
           placeholder="Rok wydania"
           onChange={handleInputChange}
           value={formData.yearOfRelease}
+          min={1900}
+          max={2024}
         />
         <p>{yearOfReleaseError}</p>
         <label htmlFor="score">Ocena</label>
@@ -109,28 +89,29 @@ const CreateMovie = (props) => {
           placeholder="Ocena"
           onChange={handleInputChange}
           value={formData.score}
+          min={1}
+          max={10}
         />
         <p>{scoreError}</p>
         <p>Typ</p>
-        <div style={{display: 'flex'}}>
+        <div style={{ display: 'flex' }}>
           <label htmlFor="type-movies">Film</label>
           <input
             type="radio"
-            name="type-movies"
+            name="type"
             value="movies"
             onChange={handleInputChange}
-            ref={radioMoviesRef}
+            checked={formData.type === 'movies'}
           />
           <label htmlFor="type-series">Serial</label>
           <input
             type="radio"
-            name="type-series"
+            name="type"
             value="series"
             onChange={handleInputChange}
-            ref={radioSeriesRef}
+            checked={formData.type === 'series'}
           />
         </div>
-        <p>{typeError}</p>
         <button type="submit">Zapisz</button>
       </form>
     </div>
