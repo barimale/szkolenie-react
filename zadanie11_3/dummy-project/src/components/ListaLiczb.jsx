@@ -31,8 +31,8 @@ const ListaLiczb = () => {
         <>
             <p>{JSON.stringify(liczby)}</p>
             <p>Suma: {cachedValue}</p>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="number">Dodaj liczbe: </label>
+            <form onSubmit={handleSubmit} style={{margin: '5px 20px'}}>
+                <label htmlFor="number" style={{margin: '5px 10px'}}>Dodaj liczbe: </label>
                 <input
                     type="text"
                     id="number"
@@ -41,7 +41,7 @@ const ListaLiczb = () => {
                     onChange={handleInputChange}
                     value={newNumber}
                 />
-                <button type="submit">Dodaj</button>
+                <button style={{margin: '5px 20px'}} type="submit">Dodaj</button>
             </form>
         </>
     );
