@@ -4,15 +4,15 @@ import TaskList from './components/TaskList';
 
 function App() {
   const [tasks] = useState([{
-    title: 'title1',
+    title: 'Zadanie 1',
     id: '1'
   },
   {
-    title: 'title2',
+    title: 'Zadanie 2',
     id: '2'
   },
   {
-    title: 'title3',
+    title: 'Zadanie 3',
     id: '3'
   }]);
 
@@ -20,7 +20,7 @@ function App() {
     <>
       <header>
       </header>
-      <p>Task list:</p>
+      <p>Lista zadań:</p>
       <TaskList tasks={tasks} />
       <footer>
       </footer>
