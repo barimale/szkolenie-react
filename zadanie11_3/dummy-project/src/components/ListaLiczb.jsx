@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 
 const ListaLiczb = () => {
-    const [liczby, setLiczby] = useState([1, 2, 3, 4, 5]);
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
     const [newNumber, setNewNumber] = useState(undefined);
 
     const sum = (items) => {
@@ -9,13 +9,13 @@ const ListaLiczb = () => {
         return result;
     }
 
-    const cachedValue = useMemo(() => sum(liczby), [liczby]);
+    const cachedValue = useMemo(() => sum(numbers), [numbers]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const asNumber = Number(newNumber);
         if (Number.isInteger(asNumber)) {
-            setLiczby(() => [...liczby, asNumber]);
+            setNumbers(() => [...numbers, asNumber]);
         }
     };
 
@@ -29,7 +29,7 @@ const ListaLiczb = () => {
 
     return (
         <>
-            <p>{JSON.stringify(liczby)}</p>
+            <p>{JSON.stringify(numbers)}</p>
             <p>Suma: {cachedValue}</p>
             <form onSubmit={handleSubmit} style={{ margin: '5px 20px' }}>
                 <label htmlFor="number" style={{ margin: '5px 10px' }}>Dodaj liczbe: </label>
