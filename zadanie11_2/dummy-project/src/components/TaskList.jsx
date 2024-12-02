@@ -8,7 +8,7 @@ const TaskList = (props) => {
         const filtered = tasks.filter(p => p.id !== itemId);
         console.log(JSON.stringify(filtered));
         useTasks(filtered);
-      }, [tasks])
+    }, [tasks])
 
     return (
         <>
