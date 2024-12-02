@@ -10,11 +10,6 @@ const TaskList = (props) => {
         useTasks(filtered);
     };
 
-    // ???
-    const increment = useCallback(() => {
-        setCount(count + 1)
-      }, [count])
-
     return (
         <>
             {tasks.map((item, index) => {
