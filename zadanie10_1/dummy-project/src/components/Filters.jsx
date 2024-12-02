@@ -66,6 +66,8 @@ const Filters = (props) => {
                 placeholder="Ocena"
                 onChange={handleInputChange}
                 value={filteredScore}
+                min={1}
+                max={10}
             />
             <button style={{ margin: '5px 20px' }} onClick={() => {
                 setFilteredScore('')
