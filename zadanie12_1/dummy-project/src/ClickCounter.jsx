@@ -1,7 +1,7 @@
 import useClickCounter from './hooks/useClickCounter';
 import './App.css'
 
-function App() {
+function ClickCounter() {
   const [counter, increment] = useClickCounter(0);
 
   return (
@@ -16,4 +16,4 @@ function App() {
   )
 }
 
-export default App
+export default ClickCounter
