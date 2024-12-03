@@ -25,9 +25,9 @@ function App() {
 
   useEffect(() => {
     const filteredItems = movies
-      .filter(p => p.genre === (filters === undefined || filters.genre === undefined || filters.genre === '' ? p.genre : filters.genre))
-      .filter(p => p.score === (filters === undefined || filters.score === undefined || filters.score === '' ? p.score : filters.score))
-      .filter(p => p.type === (filters === undefined || filters.type === undefined || filters.type === '' ? p.type : filters.type))
+      .filter(p => !filters?.genre || p.genre === filters.genre)
+      .filter(p => !filters?.score || p.score === filters.score)
+      .filter(p => !filters?.type || p.type === filters.type)
 
     setFilteredMovies(filteredItems);
   }, [filters, movies]);
