@@ -6,7 +6,7 @@ const CardContainer = styled.div`
   border-radius: 25px;
   margin: 20px;
   border: 1px solid black;
-  background-color: ${props => props.isHighlighted ? 'yellow' : 'transparent'}
+  background-color: ${props => props.isHighlighted ? 'blue' : 'transparent'}
 `;
 
 const NameHeader = styled.h1`
