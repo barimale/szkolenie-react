@@ -13,7 +13,7 @@ function App() {
       name: 'Jane',
       surname: 'Doe',
       description: 'lorem ipsum2',
-      isHighlighted: true
+      isHighlighted: false
     }
   ];
   return (
