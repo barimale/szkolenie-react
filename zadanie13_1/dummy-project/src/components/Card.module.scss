@@ -1,0 +1,22 @@
+$primary-color: #3498db;
+
+.card {
+  background-color: $primary-color;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.header {
+    background-color: $primary-color;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.content {
+    background-color: $primary-color;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
