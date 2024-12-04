@@ -1,22 +1,25 @@
 $primary-color: #3498db;
 
 .card {
-  background-color: $primary-color;
-  color: white;
+  color: black;
   padding: 20px;
   border-radius: 5px;
 }
 
 .header {
-    background-color: $primary-color;
-    color: white;
+    color: black;
     padding: 20px;
     border-radius: 5px;
 }
 
 .content {
-    background-color: $primary-color;
-    color: white;
-    padding: 20px;
+    color: black;
+    padding: 10px;
     border-radius: 5px;
+}
+
+.highlighted {
+    font-weight: bold;
+    color: white;
+    background-color: $primary-color;
 }
