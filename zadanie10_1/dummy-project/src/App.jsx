@@ -46,7 +46,7 @@ function App() {
       </header>
       {editMovie === undefined ? (
         <section>
-          <p>Formularz dodawania:</p>
+          <h2>Formularz dodawania:</h2>
           <CreateMovie onMovieCreated={(item) => {
             setMovies([...movies, item])
           }} />
@@ -54,7 +54,7 @@ function App() {
       ) :
         (
           <section>
-            <p>Formularz edycji:</p>
+            <h1>Formularz edycji:</h1>
             <EditMovie
               selectedMovie={editMovie}
               onChanged={(item) => {
@@ -67,14 +67,14 @@ function App() {
           </section>
         )}
       <section>
-        <p>Lista filmów i seriali:</p>
+        <h2>Lista filmów i seriali:</h2>
         <MovieList
           movies={filteredMovies}
           onEditMovieChosen={(item) => setEditMovie(item)}
           onMoviesChanged={(items) => setMovies(items)} />
       </section>
       <section>
-        <p>Filtry:</p>
+        <h2>Filtry:</h2>
         <Filters onFiltersChanged={(items) => setFilters(items)} />
       </section>
       <footer>

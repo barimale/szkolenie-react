@@ -1,6 +1,7 @@
 import "./Movie.css";
+import { useMemo } from 'react';
 
-const MovieList = (props) => {
+const MovieList = useMemo((props) => {
   const removeMovie = (id) => {
     const filteredMovies = props.movies.filter(movie => movie.id !== id);
     props.onMoviesChanged(filteredMovies);
@@ -31,6 +32,6 @@ const MovieList = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default MovieList;
