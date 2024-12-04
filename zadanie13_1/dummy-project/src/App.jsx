@@ -7,7 +7,7 @@ function App() {
       name: 'John',
       surname: 'Doe',
       description: 'lorem ipsum',
-      isHighlighted: false
+      isHighlighted: true
     },
     {
       name: 'Jane',
