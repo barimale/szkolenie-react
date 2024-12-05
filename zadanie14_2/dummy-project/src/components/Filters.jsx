@@ -11,7 +11,7 @@ const Filters = () => {
         })
      
         const goToCallback = (items) => {
-            navigate(`/?${items}`)
+            navigate(`/products?${items}`)
         }
 
         goToCallback(searchParams);
@@ -20,7 +20,7 @@ const Filters = () => {
     return (
         <>
             <label htmlFor="category">
-                Kategoria:
+                Filtruj:
                 <select id={'category'} value={selectedCategory} onChange={e => {setSelectedCategory(e.target.value)}}>
                     <option value="">Wybierz...</option>
                     <option value="laptops">Laptopy</option>

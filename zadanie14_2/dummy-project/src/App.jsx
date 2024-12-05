@@ -15,6 +15,7 @@ function App() {
       </header>
       <Routes>
         <Route index element={<Home products={products}/>} />
+        <Route path={'products'} element={<Home products={products}/>} />
       </Routes>
       <footer>
       </footer>
