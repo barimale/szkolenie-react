@@ -13,8 +13,6 @@ function App() {
 
   return (
     <>
-      <header>
-      </header>
       <Routes>
         <Route path='/' element={<BaseLayout />}>
           <Route index element={<Home />} />
@@ -29,6 +27,7 @@ function App() {
         </Route>
       </Routes>
       <footer>
+        This is footer
       </footer>
     </>
   )
