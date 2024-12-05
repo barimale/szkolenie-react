@@ -1,6 +1,7 @@
 import './App.css'
 import { Routes, Route } from "react-router";
 import Home from './components/Home';
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   const products = [
@@ -15,7 +16,7 @@ function App() {
       </header>
       <Routes>
         <Route index element={<Home products={products}/>} />
-        {/* <Route path='posts' element={<PostsList />} /> */}
+        <Route path='product/:id' element={<ProductDetails products={products}/>} />
       </Routes>
       <footer>
       </footer>
