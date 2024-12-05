@@ -20,9 +20,9 @@ const ButtonFilters = () => {
     return (
         <>
             <p>Filtruj poprzez przycisk:</p>
-            <button onClick={(() => { setSelectedCategory('laptops') })}>Laptopy</button>
-            <button onClick={(() => { setSelectedCategory('smartphones') })}>Smartfony</button>
-            <button onClick={(() => { setSelectedCategory('tablets') })}>Tablety</button>
+            <button onClick={(() => { setSelectedCategory('laptops') })}>Pokaż Laptopy</button>
+            <button onClick={(() => { setSelectedCategory('smartphones') })}>Pokaż Smartfony</button>
+            <button onClick={(() => { setSelectedCategory('tablets') })}>Pokaż Tablety</button>
             <button onClick={(() => { setSelectedCategory('') })}>Skasuj filtr</button>
         </>
     );
