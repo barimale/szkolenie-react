@@ -1,4 +1,3 @@
-import Filters from './Filters';
 import ButtonFilters from './ButtonFilters';
 import { useSearchParams } from 'react-router';
 import { useState, useEffect } from 'react'
@@ -27,7 +26,6 @@ const Home = (props) => {
             {filteredProducts.map((item, index) => {
                 return <p key={index}>{JSON.stringify(item)}</p>
             })}
-            {/* <Filters /> */}
             <ButtonFilters />
         </>
     );
