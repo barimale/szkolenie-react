@@ -5,9 +5,9 @@ const Home = () =>{
         <>
             <h1>This is home</h1>
             <nav>
-                <Link to={''}>Home</Link>
-                <Link to={'contact'}>Contact</Link>
-                <Link to={'about'}>About</Link>
+                <Link style={{margin: '10px 10px'}} to={''}>Home</Link>
+                <Link style={{margin: '10px 10px'}} to={'contact'}>Contact</Link>
+                <Link style={{margin: '10px 10px'}} to={'about'}>About</Link>
             </nav>
         </>
     );
