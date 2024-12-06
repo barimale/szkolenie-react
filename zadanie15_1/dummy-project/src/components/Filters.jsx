@@ -13,9 +13,9 @@ const Filters = (props) => {
     }, [filter]);
 
     return (
-        <div style={{ border: '0px solid black' }}>
+        <div style={{ border: '0px solid black', padding: '20px' }}>
             <label>
-                Text input: <input name="myInput" onChange={(event)=>{onChange(event)}}/>
+                Szukaj: <input name="myInput" onChange={(event)=>{onChange(event)}}/>
             </label>
         </div>)
 }
