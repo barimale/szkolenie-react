@@ -10,11 +10,7 @@ const ButtonFilters = () => {
             category: selectedCategory,
         })
 
-        const goToCallback = (items) => {
-            navigate(`/products?${items}`)
-        }
-
-        goToCallback(searchParams);
+        navigate(`/products?${searchParams}`)
     }, [selectedCategory]);
 
     return (
