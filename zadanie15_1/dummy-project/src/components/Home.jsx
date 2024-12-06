@@ -26,7 +26,7 @@ const Home = () => {
       useEffect(()=>{
         if(filter !== '')
         {
-          const filtered = items.filter(p=> p.stacja.startsWith(filter));
+          const filtered = items.filter(p=> p.stacja.toString().toLowerCase().startsWith(filter.toString().toLowerCase()));
           setFilteredItems(filtered);
         }else{
           setFilteredItems(items);  
