@@ -1,5 +1,23 @@
-const Filters = () =>{
-    return(<div style={{border: '0px solid black'}}><p>This is filter</p></div>)
+import { useState, useEffect } from 'react';
+
+const Filters = (props) => {
+    const [filter, setFilter] = useState();
+
+    const onChange = (e) =>{
+        const target = e.target;
+        setFilter(target.value);
+    }
+
+    useEffect(()=>{
+        props.OnFilterChanged(filter);
+    }, [filter]);
+
+    return (
+        <div style={{ border: '0px solid black' }}>
+            <label>
+                Text input: <input name="myInput" onChange={(event)=>{onChange(event)}}/>
+            </label>
+        </div>)
 }
 
 export default Filters;
