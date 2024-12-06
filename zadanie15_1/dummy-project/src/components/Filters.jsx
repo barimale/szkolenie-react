@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const Filters = (props) => {
-    const [filter, setFilter] = useState();
+    const [filter, setFilter] = useState(props.initialFilter);
 
     const onChange = (e) =>{
         const target = e.target;

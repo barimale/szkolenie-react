@@ -4,27 +4,17 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Home = () => {
-    const [posts, setPosts] = useState([])
-    const [filteredItems, setFilteredItems] = useState(posts)
-    const [filter, setFilter] = useState();
+    const [items, setItems] = useState([])
+    const [filteredItems, setFilteredItems] = useState(items)
+    const [filter, setFilter] = useState('');
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-
-    useEffect(()=>{
-      if(filter !== '')
-      {
-        const filtered = posts.filter(p=> p.stacja.includes(filter));
-        setFilteredItems(filtered);  
-      }else{
-        setFilteredItems(posts);  
-      }
-    },[posts, filter]);
 
     useEffect(() => {
         // Fetching data from API
         axios.get('https://danepubliczne.imgw.pl/api/data/synop')
           .then(response => {
-            setPosts(response.data) // Setting data in state
+            setItems(response.data) // Setting data in state
             setLoading(false)
           })
           .catch(error => {
@@ -32,13 +22,23 @@ const Home = () => {
             setLoading(false)
           })
       }, [])
+
+      useEffect(()=>{
+        if(filter !== '')
+        {
+          const filtered = items.filter(p=> p.stacja.startsWith(filter));
+          setFilteredItems(filtered);
+        }else{
+          setFilteredItems(items);  
+        }
+      },[items, filter]);
      
       if (loading) return <p>Loading...</p>
       if (error) return <p>{error}</p>
 
     return (
         <div style={{ border: '1px solid black' }}>
-            <Filters OnFilterChanged={(item)=>setFilter(item)}/>
+            <Filters initialFilter={filter} OnFilterChanged={(item)=>setFilter(item)}/>
             <WeatherList items={filteredItems}/>
         </div>
     );
