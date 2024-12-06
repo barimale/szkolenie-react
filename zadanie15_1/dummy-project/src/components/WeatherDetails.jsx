@@ -10,10 +10,9 @@ const WeatherDetails = () => {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        // Fetching data from API
         axios.get(`https://danepubliczne.imgw.pl/api/data/synop/id/${params.id}`)
             .then(response => {
-                setItem(response.data) // Setting data in state
+                setItem(response.data)
                 setLoading(false)
             })
             .catch(error => {

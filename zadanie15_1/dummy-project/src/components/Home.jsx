@@ -11,14 +11,13 @@ const Home = () => {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        // Fetching data from API
         axios.get('https://danepubliczne.imgw.pl/api/data/synop')
           .then(response => {
-            setItems(response.data) // Setting data in state
+            setItems(response.data)
             setLoading(false)
           })
           .catch(error => {
-            setError('An error occurred while fetching data')
+            setError(`An error occurred while fetching data: ${error}`)
             setLoading(false)
           })
       }, [])
