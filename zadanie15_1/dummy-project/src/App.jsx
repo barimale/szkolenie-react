@@ -10,8 +10,8 @@ function App() {
       </header>
       <Routes>
         <Route index element={<Home />} />
-        <Route path={'products'} element={<Home />} />
-        <Route path={'products/:id'} element={<WeatherDetails />} />
+        <Route path={'weathers'} element={<Home />} />
+        <Route path={'weathers/:id'} element={<WeatherDetails />} />
       </Routes>
       <footer>
       </footer>
