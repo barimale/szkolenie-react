@@ -21,7 +21,7 @@ const WeatherList = (props) => {
                     cursor: 'pointer',
                     border: '1px solid black',
                     padding: '20px',
-                    margin: '20px',
+                    margin: props.items.length < 2 ? '20px' : 'unset',
                     borderRadius: '0px' ,
                     width: '250px',
                     backgroundColor: 'white'
