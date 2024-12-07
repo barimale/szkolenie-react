@@ -8,23 +8,27 @@ const Home = (props) => {
     const [filteredProducts, setFilteredProducts] = useState(props.products);
 
     useEffect(() => {
-        if(filteredCategory === '')
-        {
+        if (filteredCategory === '') {
             setFilteredProducts(props.products);
-        }else{
+        } else {
             const filtered = props.products
                 .filter(p => p.category === filteredCategory);
 
             setFilteredProducts(filtered);
         }
-        
+
     }, [filteredCategory]);
 
     return (
         <>
-            <p>Kategoria: {searchParams.get('category')}</p>
+            <p>Przedmioty: {searchParams.get('category')}</p>
             {filteredProducts.map((item, index) => {
-                return <p key={index}>{JSON.stringify(item)}</p>
+                return (
+                    <div key={index} style={{ border: '1px solid black' }}>
+                        <p >ID: {item.id}</p>
+                        <p >Nazwa: {item.name}</p>
+                        <p >Kategoria: {item.category}</p>
+                    </div>);
             })}
             <ButtonFilters />
         </>
