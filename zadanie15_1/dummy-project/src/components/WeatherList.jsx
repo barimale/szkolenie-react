@@ -14,7 +14,7 @@ const WeatherList = (props) => {
             justifyContent: 'space-evenly',
             alignContent: 'stretch',
             alignItems: 'stretch',
-            gap: '10px 30px'
+            gap: '10px 10px'
         }}>
             {props.items.map((post, index) => (
                 <div key={index} style={{
@@ -22,6 +22,7 @@ const WeatherList = (props) => {
                     border: '1px solid black',
                     padding: '20px',
                     borderRadius: '0px' ,
+                    width: '250px',
                     backgroundColor: 'white'
                 }} onClick={() => goToDetails(post.id_stacji)}>
                     <h3>{post.stacja}</h3>
