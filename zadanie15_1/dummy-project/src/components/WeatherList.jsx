@@ -14,7 +14,7 @@ const WeatherList = (props) => {
             justifyContent: 'space-evenly',
             alignContent: 'stretch',
             alignItems: 'stretch',
-            gap: '10px 10px'
+            gap: '20px 5px'
         }}>
             {props.items.map((post, index) => (
                 <div key={index} style={{
