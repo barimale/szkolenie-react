@@ -16,7 +16,7 @@ const WeatherDetails = () => {
                 setLoading(false)
             })
             .catch(error => {
-                setError('An error occurred while fetching data')
+                setError(`An error occurred while fetching data: ${error}`)
                 setLoading(false)
             })
     }, [])
