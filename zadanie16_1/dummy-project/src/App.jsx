@@ -9,19 +9,21 @@ function App() {
   const {addUser} = useUsers();
 
   useEffect(()=>{
-    addUser({ name: 'userName1'})
-    addUser({ name: 'userName2'})
-    addUser({ name: 'userName3'})
-    addUser({ name: 'userName4'})
+    setTimeout(()=> {
+      addUser('userName1')
+    }, 500)
+    setTimeout(()=> {
+      addUser('userName2')
+    }, 1500)
   }, []);
 
   return (
     <>
-      <header>Context API
+      <header><h2>Users list:</h2>
       </header>
       <AddUser />
-      <UsersList />
       <UsersCount />
+      <UsersList />
       <footer>
       </footer>
     </>
