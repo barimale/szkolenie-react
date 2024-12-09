@@ -6,13 +6,13 @@ import { useEffect } from 'react';
 import { useUsers } from './contexts/UsersContext';
 
 function App() {
-  const {addUser} = useUsers();
+  const { addUser } = useUsers();
 
-  useEffect(()=>{
-    setTimeout(()=> {
+  useEffect(() => {
+    setTimeout(() => {
       addUser('userName1')
     }, 500)
-    setTimeout(()=> {
+    setTimeout(() => {
       addUser('userName2')
     }, 1500)
   }, []);
