@@ -23,8 +23,8 @@ function App() {
       <header><h2>Cart:</h2>
       </header>
       <AddItem />
-      <ItemsCount />
       <ItemsList />
+      <ItemsCount />
       <ItemsTotal />
       <footer>
       </footer>
