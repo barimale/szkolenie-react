@@ -37,7 +37,7 @@ const Home = () => {
 
     return (
         <div style={{ border: '1px solid black' }}>
-            <Filters initialFilter={filter} OnFilterChanged={(item)=>setFilter(item)}/>
+            <Filters initialFilter={filter} onFilterChanged={(item)=>setFilter(item)}/>
             <WeatherList items={filteredItems}/>
         </div>
     );
