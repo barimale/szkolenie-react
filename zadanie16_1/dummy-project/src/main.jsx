@@ -2,12 +2,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from "react-router";
-import { StrictMode } from 'react'
+import { UsersProvider } from './contexts/UsersContext';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
+  <BrowserRouter>
+    <UsersProvider>
       <App />
-    </BrowserRouter>
-  </StrictMode>,
+    </UsersProvider>
+  </BrowserRouter>,
 )
