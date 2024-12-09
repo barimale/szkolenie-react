@@ -10,7 +10,6 @@ function App() {
       </header>
       <Routes>
         <Route index element={<Home />} />
-        <Route path={'weathers'} element={<Home />} />
         <Route path={'weathers/:id'} element={<WeatherDetails />} />
       </Routes>
       <footer>
