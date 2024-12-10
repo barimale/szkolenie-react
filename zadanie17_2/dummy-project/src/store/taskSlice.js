@@ -15,12 +15,11 @@ const taskSlice = createSlice({
       return state.filter(product => product.id !== action.payload)
     },
     toggleDone: (state, action) =>{
-      let filtered = state;
       const toggledIndex = state.findIndex(p => p.id === action.payload);
       let toggled = state.find(p => p.id === action.payload);
       toggled.state = toggled.state === 'ready' ? 'done' : 'ready';
-      filtered[toggledIndex] = toggled;
-      return filtered;
+      state[toggledIndex] = toggled;
+      return state;
     }
   }
 });
