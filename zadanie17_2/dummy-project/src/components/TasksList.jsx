@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addTask, removeTask } from '../store/taskSlice'
+import { addTask, removeTask, done } from '../store/taskSlice'
 
 const TasksList = () => {
   const tasks = useSelector(state => state.task)
@@ -29,6 +29,7 @@ const TasksList = () => {
           <li key={product.id}>
             {product.text}
             <button onClick={() => dispatch(removeTask(product.id))}>Remove</button>
+            <button onClick={() => dispatch(done(product.id))}>Done</button>
           </li>
         ))}
       </ul>
