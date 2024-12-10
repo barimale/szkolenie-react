@@ -31,9 +31,9 @@ const TasksList = () => {
       <ul>
         {tasks.map(product => (
           <li key={product.id}>
-            <p style={{ textDecoration: product.state === 'ready' ? 'none' : 'line-through' }}>{product.text}</p>
+            <p style={{ textDecoration: product.state === 'in progress' ? 'none' : 'line-through' }}>{product.text}</p>
             <button onClick={() => dispatch(removeTask(product.id))}>Remove</button>
-            <button onClick={() => dispatch(toggleDone(product.id))}>{product.state === 'ready' ? 'Done' : 'Undone'}</button>
+            <button onClick={() => dispatch(toggleDone(product.id))}>{product.state === 'in progress' ? 'Done' : 'Undone'}</button>
           </li>
         ))}
       </ul>
