@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addTask, removeTask, done } from '../store/taskSlice'
+import { addTask, removeTask, toggleDone } from '../store/taskSlice'
 
 const TasksList = () => {
   const tasks = useSelector(state => state.task)
@@ -29,7 +29,7 @@ const TasksList = () => {
           <li key={product.id}>
             <p style={{textDecoration: product.state === 'ready' ? 'none': 'line-through'}}>{product.text}</p>
             <button onClick={() => dispatch(removeTask(product.id))}>Remove</button>
-            <button onClick={() => dispatch(done(product.id))}>Done</button>
+            <button onClick={() => dispatch(toggleDone(product.id))}>Done</button>
           </li>
         ))}
       </ul>

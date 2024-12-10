@@ -14,12 +14,12 @@ const taskSlice = createSlice({
     removeTask: (state, action) => {
       return state.filter(product => product.id !== action.payload)
     },
-    done: (state, action) =>{
+    toggleDone: (state, action) =>{
       // WIP ? 
     }
   }
 });
 
-export const { addTask, removeTask, done } = taskSlice.actions; // actions
+export const { addTask, removeTask, toggleDone } = taskSlice.actions; // actions
 
 export default taskSlice.reducer; // reducer
