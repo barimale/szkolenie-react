@@ -9,7 +9,7 @@ const taskSlice = createSlice({
   ],
   reducers: {
     addTask: (state, action) => {
-      state.push({id: Date.now(), text: action.payload})
+      state.push({id: Date.now(), text: action.payload, state: 'ready'})
     },
     removeTask: (state, action) => {
       return state.filter(product => product.id !== action.payload)
