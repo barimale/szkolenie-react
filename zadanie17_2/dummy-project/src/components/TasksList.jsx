@@ -14,12 +14,16 @@ const TasksList = () => {
         <input
           type="text"
           value={taskName}
-          onChange={e => setTaskName(e.target.value)}
+          onChange={e => {
+            setTaskName(e.target.value)
+          }}
           placeholder="Add a new task"
         />
         <button onClick={() => {
-          dispatch(addTask(taskName))
-          setTaskName('')
+          if (taskName) {
+            dispatch(addTask(taskName))
+            setTaskName('')
+          }
         }}>
           Add
         </button>
@@ -27,7 +31,7 @@ const TasksList = () => {
       <ul>
         {tasks.map(product => (
           <li key={product.id}>
-            <p style={{textDecoration: product.state === 'ready' ? 'none': 'line-through'}}>{product.text}</p>
+            <p style={{ textDecoration: product.state === 'ready' ? 'none' : 'line-through' }}>{product.text}</p>
             <button onClick={() => dispatch(removeTask(product.id))}>Remove</button>
             <button onClick={() => dispatch(toggleDone(product.id))}>{product.state === 'ready' ? 'Done' : 'Undone'}</button>
           </li>
