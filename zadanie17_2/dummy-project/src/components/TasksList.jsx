@@ -29,7 +29,7 @@ const TasksList = () => {
           <li key={product.id}>
             <p style={{textDecoration: product.state === 'ready' ? 'none': 'line-through'}}>{product.text}</p>
             <button onClick={() => dispatch(removeTask(product.id))}>Remove</button>
-            <button onClick={() => dispatch(toggleDone(product.id))}>Done</button>
+            <button onClick={() => dispatch(toggleDone(product.id))}>{product.state === 'ready' ? 'Done' : 'Undone'}</button>
           </li>
         ))}
       </ul>

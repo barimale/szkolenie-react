@@ -4,7 +4,7 @@ const taskSlice = createSlice({
   name: 'task',
   initialState: [
     {id: Date.now() + 1, text: 'Do', state: 'ready'},
-    {id: Date.now() + 2, text: 'Did', state: 'ready'},
+    {id: Date.now() + 2, text: 'Did', state: 'done'},
     {id: Date.now() + 3, text: 'Done', state: 'ready'}
   ],
   reducers: {
