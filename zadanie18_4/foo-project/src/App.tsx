@@ -26,7 +26,7 @@ function App() {
  };
 
  const avg = john.results.map(p => p.score).reduce((a,b)=> a+ b, 0) / john.results.length;
- const isOver50P = Boolean(avg >= 50);
+ const isOver50P: boolean = Boolean(avg >= 50);
 
  console.log(avg)
  console.log(isOver50P)
