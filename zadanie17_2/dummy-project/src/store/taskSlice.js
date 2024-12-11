@@ -12,7 +12,7 @@ const taskSlice = createSlice({
       state.push({ id: Date.now(), text: action.payload, isDone: false })
     },
     removeTask: (state, action) => {
-      return state.filter(product => product.id !== action.payload)
+      return state.filter(task => task.id !== action.payload)
     },
     toggleDone: (state, action) => {
       const task = state.find(t => t.id === action.payload);
