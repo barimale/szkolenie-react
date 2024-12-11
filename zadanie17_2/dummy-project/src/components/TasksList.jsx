@@ -31,9 +31,9 @@ const TasksList = () => {
       <ol>
         {tasks.map(task => (
           <li key={task.id}>
-            <p style={{ textDecoration: task.isDone !== true ? 'none' : 'line-through' }}>{task.text}</p>
+            <p style={{ textDecoration: task.isDone ?  'line-through' : 'none' }}>{task.text}</p>
             <button onClick={() => dispatch(removeTask(task.id))}>Remove</button>
-            <button onClick={() => dispatch(toggleDone(task.id))}>{task.isDone !== true ? 'Done' : 'Undone'}</button>
+            <button onClick={() => dispatch(toggleDone(task.id))}>{task.isDone ? 'Undone' : 'Done'}</button>
           </li>
         ))}
       </ol>
