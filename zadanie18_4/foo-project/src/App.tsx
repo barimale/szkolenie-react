@@ -34,7 +34,7 @@ function App() {
     <>
       <div>
         <p>AVG: {avg}</p>
-        <p>isOver50P: {String(isOver50P)}</p>
+        <p>Exam passed: {String(isOver50P)}</p>
       </div>
     </>
   )
