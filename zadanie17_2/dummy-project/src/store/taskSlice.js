@@ -3,23 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 const taskSlice = createSlice({
   name: 'task',
   initialState: [
-    { id: Date.now() + 1, text: 'Do', state: 'in progress' },
-    { id: Date.now() + 2, text: 'Did', state: 'done' },
-    { id: Date.now() + 3, text: 'Done', state: 'in progress' }
+    { id: Date.now() + 1, text: 'Do', isDone: true },
+    { id: Date.now() + 2, text: 'Did', isDone: false },
+    { id: Date.now() + 3, text: 'Done', isDone: false }
   ],
   reducers: {
     addTask: (state, action) => {
-      state.push({ id: Date.now(), text: action.payload, state: 'in progress' })
+      state.push({ id: Date.now(), text: action.payload, isDone: false })
     },
     removeTask: (state, action) => {
       return state.filter(product => product.id !== action.payload)
     },
     toggleDone: (state, action) => {
-      const index = state.findIndex(p => p.id === action.payload);
-      let toggled = state.find(p => p.id === action.payload);
-      toggled.state = toggled.state === 'in progress' ? 'done' : 'in progress';
-      state[index] = toggled;
-      return state;
+      const task = state.find(t => t.id === action.payload);
+      if (task) {
+        task.isDone = !task.isDone;
+      }
     }
   }
 });
