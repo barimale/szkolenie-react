@@ -7,9 +7,8 @@ type Person = {
 
 type Employee = Person & { employeeId: number, department: string }
 
-// WIP
 function isEmployee(person: Person | Employee): person is Employee {
-  return Field.HasField(person as Employee).employeeId;
+  return (person as Employee).employeeId !== undefined;
 }
 
 function validatePerson(person: Person | Employee): string {
