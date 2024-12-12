@@ -18,6 +18,8 @@ function validatePerson(person: Person | Employee): string {
 
   if (!isEmployee(person))
     return (person as Person).age.toString();
+
+  return '';
 }
 
 const personA: Person = {
