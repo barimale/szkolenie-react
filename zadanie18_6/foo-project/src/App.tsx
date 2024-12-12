@@ -33,11 +33,10 @@ function App() {
     permissions: ['process-orders']
   }
 
-  // WIP
   function canProcessOrder(user: User | Admin): boolean {
-    if (typeof user === typeof "Admin") {
-      return user.permissions.contains('process-orders') && user.role === 'admin'
-    } else {
+    if((user as Admin).role === 'admin' && Array.isArray((user as Admin).permissions)) {
+      return (user as Admin).permissions.includes('process-orders') && (user as Admin).role === 'admin'
+    }else {
       return false;
     }
   }
@@ -48,8 +47,8 @@ function App() {
   return (
     <>
       <div>
-        <p>valueA User: {valueA}</p>
-        <p>valueB Admin: {valueB}</p>
+        <p>valueA User: {JSON.stringify(valueA)}</p>
+        <p>valueB Admin:  {JSON.stringify(valueB)}</p>
       </div>
     </>
   )
