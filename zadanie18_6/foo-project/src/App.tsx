@@ -35,7 +35,7 @@ function App() {
 
   function canProcessOrder(user: User | Admin): boolean {
     if((user as Admin).role === 'admin' && Array.isArray((user as Admin).permissions)) {
-      return (user as Admin).permissions.includes('process-orders') && (user as Admin).role === 'admin'
+      return (user as Admin).permissions.includes('process-orders')
     }else {
       return false;
     }
