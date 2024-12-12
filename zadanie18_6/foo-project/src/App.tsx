@@ -35,7 +35,7 @@ function App() {
 
   // WIP
   function canProcessOrder(user: User | Admin): boolean {
-    if (typeof user === "Admin") {
+    if (typeof user === typeof "Admin") {
       return user.permissions.contains('process-orders') && user.role === 'admin'
     } else {
       return false;
