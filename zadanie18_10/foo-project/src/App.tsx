@@ -29,7 +29,14 @@ function App() {
       <header>
       </header>
       <Routes>
-        <Route index element={<Home itemsPerPage={itemsPerPage} totalPages={totalPages} data={posts} onPostsChange={(items: Post[]) => setPosts(items)} />} />
+        <Route index element={<Home
+          itemsPerPage={itemsPerPage}
+          totalPages={totalPages}
+          data={posts}
+          onPostsChange={(items: Post[]) => {
+            setPosts(items);
+            setEditPost(undefined);
+          }} />} />
         <Route path='posts/:id' element={<PostPage onEditCallback={(item: any) => setEditPost(item)} />} />
         <Route path='posts/add' element={<AddEditPost post={editPost} />} />
         <Route path='posts/edit/:id' element={<AddEditPost post={editPost} />} />
