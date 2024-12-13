@@ -23,6 +23,7 @@ const PostDetails = (props : any) => {
     }
 
     const removeCallback = (itemId: string) =>{
+        setRemoveResult('');
         axios.delete(`https://jsonplaceholder.typicode.com/posts/${itemId}`)
             .then((response) => setRemoveResult(JSON.stringify(response)));       
     }

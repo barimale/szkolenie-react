@@ -21,16 +21,15 @@ const PostFormEdit = (props: PostFormEditProps) => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setResult('');
 
         axios.put(`https://jsonplaceholder.typicode.com/posts/${params.id}`,
             formData
         )
             .then(function (response) {
-                console.log(response);
                 setResult(JSON.stringify(response));
             })
             .catch(function (error) {
-                console.log(error);
                 setResult(JSON.stringify(error));
             });
     };

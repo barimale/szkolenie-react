@@ -22,6 +22,7 @@ const PostForm = () => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setResult('');
 
         formData.id = Date.now().toString();
         formData.userId = '1';
@@ -29,11 +30,9 @@ const PostForm = () => {
             formData
         )
             .then(function (response) {
-                console.log(response);
                 setResult(JSON.stringify(response));
             })
             .catch(function (error) {
-                console.log(error);
                 setResult(JSON.stringify(error));
             });
     };
