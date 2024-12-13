@@ -13,7 +13,8 @@ export type Post = {
 type PostListProps = {
     onPostsChange: (data: Post[]) => void;
     data: Post[],
-    totalPages: number
+    totalPages: number,
+    itemsPerPage: number
 }
 
 const PostList = (props: PostListProps) => {
@@ -48,7 +49,7 @@ const PostList = (props: PostListProps) => {
         axios.get('https://jsonplaceholder.typicode.com/posts', {
             params: {
                 _page: currentPage,
-                _limit: props.totalPages,
+                _limit: props.itemsPerPage,
             }
         }
         )

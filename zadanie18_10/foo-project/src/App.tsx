@@ -12,9 +12,10 @@ function App() {
   const [editPost, setEditPost] = useState<Post>()
   const [totalPages, setTotalPages] = useState<number>(0);
   const itemsPerPage = 10;
-  useEffect(()=>{
+
+  useEffect(() => {
     axios.get('https://jsonplaceholder.typicode.com/posts'
-  )
+    )
       .then(response => {
         setTotalPages(response.data.length / itemsPerPage);
       })
@@ -28,8 +29,8 @@ function App() {
       <header>
       </header>
       <Routes>
-        <Route index element={<PostList totalPages={totalPages} data={posts} onPostsChange={(items: Post[]) => setPosts(items)} />} />
-        <Route path='posts/:id' element={<PostDetails onEditCallback={(item: any)=> setEditPost(item)}/>} />
+        <Route index element={<PostList itemsPerPage={itemsPerPage} totalPages={totalPages} data={posts} onPostsChange={(items: Post[]) => setPosts(items)} />} />
+        <Route path='posts/:id' element={<PostDetails onEditCallback={(item: any) => setEditPost(item)} />} />
         <Route path='posts/add' element={<PostForm />} />
         <Route path='posts/edit/:id' element={<PostFormEdit post={editPost} />} />
 
