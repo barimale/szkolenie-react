@@ -7,8 +7,8 @@ type Person = {
 
 type Employee = Person & { employeeId: number, department: string }
 
-function isEmployee(person: Person | Employee): person is Employee {
-  return (person as Employee).employeeId !== undefined;
+function isEmployee(person: Person | Employee): boolean {
+  return !!(person as Employee).employeeId;
 }
 
 function validatePerson(person: Person | Employee): string {
