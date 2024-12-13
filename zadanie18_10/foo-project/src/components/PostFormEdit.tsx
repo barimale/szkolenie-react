@@ -63,7 +63,7 @@ const PostFormEdit = (props: PostFormEditProps) => {
                     value={formData?.body}
                 />
                 <br />
-                <button>Save</button>
+                <button>Zapisz</button>
                 <p>{result}</p>
             </form>
         </>
