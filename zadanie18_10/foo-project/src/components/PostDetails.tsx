@@ -9,7 +9,7 @@ type User = {
     website: string
 }
 
-const PostDetails = (props : any) => {
+const PostDetails = (props: any) => {
     const navigate = useNavigate();
     const params = useParams()
     const [item, setItem] = useState<Post>()
@@ -22,13 +22,13 @@ const PostDetails = (props : any) => {
         navigate(`/`);
     }
 
-    const removeCallback = (itemId: string) =>{
+    const removeCallback = (itemId: string) => {
         setRemoveResult('');
         axios.delete(`https://jsonplaceholder.typicode.com/posts/${itemId}`)
-            .then((response) => setRemoveResult(JSON.stringify(response)));       
+            .then((response) => setRemoveResult(JSON.stringify(response)));
     }
 
-    const editCallback = (itemId: string) =>{
+    const editCallback = (itemId: string) => {
         props.onEditCallback(item);
         navigate(`/posts/edit/${itemId}`);
     }
@@ -70,9 +70,9 @@ const PostDetails = (props : any) => {
             <p>Name: {userData?.name}</p>
             <p>Email: {userData?.email}</p>
             <p>Website: {userData?.website}</p>
-            <button onClick={()=>removeCallback(item?.id ? item?.id.toString(): '')}>Usuń</button>
+            <button onClick={() => removeCallback(item?.id ? item?.id.toString() : '')}>Usuń</button>
             <p>{removeResult}</p>
-            <button onClick={()=>editCallback(item?.id ? item?.id.toString(): '')}>Edycja</button>
+            <button onClick={() => editCallback(item?.id ? item?.id.toString() : '')}>Edycja</button>
             <button onClick={goToCallback}>Wróć</button>
         </>
     )
