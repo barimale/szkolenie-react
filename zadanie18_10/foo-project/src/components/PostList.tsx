@@ -76,9 +76,9 @@ const PostList = (props: PostListProps) => {
                         key={post.id.toString()}
                         onClick={(e) => goToCallback(e, post.id.toString())}
                         style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px', width: '1000px' }}>
-                        <h3>{post.title}</h3>
+                        <h2>{post.title}</h2>
                         <h4>{post.id.toString()}</h4>
-                        <p>{post.body}</p>
+                        <p style={{margin:'30px'}}>{post.body}</p>
                     </div>
                 ))}
                 <Pagination
