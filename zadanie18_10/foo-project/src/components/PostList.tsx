@@ -30,7 +30,7 @@ const PostList = (props: PostListProps) => {
     }
 
     const goToAddPost = () => {
-        navigate(`posts/add`);
+        navigate(`/posts/add`);
     }
 
     useEffect(() => {
