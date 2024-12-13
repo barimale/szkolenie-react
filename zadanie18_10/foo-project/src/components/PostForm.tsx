@@ -67,7 +67,7 @@ const PostForm = () => {
                     value={formData.body}
                 />
                 <br />
-                <button>Save</button>
+                <button>Zapisz</button>
                 <p>{result}</p>
             </form>
         </>
