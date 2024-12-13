@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Post } from "./PostList";
+import axios from "axios";
 
 const PostForm = () => {
     const [formData, setFormData] = useState<Post>({
@@ -17,8 +18,19 @@ const PostForm = () => {
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        formData.id = Date.now();
-        const i = formData
+        e.preventDefault();
+
+        formData.id = Date.now().toString();
+        formData.userId = '1';
+        axios.post('https://jsonplaceholder.typicode.com/posts', 
+            formData
+          )
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     };
 
     return (
