@@ -78,7 +78,7 @@ const PostList = (props: PostListProps) => {
                         style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px', width: '1000px' }}>
                         <h2>{post.title}</h2>
                         <h4>{post.id.toString()}</h4>
-                        <p style={{margin:'30px'}}>{post.body}</p>
+                        <p style={{ margin: '30px' }}>{post.body}</p>
                     </div>
                 ))}
                 <Pagination
