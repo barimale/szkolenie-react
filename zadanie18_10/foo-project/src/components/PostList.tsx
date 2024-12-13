@@ -70,7 +70,7 @@ const PostList = (props: PostListProps) => {
         <div>
             <h1>Posts List</h1>
             <button onClick={() => goToAddPost()}>Dodaj post</button>
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
                 {props.data.map((post: Post) => (
                     <div
                         key={post.id.toString()}
