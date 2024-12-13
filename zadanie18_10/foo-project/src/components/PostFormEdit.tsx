@@ -22,8 +22,6 @@ const PostFormEdit = (props: PostFormEditProps) => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // formData.id = Date.now().toString();
-        // formData.userId = '1';
         axios.put(`https://jsonplaceholder.typicode.com/posts/${params.id}`,
             formData
         )
