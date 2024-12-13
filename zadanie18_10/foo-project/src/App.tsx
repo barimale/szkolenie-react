@@ -12,8 +12,8 @@ function App() {
       <header>
       </header>
       <Routes>
-        <Route index element={<PostList data={posts} onPostsChange={(items: Post[])=> setPosts(items)}/>} />
-        <Route path='posts/' element={<PostList data={posts} onPostsChange={(items: Post[])=> setPosts(items)}/>} />
+        {/* <Route index element={<PostList totalPages={10} data={posts} onPostsChange={(items: Post[])=> setPosts(items)}/>} /> */}
+        <Route path='posts/' element={<PostList totalPages={10}  data={posts} onPostsChange={(items: Post[])=> setPosts(items)}/>} />
         <Route path='posts/:id' element={<PostDetails posts={posts}/>} />
       </Routes>
       <footer>
