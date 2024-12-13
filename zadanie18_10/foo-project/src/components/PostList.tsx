@@ -40,20 +40,20 @@ const PostList = (props: PostListProps) => {
     if (error) return <p>{error}</p>
 
     return (
-        <div style={{ border: '1px solid darkblue' }}>
+        <div>
             <h1>Posts List</h1>
-            <ul>
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
                 {props.data.map((post: Post) => (
-                    <li 
+                    <div 
                         key={post.id.toString()} 
                         onClick={(e) => goToCallback(e, post.id.toString())}
-                        style={{cursor: 'pointer'}}>
+                        style={{cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px'}}>
                         <h3>{post.title}</h3>
                         <h3>{post.id.toString()}</h3>
                         <p>{post.body}</p>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     )
 }
