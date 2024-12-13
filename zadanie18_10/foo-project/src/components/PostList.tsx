@@ -32,25 +32,25 @@ const PostList = (props: PostListProps) => {
         navigate(`posts/add`);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const value = localStorage.getItem('currentPage');
-        if(value)
-        {
+        if (value) {
             const parsed = JSON.parse(value);
             setCurrentPage(parsed);
         }
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem('currentPage', JSON.stringify(currentPage));
     }, [currentPage])
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts',{
+        axios.get('https://jsonplaceholder.typicode.com/posts', {
             params: {
-              _page: currentPage,
-              _limit: props.totalPages,
-            }}
+                _page: currentPage,
+                _limit: props.totalPages,
+            }
+        }
         )
             .then(response => {
                 props.onPostsChange(response.data)
@@ -74,7 +74,7 @@ const PostList = (props: PostListProps) => {
                     <div
                         key={post.id.toString()}
                         onClick={(e) => goToCallback(e, post.id.toString())}
-                        style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px', width: '1000px'}}>
+                        style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px', width: '1000px' }}>
                         <h3>{post.title}</h3>
                         <h4>{post.id.toString()}</h4>
                         <p>{post.body}</p>

@@ -2,14 +2,26 @@ import { Route, Routes } from 'react-router'
 import './App.css'
 import PostList, { Post } from './components/PostList'
 import PostDetails from './components/PostDetails'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PostForm from './components/PostForm'
 import PostFormEdit from './components/PostFormEdit'
+import axios from 'axios'
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([])
   const [editPost, setEditPost] = useState<Post>()
-  const totalPages = 10;
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const itemsPerPage = 10;
+  useEffect(()=>{
+    axios.get('https://jsonplaceholder.typicode.com/posts'
+  )
+      .then(response => {
+        setTotalPages(response.data.length / itemsPerPage);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }, []);
 
   return (
     <>
