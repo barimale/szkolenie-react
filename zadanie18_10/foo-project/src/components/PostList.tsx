@@ -2,6 +2,21 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import Pagination from "./Pagination"
+import styled from "styled-components"
+
+const FlexContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+`
+
+const FlexItem = styled.div`
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 20px;
+    width: 1000px;
+`
 
 export type Post = {
     id: React.Key,
@@ -70,22 +85,20 @@ const PostList = (props: PostListProps) => {
         <div>
             <h1>Posts List</h1>
             <button onClick={() => goToAddPost()}>Dodaj post</button>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+            <FlexContainer>
                 {props.data.map((post: Post) => (
-                    <div
+                    <FlexItem
                         key={post.id.toString()}
-                        onClick={(e) => goToCallback(e, post.id.toString())}
-                        style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px', width: '1000px' }}>
-                        <h2>{post.title}</h2>
+                        onClick={(e) => goToCallback(e, post.id.toString())}>                        <h2>{post.title}</h2>
                         <p style={{ margin: '30px' }}>{post.body}</p>
-                    </div>
+                    </FlexItem>
                 ))}
                 <Pagination
                     currentPage={currentPage}
                     totalPages={props.totalPages}
                     onPageChange={setCurrentPage}
                 />
-            </div>
+            </FlexContainer>
         </div>
     )
 }
