@@ -7,6 +7,7 @@ export type Post = {
     id: React.Key,
     title: string,
     body: string,
+    userId: string
 }
 
 type PostListProps = {
@@ -26,6 +27,10 @@ const PostList = (props: PostListProps) => {
     const goToCallback = (e: React.MouseEvent, itemId: string) => {
         e.preventDefault();
         navigate(`/posts/${itemId}`);
+    }
+
+    const goToAddPost = () => {
+        navigate(`posts/add`);
     }
 
     useEffect(() => {
@@ -51,6 +56,7 @@ const PostList = (props: PostListProps) => {
     return (
         <div>
             <h1>Posts List</h1>
+            <button onClick={() => goToAddPost()}>Dodaj post</button>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {props.data.map((post: Post) => (
                     <div
