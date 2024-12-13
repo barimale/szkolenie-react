@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
-import PostList, { Post } from './components/PostList'
-import PostDetails from './components/PostDetails'
+import { Post } from './components/PostList'
 import { useEffect, useState } from 'react'
-import PostForm from './components/PostForm'
-import PostFormEdit from './components/PostFormEdit'
 import axios from 'axios'
+import AddEditPost from './views/AddEditPost'
+import PostPage from './views/PostPage'
+import Home from './views/Home'
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([])
@@ -29,10 +29,10 @@ function App() {
       <header>
       </header>
       <Routes>
-        <Route index element={<PostList itemsPerPage={itemsPerPage} totalPages={totalPages} data={posts} onPostsChange={(items: Post[]) => setPosts(items)} />} />
-        <Route path='posts/:id' element={<PostDetails onEditCallback={(item: any) => setEditPost(item)} />} />
-        <Route path='posts/add' element={<PostForm />} />
-        <Route path='posts/edit/:id' element={<PostFormEdit post={editPost} />} />
+        <Route index element={<Home itemsPerPage={itemsPerPage} totalPages={totalPages} data={posts} onPostsChange={(items: Post[]) => setPosts(items)} />} />
+        <Route path='posts/:id' element={<PostPage onEditCallback={(item: any) => setEditPost(item)} />} />
+        <Route path='posts/add' element={<AddEditPost post={editPost} />} />
+        <Route path='posts/edit/:id' element={<AddEditPost post={editPost} />} />
       </Routes>
       <footer>
       </footer>

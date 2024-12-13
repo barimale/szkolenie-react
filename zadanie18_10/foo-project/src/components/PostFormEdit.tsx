@@ -3,7 +3,7 @@ import { Post } from "./PostList";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 
-type PostFormEditProps = {
+export type PostFormEditProps = {
     post: Post | undefined
 }
 const PostFormEdit = (props: PostFormEditProps) => {

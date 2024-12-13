@@ -25,7 +25,7 @@ export type Post = {
     userId: string
 }
 
-type PostListProps = {
+export type PostListProps = {
     onPostsChange: (data: Post[]) => void;
     data: Post[],
     totalPages: number,
