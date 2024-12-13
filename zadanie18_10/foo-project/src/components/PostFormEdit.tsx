@@ -7,7 +7,7 @@ type PostFormEditProps = {
     post: Post | undefined
 }
 const PostFormEdit = (props: PostFormEditProps) => {
-    const [formData, setFormData] = useState<Post | undefined>(props.post ? { ...props.post }: undefined);
+    const [formData, setFormData] = useState<Post | undefined>(props.post ? { ...props.post } : undefined);
     const [result, setResult] = useState<string>();
     const params = useParams()
     const navigate = useNavigate();
@@ -43,8 +43,9 @@ const PostFormEdit = (props: PostFormEditProps) => {
         <>
             <button onClick={() => goToCallback()}>Wróć</button>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title</label>
+                <label htmlFor="title" style={{ margin: '10px' }}>Title</label>
                 <input
+                    style={{ margin: '10px' }}
                     type="text"
                     id="title"
                     name="title"
@@ -53,8 +54,9 @@ const PostFormEdit = (props: PostFormEditProps) => {
                     value={formData?.title}
                 />
                 <br />
-                <label htmlFor="body">Body</label>
+                <label htmlFor="body" style={{ margin: '10px' }}>Body</label>
                 <input
+                    style={{ margin: '10px' }}
                     type="text"
                     id="title"
                     name="body"

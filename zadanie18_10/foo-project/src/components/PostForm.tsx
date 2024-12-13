@@ -46,8 +46,9 @@ const PostForm = () => {
         <>
             <button onClick={() => goToCallback()}>Wróć</button>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title</label>
+                <label htmlFor="title" style={{ margin: '10px' }}>Title</label>
                 <input
+                    style={{ margin: '10px' }}
                     type="text"
                     id="title"
                     name="title"
@@ -56,8 +57,9 @@ const PostForm = () => {
                     value={formData.title}
                 />
                 <br />
-                <label htmlFor="body">Body</label>
+                <label htmlFor="body" style={{ margin: '10px' }}>Body</label>
                 <input
+                    style={{ margin: '10px' }}
                     type="text"
                     id="title"
                     name="body"

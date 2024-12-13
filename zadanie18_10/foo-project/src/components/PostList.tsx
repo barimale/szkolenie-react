@@ -32,6 +32,19 @@ const PostList = (props: PostListProps) => {
         navigate(`posts/add`);
     }
 
+    useEffect(()=>{
+        const value = localStorage.getItem('currentPage');
+        if(value)
+        {
+            const parsed = JSON.parse(value);
+            setCurrentPage(parsed);
+        }
+    }, [])
+
+    useEffect(()=>{
+        localStorage.setItem('currentPage', JSON.stringify(currentPage));
+    }, [currentPage])
+
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts',{
             params: {
@@ -63,6 +76,7 @@ const PostList = (props: PostListProps) => {
                         onClick={(e) => goToCallback(e, post.id.toString())}
                         style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px', width: '1000px'}}>
                         <h3>{post.title}</h3>
+                        <h4>{post.id.toString()}</h4>
                         <p>{post.body}</p>
                     </div>
                 ))}
