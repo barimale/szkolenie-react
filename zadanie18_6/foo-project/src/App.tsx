@@ -7,12 +7,12 @@ type User = {
 }
 
 type Order = {
-  OrderId: number,
-  UserId: number,
-  items: Product[]
+  orderId: number,
+  userId: number,
+  items: OrderItem[]
 }
 
-type Product ={
+type OrderItem ={
     productId: number,
     quantity: number
   }
