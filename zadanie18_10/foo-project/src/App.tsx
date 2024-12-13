@@ -33,7 +33,6 @@ function App() {
         <Route path='posts/:id' element={<PostDetails onEditCallback={(item: any) => setEditPost(item)} />} />
         <Route path='posts/add' element={<PostForm />} />
         <Route path='posts/edit/:id' element={<PostFormEdit post={editPost} />} />
-
       </Routes>
       <footer>
       </footer>
