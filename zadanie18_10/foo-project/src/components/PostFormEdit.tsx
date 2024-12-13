@@ -38,7 +38,7 @@ const PostFormEdit = (props: PostFormEditProps) => {
     };
 
     const goToCallback = () => {
-        navigate(`posts/${formData?.id}`);
+        navigate(`/posts/${formData?.id}`);
     }
 
     return (

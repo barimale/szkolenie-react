@@ -29,7 +29,7 @@ const PostDetails = (props : any) => {
 
     const editCallback = (itemId: string) =>{
         props.onEditCallback(item);
-        navigate(`posts/edit/${itemId}`);
+        navigate(`/posts/edit/${itemId}`);
     }
 
     useEffect(() => {
