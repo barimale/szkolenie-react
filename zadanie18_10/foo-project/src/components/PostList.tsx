@@ -20,7 +20,6 @@ const PostList = (props: PostListProps) => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(props.totalPages);
 
     const navigate = useNavigate();
 
@@ -37,7 +36,7 @@ const PostList = (props: PostListProps) => {
         axios.get('https://jsonplaceholder.typicode.com/posts',{
             params: {
               _page: currentPage,
-              _limit: 10,
+              _limit: props.totalPages,
             }}
         )
             .then(response => {
@@ -62,15 +61,14 @@ const PostList = (props: PostListProps) => {
                     <div
                         key={post.id.toString()}
                         onClick={(e) => goToCallback(e, post.id.toString())}
-                        style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px'}}>
+                        style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px', width: '1000px'}}>
                         <h3>{post.title}</h3>
-                        <h3>{post.id.toString()}</h3>
                         <p>{post.body}</p>
                     </div>
                 ))}
                 <Pagination
                     currentPage={currentPage}
-                    totalPages={totalPages}
+                    totalPages={props.totalPages}
                     onPageChange={setCurrentPage}
                 />
             </div>
