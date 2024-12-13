@@ -11,6 +11,7 @@ const PostForm = () => {
         userId: ''
     });
     const [result, setResult] = useState<string>();
+    const navigate = useNavigate();
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name;
@@ -33,10 +34,10 @@ const PostForm = () => {
             })
             .catch(function (error) {
                 console.log(error);
+                setResult(JSON.stringify(error));
             });
     };
 
-    const navigate = useNavigate();
     const goToCallback = () => {
         navigate(`/`);
     }

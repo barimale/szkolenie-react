@@ -62,7 +62,7 @@ const PostList = (props: PostListProps) => {
                     <div
                         key={post.id.toString()}
                         onClick={(e) => goToCallback(e, post.id.toString())}
-                        style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px' }}>
+                        style={{ cursor: 'pointer', border: '1px solid black', borderRadius: '20px', margin: '20px'}}>
                         <h3>{post.title}</h3>
                         <h3>{post.id.toString()}</h3>
                         <p>{post.body}</p>
