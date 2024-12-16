@@ -45,9 +45,14 @@ const CustomerDetails = () => {
             <p>NIP: {item?.nip}</p>
             <p>Actions:</p>
             <ul>
-            {item?.actions.map((item, index)=>{
-                return <li key={index}>{item._id}</li>
-            })}
+                {item?.actions.map((item, index) => {
+                    return (
+                        <li key={index}>
+                            <h4>{item._id}</h4>
+                            <p>Opis: {item.description}</p>
+                            <p>Data: {item.date}</p>
+                        </li>);
+                })}
             </ul>
             <button onClick={() => { navigate('/') }}>Wróć</button>
         </>);
