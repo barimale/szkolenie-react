@@ -9,7 +9,8 @@ function App() {
  
   return (
     <>
-      <header>
+      <header style={{width: '100%'}}>
+        <h1>Header</h1>
       </header>
       <Routes>
         <Route index element={<Home/>}/>
@@ -18,6 +19,7 @@ function App() {
         <Route path='customers/:id' element={<CustomerDetails />} />
       </Routes>
       <footer>
+        <h4>Footer</h4>
       </footer>
     </>
   )
