@@ -31,7 +31,7 @@ const Home = () => {
         <>
             <h1>Home</h1>
             <h2>{items.map((item, index)=>{
-                return <p style={{cursor: 'pointer'}} >{item.name}</p>
+                return <p key={index} style={{cursor: 'pointer'}} >{item.name}</p>
             })}</h2>
         </>)
 }
