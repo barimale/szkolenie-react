@@ -14,7 +14,10 @@ type Address = {
     suite: string,
     city: string,
     zipcode: string,
-    geo: {}
+    geo: {
+        lat: string,
+        lng: string
+    }
 }
 
 type User = {
@@ -34,8 +37,8 @@ const PostDetails = (props: any) => {
     const [item, setItem] = useState<Post>()
     const [userData, setUserData] = useState<User | null>(null);
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
-    const [removeResult, setRemoveResult] = useState<string | null>(null)
+    const [error, setError] = useState<string>('')
+    const [removeResult, setRemoveResult] = useState<string>('')
 
     const goToCallback = () => {
         navigate(`/`);

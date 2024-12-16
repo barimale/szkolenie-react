@@ -34,7 +34,7 @@ export type PostListProps = {
 
 const PostList = (props: PostListProps) => {
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<string>('')
     const [currentPage, setCurrentPage] = useState(1);
 
     const navigate = useNavigate();
