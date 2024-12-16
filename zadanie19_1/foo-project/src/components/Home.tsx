@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import apiClient from '../utilities/axiosClient';
 import { useEffect, useState } from 'react';
+import Pagination from './Pagination';
 
 type Customer = {
     _id: string,
@@ -13,9 +14,11 @@ const Home = () => {
     const [items, setItems] = useState<Customer[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [limit, setLimit] = useState(1);
 
     useEffect(() => {
-        apiClient.get(`/customers?page=${1}&limit=${20}`)
+        apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
             .then(response => {
                 setItems(response.data.data)
                 setLoading(false)
@@ -26,7 +29,7 @@ const Home = () => {
             })
     }, [])
 
-    const GoToDetails = (itemId: string) =>{
+    const GoToDetails = (itemId: string) => {
         navigate(`/customers/${itemId}`);
     }
 
@@ -42,6 +45,11 @@ const Home = () => {
                     <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
                 </>
             })}</h2>
+            <Pagination
+                currentPage={currentPage}
+                totalPages={limit}
+                onPageChange={setCurrentPage}
+            />
         </>)
 }
 
