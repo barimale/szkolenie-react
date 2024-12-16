@@ -39,17 +39,17 @@ const Login = () => {
     const handleInputChange = (e: any) => {
         const target = e.target;
         const name = target.name;
-        if (name === 'password' && target.value.length < 8) {
+        if (name === 'password' && target.value.length < 4) {
             setError('Hasło musi mieć 8 lub więcej znaków');
         }
-        else if (name === 'password' && target.value.length >= 8) {
+        else if (name === 'password' && target.value.length >= 4) {
             setError('');
-        }
-        else if (name === 'email' && !isValidEmail(target.value)) {
-            setEmailError('Niepoprawny format email');
         }
         else if (name === 'email' && isValidEmail(target.value)) {
             setEmailError('');
+        }
+        else if (name === 'email' && !isValidEmail(target.value)) {
+            setEmailError('Niepoprawny format email');
         }
         setFormData((prevDataForm) => {
             return { ...prevDataForm, [name]: target.value };
