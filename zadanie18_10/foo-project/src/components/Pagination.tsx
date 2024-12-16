@@ -9,7 +9,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
-        <div>
+        <>
             {pages.map(page => (
                 <button
                     key={page}
@@ -19,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
                     {page}
                 </button>
             ))}
-        </div>
+        </>
     );
 };
 

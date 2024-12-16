@@ -82,7 +82,7 @@ const PostList = (props: PostListProps) => {
     if (error) return <p>{error}</p>
 
     return (
-        <div>
+        <>
             <h1>Posts List</h1>
             <button onClick={() => goToAddPost()}>Dodaj post</button>
             <FlexContainer>
@@ -99,7 +99,7 @@ const PostList = (props: PostListProps) => {
                     onPageChange={setCurrentPage}
                 />
             </FlexContainer>
-        </div>
+        </>
     )
 }
 
