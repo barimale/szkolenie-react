@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 const SignUp = () => {
+    const [axiosError, setAxiosError] = useState<string | undefined>(undefined);
     const [error, setError] = useState<string | undefined>(undefined);
     const [nameError, setNameError] = useState<string | undefined>(undefined);
     const [emailError, setEmailError] = useState<string | undefined>(undefined);
@@ -20,6 +21,7 @@ const SignUp = () => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
+        setAxiosError('');
         if (error === '' && emailError === '' && nameError === '') {
             axios.post('https://crm-app-akademia108-bf1127afa289.herokuapp.com/auth/signup', {
                 email: formData.email,
@@ -31,7 +33,7 @@ const SignUp = () => {
                     navigate(`/login`);
                 })
                 .catch(error => {
-                    console.log(error);
+                    setAxiosError(error.message);
                 })
         }
     };
@@ -53,7 +55,7 @@ const SignUp = () => {
         }
         else if (name === 'name' && target.value.length > 4) {
             setNameError('');
-        }        else if (name === 'name' && target.value.length <= 4) {
+        } else if (name === 'name' && target.value.length <= 4) {
             setNameError('Niepoprawny format nazwy');
         }
         setFormData((prevDataForm) => {
@@ -65,7 +67,7 @@ const SignUp = () => {
         <div style={{ border: '1px solid black', margin: '20px' }}>
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
-            <label htmlFor="name">User name</label>
+                <label htmlFor="name">User name</label>
                 <input
                     type="text"
                     id="name"
@@ -95,6 +97,7 @@ const SignUp = () => {
                 <p>{error}</p>
                 <p>{emailError}</p>
                 <button type="submit">Save</button>
+                <p style={{color: 'red'}}>{axiosError}</p>
             </form>
         </div>)
 }
