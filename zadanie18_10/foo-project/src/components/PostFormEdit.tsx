@@ -7,7 +7,7 @@ export type PostFormEditProps = {
     post: Post | undefined
 }
 const PostFormEdit = (props: PostFormEditProps) => {
-    const [formData, setFormData] = useState<Post | undefined>(props.post ? { ...props.post } : undefined);
+    const [formData, setFormData] = useState<Post | undefined>(props.post);
     const [result, setResult] = useState<string>();
     const params = useParams()
     const navigate = useNavigate();

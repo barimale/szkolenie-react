@@ -37,7 +37,7 @@ function App() {
             setPosts(items);
             setEditPost(undefined);
           }} />} />
-        <Route path='posts/:id' element={<PostPage onEditCallback={(item: any) => setEditPost(item)} />} />
+        <Route path='posts/:id' element={<PostPage onEditCallback={setEditPost} />} />
         <Route path='posts/add' element={<AddEditPost post={editPost} />} />
         <Route path='posts/edit/:id' element={<AddEditPost post={editPost} />} />
       </Routes>

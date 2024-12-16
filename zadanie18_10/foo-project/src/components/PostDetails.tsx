@@ -3,10 +3,29 @@ import { Post } from "./PostList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+type Company = {
+    name: string,
+    catchPhrase: string,
+    bs: string,
+}
+
+type Address = {
+    street: string,
+    suite: string,
+    city: string,
+    zipcode: string,
+    geo: {}
+}
+
 type User = {
+    id: string,
     name: string,
     email: string,
-    website: string
+    website: string,
+    username: string,
+    phone: string,
+    company: Company,
+    address: Address
 }
 
 const PostDetails = (props: any) => {
@@ -36,12 +55,12 @@ const PostDetails = (props: any) => {
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/posts/${Number(params.id)}`)
             .then(response => {
-                setItem(response.data)
-                setLoading(false)
+                setItem(response.data);
+                setLoading(false);
             })
             .catch(error => {
-                setError(`An error occurred while fetching data: ${error}`)
-                setLoading(false)
+                setError(`An error occurred while fetching data: ${error}`);
+                setLoading(false);
             })
     }, [])
 
