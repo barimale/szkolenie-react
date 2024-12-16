@@ -39,7 +39,8 @@ const CustomerDetails = () => {
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
     return (
-        <>
+        <div style={{border: '1px solid black', padding: '30px'}}>
+            <h2>Szczegóły</h2>
             <p>ID: {item?._id}</p>
             <p>Name: {item?.name}</p>
             <p>NIP: {item?.nip}</p>
@@ -55,7 +56,7 @@ const CustomerDetails = () => {
                 })}
             </ul>
             <button onClick={() => { navigate('/') }}>Wróć</button>
-        </>);
+        </div>);
 }
 
 export default CustomerDetails;

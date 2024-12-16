@@ -41,10 +41,10 @@ const SignUp = () => {
     const handleInputChange = (e: any) => {
         const target = e.target;
         const name = target.name;
-        if (name === 'password' && target.value.length < 8) {
-            setError('Hasło musi mieć 8 lub więcej znaków');
+        if (name === 'password' && target.value.length < 4) {
+            setError('Hasło musi mieć 4 lub więcej znaków');
         }
-        else if (name === 'password' && target.value.length >= 8) {
+        else if (name === 'password' && target.value.length >= 4) {
             setError('');
         }
         else if (name === 'email' && !isValidEmail(target.value)) {
@@ -64,10 +64,10 @@ const SignUp = () => {
     };
 
     return (
-        <div style={{ border: '1px solid black', margin: '20px' }}>
+        <div style={{ border: '1px solid black', padding: '60px' }}>
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">User name</label>
+                <label htmlFor="name">User name: </label>
                 <input
                     type="text"
                     id="name"
@@ -76,7 +76,8 @@ const SignUp = () => {
                     onChange={handleInputChange}
                     value={formData.name}
                 />
-                <label htmlFor="email">User email</label>
+                <br />
+                <label htmlFor="email">User email: </label>
                 <input
                     type="email"
                     id="email"
@@ -85,7 +86,8 @@ const SignUp = () => {
                     onChange={handleInputChange}
                     value={formData.email}
                 />
-                <label htmlFor="password">Password</label>
+                <br />
+                <label htmlFor="password">Password: </label>
                 <input
                     type="password"
                     id="password"
@@ -96,8 +98,11 @@ const SignUp = () => {
                 />
                 <p>{error}</p>
                 <p>{emailError}</p>
-                <button type="submit">Save</button>
-                <p style={{color: 'red'}}>{axiosError}</p>
+                <p style={{ cursor: 'pointer', color: 'blue' }} onClick={() => {
+                    navigate(`/login`);
+                }}>Idz do logowania</p>
+                <button type="submit">Stworz konto</button>
+                <p style={{ color: 'red' }}>{axiosError}</p>
             </form>
         </div>)
 }

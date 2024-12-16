@@ -43,14 +43,20 @@ const Home = () => {
 
     return (
         <>
-        <button onClick={()=>Logout()}>Logout</button>
+        <button onClick={()=>Logout()}>Wyloguj</button>
             <h1>Home</h1>
-            <h2>{items.map((item, index) => {
-                return <>
-                    <p key={index} style={{ cursor: 'pointer' }} >{item.name}</p>
+            <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '20px',
+                border: '1px solid black',
+                margin: '20px'
+            }}>{items.map((item, index) => {
+                return <div style={{border: '1px solid black', padding: '20px'}}>
+                    <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
                     <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
-                </>
-            })}</h2>
+                </div>
+            })}</div>
             <Pagination
                 currentPage={currentPage}
                 totalPages={limit}

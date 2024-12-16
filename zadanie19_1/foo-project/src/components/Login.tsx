@@ -40,7 +40,7 @@ const Login = () => {
         const target = e.target;
         const name = target.name;
         if (name === 'password' && target.value.length < 4) {
-            setError('Hasło musi mieć 8 lub więcej znaków');
+            setError('Hasło musi mieć 4 lub więcej znaków');
         }
         else if (name === 'password' && target.value.length >= 4) {
             setError('');
@@ -57,10 +57,10 @@ const Login = () => {
     };
 
     return (
-        <div style={{ border: '1px solid black', margin: '20px', backgroundColor: 'white' }}>
+        <div style={{ border: '1px solid black', padding: '60px'}}>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="email">User email</label>
+                <label htmlFor="email">User email: </label>
                 <input
                     type="email"
                     id="email"
@@ -69,7 +69,8 @@ const Login = () => {
                     onChange={handleInputChange}
                     value={formData.email}
                 />
-                <label htmlFor="password">Password</label>
+                <br />
+                <label htmlFor="password">Password: </label>
                 <input
                     type="password"
                     id="password"
@@ -80,7 +81,10 @@ const Login = () => {
                 />
                 <p>{error}</p>
                 <p>{emailError}</p>
-                <button type="submit">Save</button>
+                <p style={{cursor: 'pointer', color: 'blue'}} onClick={()=>{
+                    navigate(`/signup`);
+                }}>Stworz konto</p>
+                <button type="submit">Zaloguj</button>
                 <p style={{color: 'red'}}>{axiosError}</p>
             </form>
         </div>)
