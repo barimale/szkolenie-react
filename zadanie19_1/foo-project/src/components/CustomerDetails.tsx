@@ -52,9 +52,11 @@ const CustomerDetails = () => {
                             <h4>{item._id}</h4>
                             <p>Opis: {item.description}</p>
                             <p>Data: {item.date}</p>
+                            <button onClick={() => {  }}>Edytuj akcje</button>
                         </li>);
                 })}
             </ul>
+            <button onClick={() => {  }}>Dodaj akcje</button>
             <button onClick={() => { navigate('/') }}>Wróć</button>
         </div>);
 }
