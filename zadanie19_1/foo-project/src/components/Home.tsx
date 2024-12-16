@@ -33,11 +33,17 @@ const Home = () => {
         navigate(`/customers/${itemId}`);
     }
 
+    const Logout = ()=>{
+        localStorage.removeItem('authToken');
+        navigate(`/login`);
+    }
+
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
 
     return (
         <>
+        <button onClick={()=>Logout()}>Logout</button>
             <h1>Home</h1>
             <h2>{items.map((item, index) => {
                 return <>
