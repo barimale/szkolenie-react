@@ -57,7 +57,7 @@ const Login = () => {
     };
 
     return (
-        <div style={{ border: '1px solid black', margin: '20px' }}>
+        <div style={{ border: '1px solid black', margin: '20px', boxShadow: '10px 5px 5px red' }}>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email">User email</label>
