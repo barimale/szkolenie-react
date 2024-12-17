@@ -18,25 +18,26 @@ const NewCustomer = () => {
     const handleSubmit = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
         setAxiosError("");
+        console.log(JSON.stringify(formData))
         axiosClient
             .post<Customer>(
-                "/customers",
-                formData
+                "/customers/",
+                {...formData}
             )
             .then((res) => {
                 navigate('/');
             })
             .catch((error) => {
-                console.log(error);
+                setAxiosError(JSON.stringify(error.message));
             });
     };
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target;
         const name = target.name;
-        if (name === "password" && target.value.length < 4) {
-            setError("Hasło musi mieć 4 lub więcej znaków");
-        } else if (name === "password" && target.value.length >= 4) {
+        if (name === "name" && target.value.length < 4) {
+            setError("Nazwa musi mieć 4 lub więcej znaków");
+        } else if (name === "name" && target.value.length >= 4) {
             setError("");
         } else if (name === "email" && isValidEmail(target.value)) {
             setEmailError("");
@@ -76,40 +77,40 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="address1"
-                name="address.city"
+                name="address[city]"
                 placeholder="Customer address city"
                 onChange={handleInputChange}
-                value={formData?.address.city}
+                value={formData?.address?.city}
             />
             <br />
             <label htmlFor="postcode">Customer address postcode: </label>
             <input
                 type="text"
                 id="postcode"
-                name="address.postcode"
+                name="address[postcode]"
                 placeholder="Customer address postcode"
                 onChange={handleInputChange}
-                value={formData?.address.postcode}
+                value={formData?.address?.postcode}
             />
             <br />
             <label htmlFor="street">Customer address street: </label>
             <input
                 type="text"
                 id="street"
-                name="address.street"
+                name="address[street]"
                 placeholder="Customer address street"
                 onChange={handleInputChange}
-                value={formData?.address.street}
+                value={formData?.address?.street}
             />
             <br />
             <label htmlFor="suite">Customer address suite: </label>
             <input
                 type="text"
                 id="suite"
-                name="address.suite"
+                name="address[suite]"
                 placeholder="Customer address suite"
                 onChange={handleInputChange}
-                value={formData?.address.suite}
+                value={formData?.address?.suite}
             />
             <p>{error}</p>
             <p>{emailError}</p>

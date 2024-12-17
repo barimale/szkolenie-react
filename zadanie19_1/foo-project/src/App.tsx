@@ -11,7 +11,7 @@ import NewCustomer from "./components/NewCustomer";
 
 function App() {
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: any) => state.user);
   
   useEffect(()=>{
     dispatch(setUser(JSON.parse(localStorage.getItem('user') || 'null')))

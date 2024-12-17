@@ -6,7 +6,7 @@ export type User = {
   jwt: string
 }
 
-type UserSliceState = {
+export type UserSliceState = {
   user: User | null
 }
 
