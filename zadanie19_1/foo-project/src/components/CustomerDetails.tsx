@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
 import apiClient from '../utilities/axiosClient';
 
-type Action = {
+export type Action = {
     _id: string,
     type: string,
     description: string,
