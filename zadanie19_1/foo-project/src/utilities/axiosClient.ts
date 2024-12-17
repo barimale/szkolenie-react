@@ -9,7 +9,7 @@ const apiClient = axios.create({
 // Dodanie interceptora żądań
 apiClient.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('authToken'); // Pobieranie tokena z localStorage
+        const token = JSON.parse(localStorage.getItem('user') || 'null')?.jwt; // Pobieranie tokena z localStorage
         if (token) {
             config.headers['Authorization'] = `Bearer ${token}`; // Dodanie tokena do nagłówka
         }
