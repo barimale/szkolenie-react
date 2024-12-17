@@ -16,9 +16,9 @@ const CreateAction = () => {
         setAxiosError("");
         console.log(JSON.stringify(formData))
         axiosClient
-            .post<Customer>(
+            .post<Action>(
                 "/actions",
-                { ...formData }
+                { ...formData, customer: params.id }
             )
             .then((res) => {
             })
@@ -47,18 +47,9 @@ const CreateAction = () => {
             <button onClick={()=> navigate(`/customers/${params.id}`)}>Wroc</button>
 
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Customer name: </label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Customer name"
-                    onChange={handleInputChange}
-                    value={formData?.customer}
-                /><br />
                 <label htmlFor="date">date: </label>
                 <input
-                    type="text"
+                    type="date"
                     id="date"
                     name="date"
                     placeholder="date"
