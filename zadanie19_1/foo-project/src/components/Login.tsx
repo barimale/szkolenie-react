@@ -1,13 +1,15 @@
 import { useState } from "react";
-import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useDispatch } from "react-redux";
+import { login } from '../store/customerSlice';
 
 const Login = () => {
     const [axiosError, setAxiosError] = useState<string | undefined>(undefined);
     const [error, setError] = useState<string | undefined>(undefined);
     const [emailError, setEmailError] = useState<string | undefined>(undefined);
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
+    
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -21,18 +23,7 @@ const Login = () => {
         event.preventDefault();
         setAxiosError('');
         if (error === '' && emailError === '') {
-            axios.post('https://crm-app-akademia108-bf1127afa289.herokuapp.com/auth/login', {
-                email: formData.email,
-                password: formData.password
-            })
-                .then(p => {
-                    console.log(JSON.stringify(p.data))
-                    localStorage.setItem('authToken', p.data.jwt)
-                    navigate(`/`);
-                })
-                .catch(error => {
-                    setAxiosError(error.message);
-                })
+            dispatch(login(formData));
         }
     };
 
