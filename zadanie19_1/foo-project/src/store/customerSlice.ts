@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import apiClient from "../utilities/axiosClient";
 
 const customerSlice = createSlice({
   name: 'customer',
@@ -38,10 +39,19 @@ const customerSlice = createSlice({
     logout: (state: any): void => {
       state.jwt = '';
       localStorage.removeItem('authToken');
+    },
+    getCustomers: (state: any, action: any) =>{
+      apiClient.get(`/customers?page=${action.payload.currentPage}&limit=${action.payload.limit}`)
+            .then(response => {
+                state.customers = response.data.data
+            })
+            .catch(error => {
+                state.error = `An error occurred while fetching data: ${error}`
+            })
     }
   }
 });
 
-export const { login, signUp, logout } = customerSlice.actions; // actions
+export const { login, signUp, logout, getCustomers } = customerSlice.actions; // actions
 
 export default customerSlice.reducer; // reducer
