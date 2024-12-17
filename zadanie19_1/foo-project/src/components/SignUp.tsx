@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../store/customerSlice";
 
 const SignUp = () => {
@@ -27,7 +27,7 @@ const SignUp = () => {
         event.preventDefault();
         setAxiosError('');
         dispatch(signUp(formData));
-        if (jwtError) {
+        if (jwtError==='') {
             navigate('/login');
         } else {
             setAxiosError(jwtError);
