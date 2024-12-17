@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Customer } from "./Home";
 import { Action } from "./CustomerDetails";
 import axiosClient from "../utilities/axiosClient";
 
@@ -45,7 +44,6 @@ const CreateAction = () => {
             <h1>Action create</h1>
             <p>ID: {params.id}</p>
             <button onClick={()=> navigate(`/customers/${params.id}`)}>Wroc</button>
-
             <form onSubmit={handleSubmit}>
                 <label htmlFor="date">date: </label>
                 <input
@@ -72,7 +70,7 @@ const CreateAction = () => {
                     type="text"
                     id="type"
                     name="type"
-                    placeholder="type"
+                    placeholder="email"
                     onChange={handleInputChange}
                     value={formData?.type}
                 />
