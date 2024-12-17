@@ -3,10 +3,16 @@ import apiClient from '../utilities/axiosClient';
 import { useEffect, useState } from 'react';
 import Pagination from './Pagination';
 
-type Customer = {
+export type Customer = {
     _id: string,
     name: string,
     npm: string,
+    address: {
+        street: string,
+        suite: string,
+        city: string,
+        postcode: string
+    }
     actions: string[]
 }
 const Home = () => {
@@ -33,9 +39,20 @@ const Home = () => {
         navigate(`/customers/${itemId}`);
     }
 
-    const Logout = ()=>{
+    const Logout = () => {
         localStorage.removeItem('authToken');
         navigate(`/login`);
+    }
+
+    const removeClient = (clientId: string) => {
+        apiClient.delete(`/customers/${clientId}`)
+            .then(response => {
+                const removed = items.filter(p => p._id !== clientId)
+                setItems(removed)
+            })
+            .catch(error => {
+                setError(`An error occurred while fetching data: ${error}`)
+            })
     }
 
     if (loading) return <p>Loading...</p>
@@ -43,9 +60,9 @@ const Home = () => {
 
     return (
         <>
-        <button onClick={()=>Logout()}>Wyloguj</button>
+            <button onClick={() => Logout()}>Wyloguj</button>
             <h1>Home</h1>
-            <button onClick={() => {  }}>Stworz klienta</button>
+            <button onClick={() => { navigate(`/customers/new`); }}>Stworz klienta</button>
             <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -53,10 +70,10 @@ const Home = () => {
                 border: '1px solid black',
                 margin: '20px'
             }}>{items.map((item, index) => {
-                return <div style={{border: '1px solid black', padding: '20px'}}>
+                return <div style={{ border: '1px solid black', padding: '20px' }}>
                     <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
                     <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
-                    <button onClick={() => {  }}>Usun</button>
+                    <button onClick={() => removeClient(item._id)}>Usun</button>
                 </div>
             })}</div>
             <Pagination
