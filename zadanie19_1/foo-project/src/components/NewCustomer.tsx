@@ -9,11 +9,6 @@ const NewCustomer = () => {
     const [formData, setFormData] = useState<Customer>();
     const [axiosError, setAxiosError] = useState<string>();
     const [error, setError] = useState<string>();
-    const [emailError, setEmailError] = useState<string>();
-
-    const isValidEmail = (email: string) => {
-        return /\S+@\S+\.\S+/.test(email);
-    };
 
     const handleSubmit = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
@@ -21,8 +16,8 @@ const NewCustomer = () => {
         console.log(JSON.stringify(formData))
         axiosClient
             .post<Customer>(
-                "/customers/",
-                {...formData}
+                "/customers",
+                formData
             )
             .then((res) => {
                 navigate('/');
@@ -39,15 +34,23 @@ const NewCustomer = () => {
             setError("Nazwa musi mieć 4 lub więcej znaków");
         } else if (name === "name" && target.value.length >= 4) {
             setError("");
-        } else if (name === "email" && isValidEmail(target.value)) {
-            setEmailError("");
-        } else if (name === "email" && !isValidEmail(target.value)) {
-            setEmailError("Niepoprawny format email");
         }
         setFormData((prevDataForm: any) => {
             return { ...prevDataForm, [name]: target.value };
         });
     };
+
+    const handleInputAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const target = e.target;
+        const name = target.name;
+    
+        setFormData((prevDataForm: any) => {
+          return {
+            ...prevDataForm,
+            address: { ...prevDataForm?.address, [name]: target.value },
+          };
+        });
+      };
 
     return (<>
         <h1>New Customer</h1>
@@ -77,9 +80,9 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="address1"
-                name="address[city]"
+                name="city"
                 placeholder="Customer address city"
-                onChange={handleInputChange}
+                onChange={handleInputAddressChange}
                 value={formData?.address?.city}
             />
             <br />
@@ -87,9 +90,9 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="postcode"
-                name="address[postcode]"
+                name="postcode"
                 placeholder="Customer address postcode"
-                onChange={handleInputChange}
+                onChange={handleInputAddressChange}
                 value={formData?.address?.postcode}
             />
             <br />
@@ -97,9 +100,9 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="street"
-                name="address[street]"
+                name="street"
                 placeholder="Customer address street"
-                onChange={handleInputChange}
+                onChange={handleInputAddressChange}
                 value={formData?.address?.street}
             />
             <br />
@@ -107,13 +110,12 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="suite"
-                name="address[suite]"
+                name="suite"
                 placeholder="Customer address suite"
-                onChange={handleInputChange}
+                onChange={handleInputAddressChange}
                 value={formData?.address?.suite}
             />
             <p>{error}</p>
-            <p>{emailError}</p>
             <button type="submit">Stworz</button>
             <p style={{ color: "red" }}>{axiosError}</p>
         </form>
