@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import taskReducer from './customerSlice'
+import customerReducer from './customerSlice'
 
 export const store = configureStore({
   reducer: {
-    customer: taskReducer
+    customer: customerReducer
   }
 })
