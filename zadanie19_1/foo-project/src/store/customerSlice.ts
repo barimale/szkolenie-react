@@ -3,9 +3,13 @@ import axios from "axios";
 
 const customerSlice = createSlice({
   name: 'customer',
-  initialState: [],
+  initialState: {
+    error: '',
+    jwt: '',
+    customers: []
+  },
   reducers: {
-    login: (state: any, action: any) => {
+    login: (state: any, action: any): void => {
       axios.post('https://crm-app-akademia108-bf1127afa289.herokuapp.com/auth/login', {
         email: action.payload.email,
         password: action.payload.password
