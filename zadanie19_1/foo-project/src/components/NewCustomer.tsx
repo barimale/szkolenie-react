@@ -76,7 +76,7 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="address1"
-                name="address1"
+                name="address.city"
                 placeholder="Customer address city"
                 onChange={handleInputChange}
                 value={formData?.address.city}
@@ -86,7 +86,7 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="postcode"
-                name="postcode"
+                name="address.postcode"
                 placeholder="Customer address postcode"
                 onChange={handleInputChange}
                 value={formData?.address.postcode}
@@ -96,7 +96,7 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="street"
-                name="street"
+                name="address.street"
                 placeholder="Customer address street"
                 onChange={handleInputChange}
                 value={formData?.address.street}
@@ -106,17 +106,14 @@ const NewCustomer = () => {
             <input
                 type="text"
                 id="suite"
-                name="suite"
+                name="address.suite"
                 placeholder="Customer address suite"
                 onChange={handleInputChange}
                 value={formData?.address.suite}
             />
             <p>{error}</p>
             <p>{emailError}</p>
-            <Link style={{ cursor: "pointer", color: "blue" }} to="/signup">
-                Stworz konto
-            </Link>
-            <button type="submit">Zaloguj</button>
+            <button type="submit">Stworz</button>
             <p style={{ color: "red" }}>{axiosError}</p>
         </form>
     </>)
