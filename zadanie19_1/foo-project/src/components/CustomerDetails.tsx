@@ -41,6 +41,7 @@ const CustomerDetails = () => {
     return (
         <div style={{border: '1px solid black', padding: '30px'}}>
             <h2>Szczegóły</h2>
+            <button onClick={() => {  }}>Edytuj</button>
             <p>ID: {item?._id}</p>
             <p>Name: {item?.name}</p>
             <p>NIP: {item?.nip}</p>

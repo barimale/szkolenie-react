@@ -85,6 +85,10 @@ const Home = () => {
                         onPageChange={setCurrentPage}
                     /></>
             )}
+            {items.length === 0 && (
+                <p>Brak klientów w systemie.</p>
+            )
+}
         </>)
 }
 

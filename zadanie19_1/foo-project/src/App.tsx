@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <header style={{ width: "100%" }}>
-        <h1>Jesteś zalogowany jako {userState.user?.name} test</h1>
+        <h4>Witaj! Jesteś zalogowany jako {userState.user?.name} test</h4>
       </header>
       <Routes>
         <Route index element={<Home />} />
