@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 export type Customer = {
     _id: string,
     name: string,
-    npm: string,
+    nip: string,
     address: {
         street: string,
         suite: string,
@@ -15,13 +15,17 @@ export type Customer = {
     }
     actions: string[]
 }
-const Home = () => {
+
+type HomeProps = {
+    onEdit: (item:Customer)=> void
+}
+const Home = (props: HomeProps) => {
     const navigate = useNavigate();
     const [items, setItems] = useState<Customer[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [limit, setLimit] = useState(1);
+    const [limit, setLimit] = useState(10);
 
     useEffect(() => {
         apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
@@ -74,6 +78,7 @@ const Home = () => {
                     }}>{items.map((item, index) => {
                         return <div style={{ border: '1px solid black', padding: '20px' }}>
                             <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
+                            <button onClick={() => props.onEdit(item)}>Edytuj</button>
                             <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
                             <button onClick={() => removeClient(item._id)}>Usun</button>
                         </div>

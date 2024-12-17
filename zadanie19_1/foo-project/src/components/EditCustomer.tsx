@@ -1,12 +1,16 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { Customer } from "./Home";
 import axiosClient from "../utilities/axiosClient";
 
-const NewCustomer = () => {
+type EditCustomerProps = {
+    customer: Customer | undefined
+}
+
+const EditCustomer = (props: EditCustomerProps) => {
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState<Customer>();
+    const [formData, setFormData] = useState<Customer | undefined>(props.customer);
     const [axiosError, setAxiosError] = useState<string>();
     const [error, setError] = useState<string>();
 
@@ -15,9 +19,9 @@ const NewCustomer = () => {
         setAxiosError("");
         console.log(JSON.stringify(formData))
         axiosClient
-            .post<Customer>(
+            .put<Customer>(
                 "/customers",
-                {...formData, actions: []}
+                {...formData}
             )
             .then((res) => {
                 navigate('/');
@@ -122,4 +126,4 @@ const NewCustomer = () => {
     </>)
 }
 
-export default NewCustomer;
+export default EditCustomer;

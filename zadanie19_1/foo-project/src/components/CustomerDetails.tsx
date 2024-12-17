@@ -36,28 +36,46 @@ const CustomerDetails = () => {
             })
     }, [])
 
+    const removeAction = (actionId: string) => {
+        apiClient.delete(`/actions/${actionId}`)
+            .then(response => {
+
+            })
+            .catch(error => {
+                setError(`An error occurred while fetching data: ${error}`)
+            })
+    }
+
+    const editAction = (actionId: string, customerId: string) => {
+        navigate(`/customers/${customerId}/action/${actionId}`)
+    }
+
+    const addAction = (customerId: string | undefined) => {
+        navigate(`/customers/${customerId}/action/new`)
+    }
+
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
     return (
-        <div style={{border: '1px solid black', padding: '30px'}}>
+        <div style={{ border: '1px solid black', padding: '30px' }}>
             <h2>Szczegóły</h2>
-            <button onClick={() => {  }}>Edytuj</button>
             <p>ID: {item?._id}</p>
             <p>Name: {item?.name}</p>
             <p>NIP: {item?.nip}</p>
             <p>Actions:</p>
             <ul>
-                {item?.actions.map((item, index) => {
+                {item?.actions.map((subitem, index) => {
                     return (
                         <li key={index}>
-                            <h4>{item._id}</h4>
-                            <p>Opis: {item.description}</p>
-                            <p>Data: {item.date}</p>
-                            <button onClick={() => {  }}>Edytuj akcje</button>
+                            <h4>{subitem._id}</h4>
+                            <p>Opis: {subitem.description}</p>
+                            <p>Data: {subitem.date}</p>
+                            <button onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcje</button>
+                            <button onClick={() => { removeAction(subitem._id) }}>Usuń akcje</button>
                         </li>);
                 })}
             </ul>
-            <button onClick={() => {  }}>Dodaj akcje</button>
+            <button onClick={() => { addAction(item?._id) }}>Dodaj akcje</button>
             <button onClick={() => { navigate('/') }}>Wróć</button>
         </div>);
 }
