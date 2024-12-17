@@ -34,10 +34,14 @@ const customerSlice = createSlice({
         .catch(error => {
           state.error = error.message;
         })
+    },
+    logout: (state: any): void => {
+      state.jwt = '';
+      localStorage.removeItem('authToken');
     }
   }
 });
 
-export const { login, signUp } = customerSlice.actions; // actions
+export const { login, signUp, logout } = customerSlice.actions; // actions
 
 export default customerSlice.reducer; // reducer

@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router';
 import apiClient from '../utilities/axiosClient';
 import { useEffect, useState } from 'react';
 import Pagination from './Pagination';
+import { useDispatch } from 'react-redux';
+import { logout } from '../store/customerSlice';
 
 type Customer = {
     _id: string,
@@ -16,6 +18,7 @@ const Home = () => {
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [limit, setLimit] = useState(1);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
@@ -34,7 +37,7 @@ const Home = () => {
     }
 
     const Logout = ()=>{
-        localStorage.removeItem('authToken');
+        dispatch(logout())
         navigate(`/login`);
     }
 
