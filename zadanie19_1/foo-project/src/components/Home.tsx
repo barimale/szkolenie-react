@@ -45,6 +45,7 @@ const Home = () => {
         <>
         <button onClick={()=>Logout()}>Wyloguj</button>
             <h1>Home</h1>
+            <button onClick={() => {  }}>Stworz klienta</button>
             <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -55,6 +56,7 @@ const Home = () => {
                 return <div style={{border: '1px solid black', padding: '20px'}}>
                     <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
                     <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
+                    <button onClick={() => {  }}>Usun</button>
                 </div>
             })}</div>
             <Pagination
