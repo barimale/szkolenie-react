@@ -8,6 +8,7 @@ const EditAction = () => {
         <>
             <h1>Action edit</h1>
             <p>ID: {params.actionId}</p>
+            <p>CustomerID: {params.id}</p>
             <button onClick={() => navigate(`/customers/${params.id}`)}>Wroc</button>
         </>
     )

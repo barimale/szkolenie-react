@@ -36,6 +36,18 @@ const CustomerDetails = () => {
             })
     }, [])
 
+    useEffect(() => {
+        apiClient.get(`/customers/${params.id}`)
+            .then(response => {
+                setItem(response.data)
+                setLoading(false)
+            })
+            .catch(error => {
+                setError(`An error occurred while fetching data: ${error}`)
+                setLoading(false)
+            })
+    }, [item?.actions])
+
     const removeAction = (actionId: string) => {
         apiClient.delete(`/actions/${actionId}`)
             .then(response => {
