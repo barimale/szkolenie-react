@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from '../store/customerSlice';
 
 const Login = () => {
@@ -9,7 +9,9 @@ const Login = () => {
     const [emailError, setEmailError] = useState<string | undefined>(undefined);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
+    const jwt = useSelector((state: any) => state.jwt)
+    const jwtError = useSelector((state: any) => state.error)
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -24,6 +26,12 @@ const Login = () => {
         setAxiosError('');
         if (error === '' && emailError === '') {
             dispatch(login(formData));
+            if(jwt)
+            {
+                navigate('/');
+            }else{
+                setAxiosError(jwtError);
+            }
         }
     };
 
