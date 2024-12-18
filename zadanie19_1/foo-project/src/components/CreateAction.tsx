@@ -43,7 +43,7 @@ const CreateAction = () => {
         <>
             <h1>Action create</h1>
             <p>ID: {params.id}</p>
-            <button onClick={()=> navigate(`/customers/${params.id}`)}>Wroc</button>
+            <button onClick={() => navigate(`/customers/${params.id}`)}>Wroc</button>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="date">date: </label>
                 <input
