@@ -20,8 +20,8 @@ const EditCustomer = (props: EditCustomerProps) => {
         console.log(JSON.stringify(formData))
         axiosClient
             .put<Customer>(
-                "/customers",
-                {...formData}
+                `/customers/${formData?._id}`,
+                { ...formData }
             )
             .then((res) => {
                 navigate('/');
@@ -47,17 +47,17 @@ const EditCustomer = (props: EditCustomerProps) => {
     const handleInputAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target;
         const name = target.name;
-    
+
         setFormData((prevDataForm: any) => {
-          return {
-            ...prevDataForm,
-            address: { ...prevDataForm?.address, [name]: target.value },
-          };
+            return {
+                ...prevDataForm,
+                address: { ...prevDataForm?.address, [name]: target.value },
+            };
         });
-      };
+    };
 
     return (<>
-        <h1>New Customer</h1>
+        <h1>Edit Customer</h1>
         <button onClick={() => { navigate('/') }}>Wróć</button>
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">Customer name: </label>

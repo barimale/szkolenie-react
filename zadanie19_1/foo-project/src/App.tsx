@@ -37,7 +37,7 @@ function App() {
         <h4>Witaj! Jesteś zalogowany jako {userState.user?.name} test</h4>
       </header>
       <Routes>
-        <Route index element={<Home onEdit={(item: Customer) => setEditCustomer(item)}/>} />
+        <Route index element={<Home onEdit={(item: Customer| undefined) => setEditCustomer(item)}/>} />
         <Route path="login" element={<Login />} />
         <Route path="signUp" element={<SignUp />} />
         <Route path="customers/:id" element={<CustomerDetails />} />

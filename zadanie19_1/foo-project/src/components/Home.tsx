@@ -17,7 +17,7 @@ export type Customer = {
 }
 
 type HomeProps = {
-    onEdit: (item: Customer) => void
+    onEdit: (item: Customer| undefined) => void
 }
 const Home = (props: HomeProps) => {
     const navigate = useNavigate();
@@ -70,6 +70,10 @@ const Home = (props: HomeProps) => {
                 setError(`An error occurred while fetching data: ${error}`)
             })
     }
+
+    useEffect(()=>{
+        props.onEdit(undefined);
+    },[]);
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
