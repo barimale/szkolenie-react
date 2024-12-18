@@ -91,7 +91,7 @@ const Home = (props: HomeProps) => {
                         }}>{items.map((item, index) => {
                             return <div style={{ border: '1px solid black', padding: '20px' }}>
                                 <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
-                                {/* <button onClick={() => props.onEdit(item)}>Edytuj</button> */}
+                                <button onClick={() => props.onEdit(item)}>Edytuj</button>
                                 <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
                                 <button onClick={() => removeClient(item._id)}>Usun</button>
                             </div>

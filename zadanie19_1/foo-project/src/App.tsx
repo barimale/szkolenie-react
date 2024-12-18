@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import "./App.css";
 import Login from "./components/Login";
 import Home, { Customer } from "./components/Home";
@@ -15,11 +15,21 @@ import EditAction from "./components/EditAction";
 function App() {
   const [editCustomer, setEditCustomer] = useState<Customer>();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userState = useSelector((state: any) => state.user);
   
   useEffect(()=>{
     dispatch(setUser(JSON.parse(localStorage.getItem('user') || 'null')))
   }, [])
+
+  useEffect(()=>{
+    if(editCustomer)
+    {
+      navigate('/customers/edit')
+    }
+  }, [editCustomer])
+
+  
 
   return (
     <>
