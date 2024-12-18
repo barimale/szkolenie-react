@@ -88,7 +88,7 @@ const CreateAction = () => {
                 <br />
                 <p>{emailError}</p>
                 <button type="submit">Stworz</button>
-                <p>{axiosError}</p>
+                <p style={{ color: "red" }}>{axiosError}</p>
             </form>
         </>
     )
