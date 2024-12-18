@@ -9,6 +9,11 @@ const CreateAction = () => {
     const [formData, setFormData] = useState<Action>();
     const [axiosError, setAxiosError] = useState<string>();
     const [error, setError] = useState<string>();
+    const [emailError, setEmailError] = useState<string>();
+
+    const isValidEmail = (email: string) => {
+        return /\S+@\S+\.\S+/.test(email);
+    };
 
     const handleSubmit = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
@@ -19,7 +24,8 @@ const CreateAction = () => {
                 "/actions",
                 { ...formData, customer: params.id }
             )
-            .then((res) => {
+            .then(() => {
+                navigate(`/customers/${params.id}`)
             })
             .catch((error) => {
                 setAxiosError(JSON.stringify(error.message));
@@ -29,10 +35,14 @@ const CreateAction = () => {
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target;
         const name = target.name;
-        if (name === "name" && target.value.length < 4) {
-            setError("Nazwa musi mieć 4 lub więcej znaków");
-        } else if (name === "name" && target.value.length >= 4) {
+        if (name === "description" && target.value.length < 4) {
+            setError("Opis musi mieć 4 lub więcej znaków");
+        } else if (name === "description" && target.value.length >= 4) {
             setError("");
+        } else if (name === "email" && isValidEmail(target.value)) {
+            setEmailError("");
+        } else if (name === "email" && !isValidEmail(target.value)) {
+            setEmailError("Niepoprawny format email");
         }
         setFormData((prevDataForm: any) => {
             return { ...prevDataForm, [name]: target.value };
@@ -65,6 +75,7 @@ const CreateAction = () => {
                     value={formData?.description}
                 />
                 <br />
+                <p>{error}</p>
                 <label htmlFor="type">type: </label>
                 <input
                     type="text"
@@ -75,8 +86,9 @@ const CreateAction = () => {
                     value={formData?.type}
                 />
                 <br />
+                <p>{emailError}</p>
                 <button type="submit">Stworz</button>
-
+                <p>{axiosError}</p>
             </form>
         </>
     )
