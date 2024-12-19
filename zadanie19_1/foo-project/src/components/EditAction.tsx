@@ -65,9 +65,9 @@ const EditAction = () => {
             <h1>Action edit</h1>
             <p>ID: {params.actionId}</p>
             <p>CustomerID: {params.id}</p>
-            <button onClick={() => navigate(`/customers/${params.id}`)}>Wroc</button>
+            <button onClick={() => navigate(`/customers/${params.id}`)}>Wróć</button>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="date">date: </label>
+                <label htmlFor="date">Data: </label>
                 <input
                     type="date"
                     id="date"
@@ -77,7 +77,7 @@ const EditAction = () => {
                     value={formData?.date}
                 />
                 <br />
-                <label htmlFor="description">description: </label>
+                <label htmlFor="description">Opis: </label>
                 <input
                     type="text"
                     id="description"
@@ -88,7 +88,7 @@ const EditAction = () => {
                 />
                 <br />
                 <p>{error}</p>
-                <label htmlFor="type">type: </label>
+                <label htmlFor="type">Typ: </label>
                 <input
                     type="text"
                     id="type"

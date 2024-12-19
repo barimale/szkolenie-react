@@ -86,8 +86,8 @@ const Home = (props: HomeProps) => {
         <>
             <>
                 <button onClick={() => Logout()}>Wyloguj</button>
-                <h1>Home</h1>
-                <button onClick={() => { navigate(`/customers/new`); }}>Stworz klienta</button>
+                <h1>Strona główna</h1>
+                <button onClick={() => { navigate(`/customers/new`); }}>Stwórz klienta</button>
                 {items.length > 0 && (
                     <>
                         <div style={{
@@ -101,7 +101,7 @@ const Home = (props: HomeProps) => {
                                 <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
                                 <button onClick={() => props.onEdit(item)}>Edytuj</button>
                                 <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
-                                <button onClick={() => removeClient(item._id)}>Usun</button>
+                                <button onClick={() => removeClient(item._id)}>Usuń</button>
                             </div>
                         })}</div>
 
