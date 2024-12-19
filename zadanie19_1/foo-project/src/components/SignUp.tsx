@@ -67,7 +67,7 @@ const SignUp = () => {
     <div style={{ border: "1px solid black", padding: "60px" }}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">User name: </label>
+        <label htmlFor="name">Imię: </label>
         <input
           type="text"
           id="name"
@@ -77,7 +77,7 @@ const SignUp = () => {
           value={formData.name}
         />
         <br />
-        <label htmlFor="email">User email: </label>
+        <label htmlFor="email">Email: </label>
         <input
           type="email"
           id="email"
@@ -87,7 +87,7 @@ const SignUp = () => {
           value={formData.email}
         />
         <br />
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password">Hasło: </label>
         <input
           type="password"
           id="password"
@@ -99,10 +99,10 @@ const SignUp = () => {
         <p>{error}</p>
         <p>{emailError}</p>
         <Link style={{ cursor: "pointer", color: "blue" }} to="/login">
-          Idz do logowania
+          Idź do logowania
         </Link>
         <br />
-        <button type="submit">Stworz konto</button>
+        <button type="submit">Stwórz konto</button>
         <p style={{ color: "red" }}>{axiosError}</p>
       </form>
     </div>

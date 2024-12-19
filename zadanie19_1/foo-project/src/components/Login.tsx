@@ -62,7 +62,7 @@ const Login = () => {
     <div style={{ border: "1px solid black", padding: "60px" }}>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">User email: </label>
+        <label htmlFor="email">Email: </label>
         <input
           type="email"
           id="email"
@@ -72,7 +72,7 @@ const Login = () => {
           value={formData.email}
         />
         <br />
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password">Hasło: </label>
         <input
           type="password"
           id="password"
@@ -84,7 +84,7 @@ const Login = () => {
         <p>{error}</p>
         <p>{emailError}</p>
         <Link style={{ cursor: "pointer", color: "blue" }} to="/signup">
-          Stworz konto
+          Stwórz konto
         </Link>
         <br />
         <button type="submit">Zaloguj</button>
