@@ -15,9 +15,7 @@ const EditAction = () => {
         axiosClient
             .get(`/actions/${params.id}`)
             .then(res => {
-                console.log(JSON.stringify(res.data.data))
                 const data = res.data.data.find((p: Action) => p._id === params.actionId);
-                console.log(JSON.stringify(data))
                 setFormData(data);
             }).catch(error => {
                 setAxiosError(error.message);
