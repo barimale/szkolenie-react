@@ -28,7 +28,7 @@ apiClient.interceptors.response.use(
         if (error.response?.status === 401) {
             // Przykład: Wylogowanie użytkownika przy błędzie 401
             console.error('Sesja wygasła. Zaloguj się ponownie.');
-            localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
             window.location.href = '/login';
         }
         return Promise.reject(error);

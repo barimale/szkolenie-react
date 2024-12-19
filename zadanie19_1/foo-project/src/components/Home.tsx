@@ -59,7 +59,7 @@ const Home = (props: HomeProps) => {
     }
 
     const Logout = () => {
-        localStorage.removeItem('authToken');
+        localStorage.removeItem('user');
         dispatch(setUser(null));
         navigate(`/login`);
     }
