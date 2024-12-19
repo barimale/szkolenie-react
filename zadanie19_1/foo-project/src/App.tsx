@@ -47,9 +47,6 @@ function App() {
         <Route path="customers/new" element={<NewCustomer />} />
         <Route path="customers/edit" element={<EditCustomer customer={editCustomer} />} />
       </Routes>
-      <footer>
-        <h4>Footer</h4>
-      </footer>
     </>
   );
 }
