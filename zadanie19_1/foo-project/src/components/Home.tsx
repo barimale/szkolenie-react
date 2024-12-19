@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router';
 import apiClient from '../utilities/axiosClient';
 import { useEffect, useState } from 'react';
 import Pagination from './Pagination';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../store/userSlice';
 
 export type Customer = {
     _id: string,
@@ -21,6 +23,7 @@ type HomeProps = {
 }
 const Home = (props: HomeProps) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [items, setItems] = useState<Customer[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -57,6 +60,7 @@ const Home = (props: HomeProps) => {
 
     const Logout = () => {
         localStorage.removeItem('authToken');
+        dispatch(setUser(null));
         navigate(`/login`);
     }
 

@@ -17,34 +17,35 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userState = useSelector((state: any) => state.user);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     dispatch(setUser(JSON.parse(localStorage.getItem('user') || 'null')))
   }, [])
 
-  useEffect(()=>{
-    if(editCustomer)
-    {
+  useEffect(() => {
+    if (editCustomer) {
       navigate('/customers/edit')
     }
   }, [editCustomer])
 
-  
+
 
   return (
     <>
       <header style={{ width: "100%" }}>
-        <h4>Witaj! Jesteś zalogowany jako {userState.user?.name} test</h4>
+        {userState.user?.name && (
+          <h4>Witaj! Jesteś zalogowany jako {userState.user?.name}</h4>
+        )}
       </header>
       <Routes>
-        <Route index element={<Home onEdit={(item: Customer| undefined) => setEditCustomer(item)}/>} />
+        <Route index element={<Home onEdit={(item: Customer | undefined) => setEditCustomer(item)} />} />
         <Route path="login" element={<Login />} />
         <Route path="signUp" element={<SignUp />} />
         <Route path="customers/:id" element={<CustomerDetails />} />
         <Route path="customers/:id/action/new" element={<CreateAction />} />
         <Route path="customers/:id/action/:actionId" element={<EditAction />} />
         <Route path="customers/new" element={<NewCustomer />} />
-        <Route path="customers/edit" element={<EditCustomer customer= {editCustomer} />} />
+        <Route path="customers/edit" element={<EditCustomer customer={editCustomer} />} />
       </Routes>
       <footer>
         <h4>Footer</h4>

@@ -53,10 +53,10 @@ const NewCustomer = () => {
       };
 
     return (<>
-        <h1>New Customer</h1>
+        <h1>Nowy klient</h1>
         <button onClick={() => { navigate('/') }}>Wróć</button>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Customer name: </label>
+            <label htmlFor="name">Nazwa: </label>
             <input
                 type="text"
                 id="name"
@@ -66,7 +66,7 @@ const NewCustomer = () => {
                 value={formData?.name}
             />
             <br />
-            <label htmlFor="nip">Customer nip: </label>
+            <label htmlFor="nip">NIP: </label>
             <input
                 type="text"
                 id="nip"
@@ -76,7 +76,7 @@ const NewCustomer = () => {
                 value={formData?.nip}
             />
             <br />
-            <label htmlFor="address1">Customer address city: </label>
+            <label htmlFor="address1">Adres - miasto: </label>
             <input
                 type="text"
                 id="address1"
@@ -86,7 +86,7 @@ const NewCustomer = () => {
                 value={formData?.address?.city}
             />
             <br />
-            <label htmlFor="postcode">Customer address postcode: </label>
+            <label htmlFor="postcode">Adres - kod pocztowy: </label>
             <input
                 type="text"
                 id="postcode"
@@ -96,7 +96,7 @@ const NewCustomer = () => {
                 value={formData?.address?.postcode}
             />
             <br />
-            <label htmlFor="street">Customer address street: </label>
+            <label htmlFor="street">Adres - ulica: </label>
             <input
                 type="text"
                 id="street"
@@ -106,7 +106,7 @@ const NewCustomer = () => {
                 value={formData?.address?.street}
             />
             <br />
-            <label htmlFor="suite">Customer address suite: </label>
+            <label htmlFor="suite">Adres - numer: </label>
             <input
                 type="text"
                 id="suite"
@@ -116,7 +116,7 @@ const NewCustomer = () => {
                 value={formData?.address?.suite}
             />
             <p>{error}</p>
-            <button type="submit">Stworz</button>
+            <button type="submit">Stwórz</button>
             <p style={{ color: "red" }}>{axiosError}</p>
         </form>
     </>)

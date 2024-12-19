@@ -101,6 +101,7 @@ const SignUp = () => {
         <Link style={{ cursor: "pointer", color: "blue" }} to="/login">
           Idz do logowania
         </Link>
+        <br />
         <button type="submit">Stworz konto</button>
         <p style={{ color: "red" }}>{axiosError}</p>
       </form>
