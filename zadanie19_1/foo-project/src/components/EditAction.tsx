@@ -33,8 +33,8 @@ const EditAction = () => {
         setAxiosError("");
         console.log(JSON.stringify(formData))
         axiosClient
-            .post<Action>(
-                "/actions",
+            .put<Action>(
+                `/actions/${params.actionId}`,
                 { ...formData, customer: params.id }
             )
             .then(() => {
