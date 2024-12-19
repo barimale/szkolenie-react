@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { Action } from "./CustomerDetails";
 import axiosClient from "../utilities/axiosClient";
 
@@ -51,11 +51,11 @@ const CreateAction = () => {
 
     return (
         <>
-            <h1>Action create</h1>
+            <h1>Stwórz akcję</h1>
             <p>ID: {params.id}</p>
-            <button onClick={() => navigate(`/customers/${params.id}`)}>Wroc</button>
+            <Link to={`/customers/${params.id}`}>Wróć</Link>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="date">date: </label>
+                <label htmlFor="date">Data: </label>
                 <input
                     type="date"
                     id="date"
@@ -65,7 +65,7 @@ const CreateAction = () => {
                     value={formData?.date}
                 />
                 <br />
-                <label htmlFor="description">description: </label>
+                <label htmlFor="description">Opis: </label>
                 <input
                     type="text"
                     id="description"
@@ -76,7 +76,7 @@ const CreateAction = () => {
                 />
                 <br />
                 <p>{error}</p>
-                <label htmlFor="type">type: </label>
+                <label htmlFor="type">Typ: </label>
                 <input
                     type="text"
                     id="type"
@@ -87,7 +87,7 @@ const CreateAction = () => {
                 />
                 <br />
                 <p>{emailError}</p>
-                <button type="submit">Stworz</button>
+                <button type="submit">Stwórz</button>
                 <p style={{ color: "red" }}>{axiosError}</p>
             </form>
         </>

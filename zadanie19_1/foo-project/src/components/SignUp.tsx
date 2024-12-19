@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const SignUp = () => {
   const [axiosError, setAxiosError] = useState<string | undefined>(undefined);
@@ -98,14 +98,9 @@ const SignUp = () => {
         />
         <p>{error}</p>
         <p>{emailError}</p>
-        <p
-          style={{ cursor: "pointer", color: "blue" }}
-          onClick={() => {
-            navigate(`/login`);
-          }}
-        >
+        <Link style={{ cursor: "pointer", color: "blue" }} to="/login">
           Idz do logowania
-        </p>
+        </Link>
         <button type="submit">Stworz konto</button>
         <p style={{ color: "red" }}>{axiosError}</p>
       </form>
