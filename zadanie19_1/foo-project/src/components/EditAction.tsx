@@ -8,10 +8,10 @@ const EditAction = () => {
 
     useEffect(() => {
         axiosClient
-            .get(`/${params.id}?page=1&limit=10`)
+            .get(`/actions/${params.id}?page=1&limit=10`)
             .then(res => {
                 const data = res.data;
-                // MISSING API ENDPOINT
+                // WIP
             }).catch(error=>{
                 console.log(error)
             })
