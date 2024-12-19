@@ -13,14 +13,14 @@ const EditAction = () => {
 
     useEffect(() => {
         axiosClient
-            .put(`/actions/${params.id}`) //?page=1&limit=10
+            .get(`/actions/${params.id}`)
             .then(res => {
+                console.log(JSON.stringify(res.data.data))
                 const data = res.data.data.find((p: Action) => p._id === params.actionId);
                 console.log(JSON.stringify(data))
                 setFormData(data);
-                // WIP
             }).catch(error => {
-                console.log(error)
+                setAxiosError(error.message);
             })
     }, [])
 
