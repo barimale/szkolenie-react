@@ -79,7 +79,7 @@ const CustomerDetails = () => {
                 {item?.actions.map((subitem, index) => {
                     return (
                         <li key={index}>
-                            <h4>{subitem._id}</h4>
+                            <h4>ID: {subitem._id}</h4>
                             <p>Opis: {subitem.description}</p>
                             <p>Data: {subitem.date}</p>
                             <button onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
