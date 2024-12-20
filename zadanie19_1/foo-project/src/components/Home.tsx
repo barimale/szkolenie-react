@@ -80,7 +80,7 @@ const Home = (props: HomeProps) => {
 
     const removeClient = (clientId: string) => {
         apiClient.delete(`/customers/${clientId}`)
-            .then(response => {
+            .then(() => {
                 const removed = items.filter(p => p._id !== clientId)
                 setItems(removed)
             })
