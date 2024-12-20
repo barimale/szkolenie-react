@@ -3,6 +3,12 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { setUser, User } from "../store/userSlice";
+import styled from 'styled-components'
+
+const LoginWrapper = styled.div`
+    border: 1px solid black;
+    padding: 60px;
+`
 
 const Login = () => {
   const [axiosError, setAxiosError] = useState<string | undefined>(undefined);
@@ -59,7 +65,7 @@ const Login = () => {
   };
 
   return (
-    <div style={{ border: "1px solid black", padding: "60px" }}>
+    <LoginWrapper>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email: </label>
@@ -83,14 +89,14 @@ const Login = () => {
         />
         <p>{error}</p>
         <p>{emailError}</p>
-        <Link style={{ cursor: "pointer", color: "blue" }} to="/signup">
+        <Link style={{ color: "blue" }} to="/signup">
           Stwórz konto
         </Link>
         <br />
         <button type="submit">Zaloguj</button>
         <p style={{ color: "red" }}>{axiosError}</p>
       </form>
-    </div>
+    </LoginWrapper>
   );
 };
 

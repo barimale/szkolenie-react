@@ -4,6 +4,20 @@ import { useEffect, useState } from 'react';
 import Pagination from './Pagination';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/userSlice';
+import styled from 'styled-components'
+
+const FlexContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 1px solid black;
+    margin: 20px;
+`
+
+const FlexItem = styled.div`
+    border: 1px solid black;
+    padding: 20px; 
+`
 
 export type Customer = {
     _id: string,
@@ -19,7 +33,7 @@ export type Customer = {
 }
 
 type HomeProps = {
-    onEdit: (item: Customer| undefined) => void
+    onEdit: (item: Customer | undefined) => void
 }
 const Home = (props: HomeProps) => {
     const navigate = useNavigate();
@@ -75,9 +89,9 @@ const Home = (props: HomeProps) => {
             })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         props.onEdit(undefined);
-    },[]);
+    }, []);
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
@@ -90,20 +104,14 @@ const Home = (props: HomeProps) => {
                 <button onClick={() => { navigate(`/customers/new`); }}>Stwórz klienta</button>
                 {items.length > 0 && (
                     <>
-                        <div style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            gap: '20px',
-                            border: '1px solid black',
-                            margin: '20px'
-                        }}>{items.map((item, index) => {
-                            return <div style={{ border: '1px solid black', padding: '20px' }}>
+                        <FlexContainer>{items.map((item, index) => {
+                            return <FlexItem>
                                 <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
                                 <button onClick={() => props.onEdit(item)}>Edytuj</button>
                                 <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
                                 <button onClick={() => removeClient(item._id)}>Usuń</button>
-                            </div>
-                        })}</div>
+                            </FlexItem>
+                        })}</FlexContainer>
 
                     </>
                 )}
@@ -114,7 +122,7 @@ const Home = (props: HomeProps) => {
             </>
             <Pagination
                 currentPage={currentPage}
-                totalPages={limit -1}
+                totalPages={limit - 1}
                 onPageChange={setCurrentPage}
             />
         </>)

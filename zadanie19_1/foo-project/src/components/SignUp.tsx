@@ -1,7 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router";
+import styled from 'styled-components'
 
+const SignupWrapper = styled.div`
+    border: 1px solid black;
+    padding: 60px;
+`
 const SignUp = () => {
   const [axiosError, setAxiosError] = useState<string | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -64,7 +69,7 @@ const SignUp = () => {
   };
 
   return (
-    <div style={{ border: "1px solid black", padding: "60px" }}>
+    <SignupWrapper>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Imię: </label>
@@ -105,7 +110,7 @@ const SignUp = () => {
         <button type="submit">Stwórz konto</button>
         <p style={{ color: "red" }}>{axiosError}</p>
       </form>
-    </div>
+    </SignupWrapper>
   );
 };
 
