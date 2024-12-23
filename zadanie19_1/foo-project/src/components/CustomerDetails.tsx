@@ -50,9 +50,6 @@ const CustomerDetails = () => {
 
     const removeAction = (actionId: string) => {
         apiClient.delete(`/actions/${actionId}`)
-            .then(response => {
-
-            })
             .catch(error => {
                 setError(`An error occurred while fetching data: ${error}`)
             })

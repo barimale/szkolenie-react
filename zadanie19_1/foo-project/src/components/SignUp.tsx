@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router";
 import styled from 'styled-components'
@@ -20,11 +20,11 @@ const SignUp = () => {
     name: "",
   });
 
-  const isValidEmail = (email: any) => {
+  const isValidEmail = (email: string) => {
     return /\S+@\S+\.\S+/.test(email);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: FormEvent<HTMLElement>) => {
     event.preventDefault();
     setAxiosError("");
     if (error === "" && emailError === "" && nameError === "") {
@@ -47,7 +47,7 @@ const SignUp = () => {
     }
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e:  ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     const name = target.name;
     if (name === "password" && target.value.length < 4) {

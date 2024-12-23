@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { Action } from "./CustomerDetails";
 import axiosClient from "../utilities/axiosClient";

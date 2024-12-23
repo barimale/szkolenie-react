@@ -23,7 +23,7 @@ const EditCustomer = (props: EditCustomerProps) => {
                 `/customers/${formData?._id}`,
                 { ...formData }
             )
-            .then((res) => {
+            .then(() => {
                 navigate('/');
             })
             .catch((error) => {
@@ -39,6 +39,7 @@ const EditCustomer = (props: EditCustomerProps) => {
         } else if (name === "name" && target.value.length >= 4) {
             setError("");
         }
+
         setFormData((prevDataForm: any) => {
             return { ...prevDataForm, [name]: target.value };
         });

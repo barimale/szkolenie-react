@@ -19,7 +19,7 @@ const NewCustomer = () => {
                 "/customers",
                 {...formData, actions: []}
             )
-            .then((res) => {
+            .then(() => {
                 navigate('/');
             })
             .catch((error) => {
