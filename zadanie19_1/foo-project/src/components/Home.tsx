@@ -71,7 +71,7 @@ const Home = (props: HomeProps) => {
                 setError(`An error occurred while fetching data: ${error}`)
                 setLoading(false)
             })
-    }, [currentPage, limit, items])
+    }, [currentPage, limit])
 
     const GoToDetails = (itemId: string) => {
         navigate(`/customers/${itemId}`);
@@ -91,6 +91,18 @@ const Home = (props: HomeProps) => {
             })
             .catch(error => {
                 setError(`An error occurred while fetching data: ${error}`)
+            })
+            .then(()=>{
+                apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
+                .then(response => {
+                    setItems(response.data.data)
+                    setPages(response.data.pages)
+                    setLoading(false)
+                })
+                .catch(error => {
+                    setError(`An error occurred while fetching data: ${error}`)
+                    setLoading(false)
+                })
             })
     }
 
