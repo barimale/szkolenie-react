@@ -12,11 +12,13 @@ const FlexContainer = styled.div`
     gap: 20px;
     border: 1px solid black;
     margin: 20px;
+    padding: 20px;
 `
 
 const FlexItem = styled.div`
     border: 1px solid black;
     padding: 20px; 
+    border-radius: 25px;
 `
 
 export type Customer = {
@@ -42,12 +44,14 @@ const Home = (props: HomeProps) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const limit = 3;
+    const [pages, setPages] = useState(1);
+    const limit = 4;
 
     useEffect(() => {
         apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
             .then(response => {
                 setItems(response.data.data)
+                setPages(response.data.pages)
                 setLoading(false)
             })
             .catch(error => {
@@ -122,7 +126,7 @@ const Home = (props: HomeProps) => {
             </>
             <Pagination
                 currentPage={currentPage}
-                totalPages={limit - 1}
+                totalPages={pages}
                 onPageChange={setCurrentPage}
             />
         </>)
