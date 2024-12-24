@@ -43,7 +43,7 @@ const Home = (props: HomeProps) => {
     const [items, setItems] = useState<Customer[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const [pages, setPages] = useState(1);
     const limit = 3;
 
