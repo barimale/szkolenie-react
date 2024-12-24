@@ -71,7 +71,7 @@ const Home = (props: HomeProps) => {
                 setError(`An error occurred while fetching data: ${error}`)
                 setLoading(false)
             })
-    }, [currentPage, limit])
+    }, [currentPage, limit, items])
 
     const GoToDetails = (itemId: string) => {
         navigate(`/customers/${itemId}`);
