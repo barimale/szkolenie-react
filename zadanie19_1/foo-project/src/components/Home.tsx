@@ -64,6 +64,7 @@ const Home = (props: HomeProps) => {
         apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
             .then(response => {
                 setItems(response.data.data)
+                setPages(response.data.pages)
                 setLoading(false)
             })
             .catch(error => {
