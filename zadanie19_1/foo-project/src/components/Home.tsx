@@ -18,7 +18,7 @@ const FlexContainer = styled.div`
 const FlexItem = styled.div`
     border: 1px solid black;
     padding: 20px; 
-    border-radius: 25px;
+    border-radius: 15px;
 `
 
 export type Customer = {
@@ -45,7 +45,7 @@ const Home = (props: HomeProps) => {
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [pages, setPages] = useState(1);
-    const limit = 4;
+    const limit = 3;
 
     useEffect(() => {
         apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
