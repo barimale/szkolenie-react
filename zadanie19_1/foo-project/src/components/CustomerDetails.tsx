@@ -71,20 +71,22 @@ const CustomerDetails = () => {
             <p>ID: {item?._id}</p>
             <p>Nazwa: {item?.name}</p>
             <p>NIP: {item?.nip}</p>
-            <p>Actions:</p>
-            <ul>
-                {item?.actions.map((subitem, index) => {
-                    return (
-                        <li key={index}>
-                            <h4>ID: {subitem._id}</h4>
-                            <p>Opis: {subitem.description}</p>
-                            <p>Data: {subitem.date}</p>
-                            <p>Typ: {subitem.type}</p>
-                            <button onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
-                            <button onClick={() => { removeAction(subitem._id) }}>Usuń akcję</button>
-                        </li>);
-                })}
-            </ul>
+            <p>Akcje:</p>
+            {item?.actions.length === 0 ? <p>-</p> : (
+                <ul>
+                    {item?.actions.map((subitem, index) => {
+                        return (
+                            <li key={index}>
+                                <h4>ID: {subitem._id}</h4>
+                                <p>Opis: {subitem.description}</p>
+                                <p>Data: {subitem.date}</p>
+                                <p>Typ: {subitem.type}</p>
+                                <button onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
+                                <button onClick={() => { removeAction(subitem._id) }}>Usuń akcję</button>
+                            </li>);
+                    })}
+                </ul>
+            )}
             <button onClick={() => { addAction(item?._id) }}>Dodaj akcje</button>
             <button onClick={() => { navigate('/') }}>Wróć</button>
         </div>);
