@@ -40,7 +40,7 @@ const CustomerDetails = () => {
         apiClient.get(`/customers/${params.id}`)
             .then(response => {
                 setItem(response.data)
-                setLoading(false)
+                setLoading((false))
             })
             .catch(error => {
                 setError(`An error occurred while fetching data: ${error}`)
