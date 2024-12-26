@@ -92,17 +92,17 @@ const Home = (props: HomeProps) => {
             .catch(error => {
                 setError(`An error occurred while fetching data: ${error}`)
             })
-            .then(()=>{
+            .then(() => {
                 apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
-                .then(response => {
-                    setItems(response.data.data)
-                    setPages(response.data.pages)
-                    setLoading(false)
-                })
-                .catch(error => {
-                    setError(`An error occurred while fetching data: ${error}`)
-                    setLoading(false)
-                })
+                    .then(response => {
+                        setItems(response.data.data)
+                        setPages(response.data.pages)
+                        setLoading(false)
+                    })
+                    .catch(error => {
+                        setError(`An error occurred while fetching data: ${error}`)
+                        setLoading(false)
+                    })
             })
     }
 
@@ -110,32 +110,30 @@ const Home = (props: HomeProps) => {
         props.onEdit(undefined);
     }, []);
 
-    const itemsList = useMemo(()=> items.map((item, index) => {
-        return <FlexItem>
-            <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
+    const itemsList = useMemo(() => items.map((item, index) => {
+        return <FlexItem key={index}>
+            <p style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
             <button onClick={() => props.onEdit(item)}>Edytuj</button>
             <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
             <button onClick={() => removeClient(item._id)}>Usuń</button>
         </FlexItem>
-      }),[items])
+    }), [items])
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
 
     return (
         <>
-            <>
-                <button onClick={() => Logout()}>Wyloguj</button>
-                <h1>Strona główna</h1>
-                <button onClick={() => { navigate(`/customers/new`); }}>Stwórz klienta</button>
-                {items.length > 0 && (
-                    <FlexContainer>{itemsList}</FlexContainer>
-                )}
-                {items.length === 0 && (
-                    <p>Brak klientów w systemie.</p>
-                )
-                }
-            </>
+            <button onClick={() => Logout()}>Wyloguj</button>
+            <h1>Strona główna</h1>
+            <button onClick={() => { navigate(`/customers/new`); }}>Stwórz klienta</button>
+            {items.length > 0 && (
+                <FlexContainer>{itemsList}</FlexContainer>
+            )}
+            {items.length === 0 && (
+                <p>Brak klientów w systemie.</p>
+            )
+            }
             <Pagination
                 currentPage={currentPage}
                 totalPages={pages}

@@ -48,8 +48,8 @@ const CustomerDetails = () => {
             })
     }, [item?.actions])
 
-    const removeAction = (actionId: string) => {
-        apiClient.delete(`/actions/${actionId}`)
+    const removeAction = async (actionId: string) => {
+        await apiClient.delete(`/actions/${actionId}`)
             .catch(error => {
                 setError(`An error occurred while fetching data: ${error}`)
             })
