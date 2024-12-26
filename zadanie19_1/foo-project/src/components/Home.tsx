@@ -83,8 +83,8 @@ const Home = (props: HomeProps) => {
         navigate(`/login`);
     }
 
-    const removeClient = (clientId: string) => {
-        apiClient.delete(`/customers/${clientId}`)
+    const removeClient = async (clientId: string) => {
+        await apiClient.delete(`/customers/${clientId}`)
             .then(() => {
                 const removed = items.filter(p => p._id !== clientId)
                 setItems(removed)
@@ -92,8 +92,8 @@ const Home = (props: HomeProps) => {
             .catch(error => {
                 setError(`An error occurred while fetching data: ${error}`)
             })
-            .then(() => {
-                apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
+            .then(async() => {
+                await apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
                     .then(response => {
                         setItems(response.data.data)
                         setPages(response.data.pages)
