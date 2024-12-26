@@ -76,19 +76,19 @@ const CustomerDetails = () => {
                 <ul>
                     {item?.actions.map((subitem, index) => {
                         return (
-                            <li key={index}>
+                            <li key={index} style={{border: '1px solid gray', margin: '10px'}}>
                                 <h4>ID: {subitem._id}</h4>
                                 <p>Opis: {subitem.description}</p>
                                 <p>Data: {subitem.date}</p>
                                 <p>Typ: {subitem.type}</p>
-                                <button onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
-                                <button onClick={() => { removeAction(subitem._id) }}>Usuń akcję</button>
+                                <button style={{margin: '10px'}} onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
+                                <button style={{margin: '10px'}} onClick={() => { removeAction(subitem._id) }}>Usuń akcję</button>
                             </li>);
                     })}
                 </ul>
             )}
-            <button onClick={() => { addAction(item?._id) }}>Dodaj akcje</button>
-            <button onClick={() => { navigate('/') }}>Wróć</button>
+            <button style={{margin: '10px'}} onClick={() => { addAction(item?._id) }}>Dodaj akcje</button>
+            <button style={{margin: '10px'}} onClick={() => { navigate('/') }}>Wróć</button>
         </div>);
 }
 
