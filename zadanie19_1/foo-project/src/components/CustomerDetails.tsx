@@ -79,6 +79,7 @@ const CustomerDetails = () => {
                             <h4>ID: {subitem._id}</h4>
                             <p>Opis: {subitem.description}</p>
                             <p>Data: {subitem.date}</p>
+                            <p>Typ: {subitem.type}</p>
                             <button onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
                             <button onClick={() => { removeAction(subitem._id) }}>Usuń akcję</button>
                         </li>);
