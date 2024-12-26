@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import apiClient from '../utilities/axiosClient';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Pagination from './Pagination';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/userSlice';
@@ -110,6 +110,15 @@ const Home = (props: HomeProps) => {
         props.onEdit(undefined);
     }, []);
 
+    const itemsList = useMemo(()=> items.map((item, index) => {
+        return <FlexItem>
+            <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
+            <button onClick={() => props.onEdit(item)}>Edytuj</button>
+            <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
+            <button onClick={() => removeClient(item._id)}>Usuń</button>
+        </FlexItem>
+      }),[items])
+
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
 
@@ -120,17 +129,7 @@ const Home = (props: HomeProps) => {
                 <h1>Strona główna</h1>
                 <button onClick={() => { navigate(`/customers/new`); }}>Stwórz klienta</button>
                 {items.length > 0 && (
-                    <>
-                        <FlexContainer>{items.map((item, index) => {
-                            return <FlexItem>
-                                <p key={index} style={{ cursor: 'pointer' }} ><b>{item.name}</b></p>
-                                <button onClick={() => props.onEdit(item)}>Edytuj</button>
-                                <button onClick={() => GoToDetails(item._id)}>Szczegóły</button>
-                                <button onClick={() => removeClient(item._id)}>Usuń</button>
-                            </FlexItem>
-                        })}</FlexContainer>
-
-                    </>
+                    <FlexContainer>{itemsList}</FlexContainer>
                 )}
                 {items.length === 0 && (
                     <p>Brak klientów w systemie.</p>
