@@ -24,7 +24,7 @@ const CustomerDetails = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
-    function GetCustomer() {
+    const GetCustomer = () => {
         apiClient.get(`/customers/${params.id}`)
             .then(response => {
                 setItem(response.data)
