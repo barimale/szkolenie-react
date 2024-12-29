@@ -24,7 +24,7 @@ const CustomerDetails = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
-    useEffect(() => {
+    function GetCustomer() {
         apiClient.get(`/customers/${params.id}`)
             .then(response => {
                 setItem(response.data)
@@ -34,18 +34,14 @@ const CustomerDetails = () => {
                 setError(`An error occurred while fetching data: ${error}`)
                 setLoading(false)
             })
+    };
+
+    useEffect(() => {
+        GetCustomer();
     }, [])
 
     useEffect(() => {
-        apiClient.get(`/customers/${params.id}`)
-            .then(response => {
-                setItem(response.data)
-                setLoading((false))
-            })
-            .catch(error => {
-                setError(`An error occurred while fetching data: ${error}`)
-                setLoading(false)
-            })
+        GetCustomer();
     }, [item?.actions])
 
     const removeAction = async (actionId: string) => {
@@ -76,19 +72,19 @@ const CustomerDetails = () => {
                 <ul>
                     {item?.actions.map((subitem, index) => {
                         return (
-                            <li key={index} style={{border: '1px solid gray', margin: '10px'}}>
+                            <li key={index} style={{ border: '1px solid gray', margin: '10px' }}>
                                 <h4>ID: {subitem._id}</h4>
                                 <p>Opis: {subitem.description}</p>
                                 <p>Data: {subitem.date}</p>
                                 <p>Typ: {subitem.type}</p>
-                                <button style={{margin: '10px'}} onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
-                                <button style={{margin: '10px'}} onClick={() => { removeAction(subitem._id) }}>Usuń akcję</button>
+                                <button style={{ margin: '10px' }} onClick={() => { editAction(subitem._id, item._id) }}>Edytuj akcję</button>
+                                <button style={{ margin: '10px' }} onClick={() => { removeAction(subitem._id) }}>Usuń akcję</button>
                             </li>);
                     })}
                 </ul>
             )}
-            <button style={{margin: '10px'}} onClick={() => { addAction(item?._id) }}>Dodaj akcje</button>
-            <button style={{margin: '10px'}} onClick={() => { navigate('/') }}>Wróć</button>
+            <button style={{ margin: '10px' }} onClick={() => { addAction(item?._id) }}>Dodaj akcje</button>
+            <button style={{ margin: '10px' }} onClick={() => { navigate('/') }}>Wróć</button>
         </div>);
 }
 
