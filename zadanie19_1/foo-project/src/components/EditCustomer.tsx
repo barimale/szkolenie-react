@@ -49,11 +49,11 @@ const EditCustomer = (props: EditCustomerProps) => {
         const target = e.target;
         const name = target.name;
 
-        setFormData((prevDataForm: any) => {
+        setFormData((prevDataForm: Customer | undefined) => {
             return {
                 ...prevDataForm,
                 address: { ...prevDataForm?.address, [name]: target.value },
-            };
+            } as Customer;
         });
     };
 

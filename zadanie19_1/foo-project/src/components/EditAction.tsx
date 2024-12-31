@@ -6,7 +6,7 @@ import { Action } from "./CustomerDetails";
 const EditAction = () => {
     const params = useParams()
     const navigate = useNavigate();
-    const [formData, setFormData] = useState<Action>();
+    const [formData, setFormData] = useState<Action | undefined>();
     const [axiosError, setAxiosError] = useState<string>();
     const [error, setError] = useState<string>();
     const [emailError, setEmailError] = useState<string>();
@@ -55,8 +55,8 @@ const EditAction = () => {
         } else if (name === "email" && !isValidEmail(target.value)) {
             setEmailError("Niepoprawny format email");
         }
-        setFormData((prevDataForm: any) => {
-            return { ...prevDataForm, [name]: target.value };
+        setFormData((prevDataForm: Action | undefined) => {
+            return { ...prevDataForm, [name]: target.value } as Action;
         });
     };
 

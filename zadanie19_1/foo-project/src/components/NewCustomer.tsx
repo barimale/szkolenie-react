@@ -35,8 +35,8 @@ const NewCustomer = () => {
         } else if (name === "name" && target.value.length >= 4) {
             setError("");
         }
-        setFormData((prevDataForm: any) => {
-            return { ...prevDataForm, [name]: target.value };
+        setFormData((prevDataForm: Customer | undefined) => {
+            return { ...prevDataForm, [name]: target.value } as Customer;
         });
     };
 
@@ -44,11 +44,11 @@ const NewCustomer = () => {
         const target = e.target;
         const name = target.name;
     
-        setFormData((prevDataForm: any) => {
+        setFormData((prevDataForm: Customer | undefined) => {
           return {
             ...prevDataForm,
             address: { ...prevDataForm?.address, [name]: target.value },
-          };
+          } as Customer;
         });
       };
 

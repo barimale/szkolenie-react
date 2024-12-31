@@ -44,8 +44,8 @@ const CreateAction = () => {
         } else if (name === "email" && !isValidEmail(target.value)) {
             setEmailError("Niepoprawny format email");
         }
-        setFormData((prevDataForm: any) => {
-            return { ...prevDataForm, [name]: target.value };
+        setFormData((prevDataForm: Action | undefined) => {
+            return { ...prevDataForm, [name]: target.value } as Action;
         });
     };
 
