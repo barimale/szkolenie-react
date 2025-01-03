@@ -18,7 +18,6 @@ const CreateAction = () => {
     const handleSubmit = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
         setAxiosError("");
-        console.log(JSON.stringify(formData))
         axiosClient
             .post<Action>(
                 "/actions",
@@ -28,7 +27,7 @@ const CreateAction = () => {
                 navigate(`/customers/${params.id}`)
             })
             .catch((error) => {
-                setAxiosError(JSON.stringify(error.message));
+                setAxiosError(error.message);
             });
     };
 

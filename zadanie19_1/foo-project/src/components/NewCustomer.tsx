@@ -13,7 +13,6 @@ const NewCustomer = () => {
     const handleSubmit = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
         setAxiosError("");
-        console.log(JSON.stringify(formData))
         axiosClient
             .post<Customer>(
                 "/customers",

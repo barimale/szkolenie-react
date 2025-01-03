@@ -37,8 +37,7 @@ const SignUp = () => {
             name: formData.name,
           }
         )
-        .then((res) => {
-          console.log(JSON.stringify(res.data));
+        .then(() => {
           navigate(`/login`);
         })
         .catch((error) => {

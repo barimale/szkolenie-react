@@ -17,7 +17,7 @@ const EditCustomer = (props: EditCustomerProps) => {
     const handleSubmit = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
         setAxiosError("");
-        console.log(JSON.stringify(formData))
+
         axiosClient
             .put<Customer>(
                 `/customers/${formData?._id}`,

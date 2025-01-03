@@ -20,44 +20,30 @@ const EditAction = () => {
             }).catch(error => {
                 setAxiosError(error.message);
             })
-    }, [])
+    }, [params.id, params.actionId]);
 
-    const isValidEmail = (email: string) => {
-        return /\S+@\S+\.\S+/.test(email);
-    };
+    const isValidEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
 
     const handleSubmit = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
         setAxiosError("");
-        console.log(JSON.stringify(formData))
         axiosClient
             .put<Action>(
                 `/actions/${params.actionId}`,
                 { ...formData, customer: params.id }
             )
-            .then(() => {
-                navigate(`/customers/${params.id}`)
-            })
-            .catch((error) => {
-                setAxiosError(JSON.stringify(error.message));
-            });
+            .then(() => navigate(`/customers/${params.id}`))
+            .catch((error) => setAxiosError(JSON.stringify(error.message)));
     };
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const target = e.target;
-        const name = target.name;
-        if (name === "description" && target.value.length < 4) {
-            setError("Opis musi mieć 4 lub więcej znaków");
-        } else if (name === "description" && target.value.length >= 4) {
-            setError("");
-        } else if (name === "email" && isValidEmail(target.value)) {
-            setEmailError("");
-        } else if (name === "email" && !isValidEmail(target.value)) {
-            setEmailError("Niepoprawny format email");
+        const { name, value } = e.target;
+        if (name === "description") {
+            setError(value.length < 4 ? "Opis musi mieć 4 lub więcej znaków" : "");
+        } else if (name === "email") {
+            setEmailError(isValidEmail(value) ? "" : "Niepoprawny format email");
         }
-        setFormData((prevDataForm: Action | undefined) => {
-            return { ...prevDataForm, [name]: target.value } as Action;
-        });
+        setFormData(prevDataForm => ({ ...prevDataForm, [name]: value } as Action));
     };
 
     return (
