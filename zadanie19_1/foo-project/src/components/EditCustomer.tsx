@@ -40,8 +40,8 @@ const EditCustomer = (props: EditCustomerProps) => {
             setError("");
         }
 
-        setFormData((prevDataForm: any) => {
-            return { ...prevDataForm, [name]: target.value };
+        setFormData((prevDataForm: Customer | undefined) => {
+            return { ...prevDataForm, [name]: target.value } as Customer;
         });
     };
 

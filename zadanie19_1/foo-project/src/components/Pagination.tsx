@@ -22,9 +22,9 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
     }, [pages, onPageChange, currentPage]);
     
     return (
-        <div>
+        <>
             {memoizedPages}
-        </div>
+        </>
     );
 };
 

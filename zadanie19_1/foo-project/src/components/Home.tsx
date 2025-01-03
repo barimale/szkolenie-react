@@ -47,31 +47,26 @@ const Home = (props: HomeProps) => {
     const [pages, setPages] = useState(1);
     const limit = 3;
 
-    useEffect(() => {
+    const GetCustomers = () =>{
         apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
-            .then(response => {
-                setItems(response.data.data)
-                setPages(response.data.pages)
-                setLoading(false)
-            })
-            .catch(error => {
-                setError(`An error occurred while fetching data: ${error}`)
-                setLoading(false)
-            })
+        .then(response => {
+            setItems(response.data.data)
+            setPages(response.data.pages)
+            setLoading(false)
+        })
+        .catch(error => {
+            setError(`An error occurred while fetching data: ${error}`)
+            setLoading(false)
+        })
+    }
+
+    useEffect(() => {
+        GetCustomers();
     }, [])
 
     useEffect(() => {
-        apiClient.get(`/customers?page=${currentPage}&limit=${limit}`)
-            .then(response => {
-                setItems(response.data.data)
-                setPages(response.data.pages)
-                setLoading(false)
-            })
-            .catch(error => {
-                setError(`An error occurred while fetching data: ${error}`)
-                setLoading(false)
-            })
-    }, [currentPage, limit])
+        GetCustomers();
+    }, [currentPage])
 
     const GoToDetails = (itemId: string) => {
         navigate(`/customers/${itemId}`);
